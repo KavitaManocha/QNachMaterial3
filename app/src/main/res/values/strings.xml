@@ -1,0 +1,107 @@
+<resources>
+
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="network_error">Network error, could get data,please try again!</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="skip">Skip</string>
+    <string name="title_on_boarding">Welcome to UGro App !</string>
+    <string name="description_on_boarding">Here is an open-source project which shows sweet &amp; original on boarding ViewPagers that follows Material Design Guidelines</string>
+    <string name="enter_mobile_no">Enter Mobile No.</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify">Verify</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
+    <string name="term_amp_conditions_apply"><![CDATA[Term & Conditions Apply]]></string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="form_username">UserName or Email</string>
+    <string name="Password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_your_pswd">Forgot your Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="email_id">Email id</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="reset_Password">RESET PASSWORD</string>
+    <string name="hello">Hello</string>
+    <string name="nupayDemo">Nupay Demo</string>
+    <string name="welcome_to_qnach_mandate">Welcome to qNach Mandate</string>
+    <string name="generate">Generate</string>
+    <string name="pdf">PDF</string>
+    <string name="scan_nach">Scan Nach</string>
+    <string name="mandate">Mandate</string>
+    <string name="generate_link">Generate Link</string>
+    <string name="for_emandate">For eMandate</string>
+    <string name="register">Register</string>
+    <string name="emandate">eMandate</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="report">Reports</string>
+    <string name="setting">Settings</string>
+    <string name="my_acc">My Account</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="helpDesk">HelpDesk</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="nach_pdf">NACH PDF</string>
+    <string name="generated">Generated</string>
+    <string name="physical_nach">Physical NACH</string>
+    <string name="scanned">Scanned</string>
+    <string name="today">Today</string>
+    <string name="last_week">Last 7 Days</string>
+    <string name="last_month">Last 30 Days</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="loan_id">File ID/Loan Number/Loan ID/Customer ID<sup>*</sup></string>
+    <string name="benef_name">Beneficiary Name<sup>*</sup></string>
+    <string name="customer_mobile">Customer Mobile<sup>*</sup></string>
+    <string name="customer_email">Customer Email<sup>*</sup></string>
+    <string name="next">Next</string>
+    <string name="account_details">Account Details</string>
+    <string name="ifsc_code">IFSC Code<sup>*</sup></string>
+    <string name="bank_name">Customer Bank<sup>*</sup></string>
+    <string name="bank_address">Bank Add.<sup>*</sup></string>
+    <string name="cust_acc_no">Customer Account Number<sup>*</sup></string>
+    <string name="select_acc_type">Select Account Type<sup>*</sup></string>
+    <string name="back">Back</string>
+    <string name="mandate_details">Mandate Details</string>
+    <string name="ach_amt">Ach Amount</string>
+    <string name="mandate_date">Mandate Date</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="or">OR</string>
+    <string name="until_cancelled">Until Cancelled</string>
+    <string name="reference_number">Reference No</string>
+    <string name="nach_gen">NACH GENERATE</string>
+    <string name="customer_details">Customer Details</string>
+    <string name="_mobile">Mobile No<sup>*</sup></string>
+    <string name="_email">Email<sup>*</sup></string>
+    <string name="first_collection_date">First Collection Date</string>
+    <string name="final_collection_date">Final Collection Date</string>
+    <string name="processing">Processing</string>
+    <string name="name">Name:</string>
+    <string name="cust_id">Cust Id.:</string>
+    <string name="ach_amtt">Ach Amount:</string>
+    <string name="nupay_ref">Nupay Ref.:</string>
+    <string name="sales_query_code">Sales Query Code:</string>
+    <string name="date">Date:</string>
+    <string name="reason">Reason:</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="pending">Pending</string>
+    <string name="inProcess">InProcess</string>
+    <string name="rejected">Rejected</string>
+    <string name="umrn">Umrn:</string>
+    <string name="sts_desc">Status Des.:</string>
+    <string name="ok">Ok</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="proceed">Proceed</string>
+    <string-array name="category">
+        <item>Loan Instalment Payment</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="frequency">
+        <item>MNTH</item>
+        <item>ADHO</item>
+    </string-array>
+</resources>

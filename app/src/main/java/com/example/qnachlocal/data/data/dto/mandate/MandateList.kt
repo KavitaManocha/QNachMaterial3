@@ -1,0 +1,77 @@
+package com.chola.app.data.dto.mandate
+
+import java.io.Serializable
+
+
+data class MandateList(
+    val Ois_s3: Any,
+    val Onach_url: Any,
+    val UMRN_No: String,
+    val account_holder_name: String,
+    val account_no: Any,
+    val account_type: String,
+    val amount_type: Any,
+    val bank_id: String,
+    val branch_code: Any,
+    val branch_id: String,
+    val branch_name: Any,
+    val category_id: String,
+    val collection_amount: Any,
+    val collection_amt: String,
+    val collection_frequency: String,
+    val comment: Any,
+    val consumer_ref_no: String,
+    val created_on: String,
+    val customer_account_number: String,
+    val customer_bank: String,
+    val customer_email: String,
+    val customer_id: Any,
+    val customer_name: Any,
+    val debit_type: String,
+    val end_date: String,
+    val executive_id: Any,
+    val id: String,
+    val ifsc_code: String,
+    val is_child: String,
+    val is_parent: String,
+    val is_qr: String,
+    val is_resubmit: String,
+    val is_s3: Any,
+    val loan_no: String,
+    val mandate_date: String,
+    val mandate_image: Any,
+    val mandate_req_id: String,
+    val mandate_status: Any,
+    val mandate_type: Any,
+    val max_collection_amount: String,
+    val medium: String,
+    val micr: String,
+    val mobile: String,
+    val nach_type: Any,
+    val nach_url: Any,
+    val org_id: String,
+    val parent_id: Any,
+    val pdf_url: String,
+    val qr_image: Any,
+    val reason_code: Any,
+    val reference_number: String,
+    val request_type: Any,
+    val return_file: String,
+    val sales_query_code: Any,
+    val sponsor_bank: String,
+    val start_date: String,
+    val status: String,
+    val unique_id_no: Any,
+    val until_cancelled: String,
+    val updated_on: String,
+    var isSelected: Boolean,
+    val status_desc:String,
+    val created_date:String,
+    val status_description:String
+
+):Serializable {
+    override fun toString(): String {
+        return "MandateList(Ois_s3=$Ois_s3, Onach_url=$Onach_url, UMRN_No=$UMRN_No, account_holder_name='$account_holder_name', account_no=$account_no, account_type='$account_type', amount_type=$amount_type, bank_id='$bank_id', branch_code=$branch_code, branch_id='$branch_id', branch_name=$branch_name, category_id='$category_id', collection_amount=$collection_amount, collection_amt='$collection_amt', collection_frequency='$collection_frequency', comment=$comment, consumer_ref_no='$consumer_ref_no', created_on='$created_on', customer_account_number='$customer_account_number', customer_bank='$customer_bank', customer_email='$customer_email', customer_id=$customer_id, customer_name=$customer_name, debit_type='$debit_type', end_date='$end_date', executive_id=$executive_id, id='$id', ifsc_code='$ifsc_code', is_child='$is_child', is_parent='$is_parent', is_qr='$is_qr', is_resubmit='$is_resubmit', is_s3=$is_s3, loan_no='$loan_no', mandate_date='$mandate_date', mandate_image=$mandate_image, mandate_req_id='$mandate_req_id', mandate_status=$mandate_status, mandate_type=$mandate_type, max_collection_amount='$max_collection_amount', medium='$medium', micr='$micr', mobile='$mobile', nach_type=$nach_type, nach_url=$nach_url, org_id='$org_id', parent_id=$parent_id, pdf_url='$pdf_url', qr_image=$qr_image, reason_code=$reason_code, reference_number='$reference_number', request_type=$request_type, return_file='$return_file', sales_query_code=$sales_query_code, sponsor_bank='$sponsor_bank', start_date='$start_date', status='$status', unique_id_no=$unique_id_no, until_cancelled='$until_cancelled', updated_on='$updated_on', isSelected=$isSelected)"
+    }
+}
+
