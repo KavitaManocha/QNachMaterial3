@@ -23,8 +23,8 @@
         android:label="QNACH"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat"
-        tools:targetApi="31" >
+        android:theme="@style/AppTheme"
+        tools:targetApi="32" >
         <activity
             android:name=".SplashActivity"
             android:exported="true" >

@@ -20,3 +20,4 @@ sealed class Resource<T>(
 
     }
 }
+
