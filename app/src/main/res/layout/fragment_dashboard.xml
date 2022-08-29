@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton"
+        app:selectionRequired="true"
+        app:singleSelection="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:checkedButton="@id/today">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/today"
+            android:id="@+id/today"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_week"
+            android:id="@+id/last_week"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_month"
+            android:id="@+id/btn_month"
+            style="?attr/materialButtonOutlinedStyle" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboard_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toggleButton"
+        app:layout_constraintVertical_bias="0.018" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboard_recyclerview_blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dashboard_recyclerview"
+        app:layout_constraintVertical_bias="0.018" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
