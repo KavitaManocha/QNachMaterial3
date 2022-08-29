@@ -39,12 +39,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edt_verify_otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/btn_gradient"
-        android:text="@string/reset_Password"
+        android:text="@string/verify_otp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

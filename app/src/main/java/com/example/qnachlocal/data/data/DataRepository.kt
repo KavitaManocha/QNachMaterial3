@@ -11,6 +11,8 @@ import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.chola.app.data.local.LocalData
 import com.chola.app.data.remote.RemoteData
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
+import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -53,12 +55,17 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
         return flow { emit(remoteRepository.doRemoteLinkMandate(linkMandateRequest)) }.flowOn(ioDispatcher)
     }
 
-    override suspend fun doRemoteSearchMandate( id:String,query: String): Flow<Resource<MandateResponse>> {
-        return flow { emit(remoteRepository.doSearchMandate( id,query)) }.flowOn(ioDispatcher)
-
+    override suspend fun doForgotPassword(forgotPasswordRequest: ForgotPasswordRequest): Flow<Resource<ResetPasswordResponse>> {
+        return flow { emit(remoteRepository.doForgotPassword(forgotPasswordRequest)) }.flowOn(ioDispatcher)
     }
 
+    override suspend fun doVerifyOtp(verifyOtpRequest: VerifyOtpRequest): Flow<Resource<ResetPasswordResponse>> {
+        return flow { emit(remoteRepository.doVerifyOtp(verifyOtpRequest)) }.flowOn(ioDispatcher)
+    }
 
+    override suspend fun doRemoteSearchMandate(orgId:String ,id:String,query: String): Flow<Resource<MandateResponse>> {
+        return flow { emit(remoteRepository.doSearchMandate(orgId, id,query)) }.flowOn(ioDispatcher)
 
+    }
 
 }

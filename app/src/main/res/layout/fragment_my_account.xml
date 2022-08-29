@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:elevation="@dimen/_16dp"
+            android:layout_marginTop="-46dp"
+            android:src="@mipmap/logo_nupay"
+            android:layout_alignTop="@id/cv_nupay_info"
+            app:civ_border_color="@color/light_blue_A400"
+            app:civ_border_width="@dimen/_2sdp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_nupay_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_90sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_16dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_nupay_demo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nupay_demo"
+                    android:layout_marginTop="@dimen/_46sdp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16ssp"
+                    android:textColor="@color/gray"
+                    android:gravity="center"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gurugram"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/cv_nupay_info"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:text="@string/info"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold"
+                android:textColor="@color/tertiary_gry"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_3sdp"
+                android:background="@color/light_blue_A400"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/tertiary_gry"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/mobile_no"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/no_of_mob_no"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:textSize="@dimen/_14ssp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/tertiary_gry"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/company"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_company"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="@string/entellus_bsns_soln"
+                    android:textSize="@dimen/_14ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/tertiary_gry"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/email"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_mail"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_14ssp"
+                    android:text="@string/nupaydemo"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:textColor="@color/tertiary_gry"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

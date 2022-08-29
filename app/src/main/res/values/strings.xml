@@ -104,4 +104,25 @@
         <item>MNTH</item>
         <item>ADHO</item>
     </string-array>
+    <string name="enter_four_digit_otp_send_to_your_registered_number">Enter 4 digit OTP send to your registered number</string>
+    <string name="enter_new_password">Enter new Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="verify_otp">Verify OTP</string>
+
+    <string name="contact_person">Contact Person:</string>
+    <string name="nupay">Nupay</string>
+    <string name="contact_person_mail">Contact Person Email:</string>
+    <string name="contact_email">info@nupay.co.in</string>
+    <string name="contactt_personn">Contact Person Name:</string>
+    <string name="nupay_admin">Nupay Admin</string>
+    <string name="contact_person_email">abhimanyu.gupta@nupay.co.in</string>
+
+    <string name="about_uss">Automate your NACH mandate registration by capturing the image at the point of Sale. Easy to use app to capture NACH mandate from images, enhance and initiate processing through Sponsor bank. Simply Scan the mandate form at source and upload on the cloud with unique identifier for immediate processing as per Bank/NPCI standards.</string>
+    <string name="nupay_demo">Nupay Demo</string>
+    <string name="gurugram">Gurgaon</string>
+    <string name="info">Info</string>
+    <string name="company">Company:</string>
+    <string name="entellus_bsns_soln">Entellus Business Solutions Pvt. Ltd.</string>
+    <string name="email">Email:</string>
+    <string name="nupaydemo">nupaydemo</string>
 </resources>

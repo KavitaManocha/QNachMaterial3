@@ -50,8 +50,7 @@ class ServiceGenerator @Inject constructor(sessionManager: SessionManager) {
         val request = original.newBuilder()
             .header(contentType, contentTypeValue)
             .addHeader(deviceType, deviceTypeValue)
-            .addHeader(apiKey,"R3JhbUNvdmVyTnVwYXk=")
-            .addHeader(token_,token)
+            .addHeader(apiKey,"DGUyOTZhMDY3YTM3NTYzMzcQaGVkMDVmNWEzYmmN")
             .method(original.method, original.body)
             .build()
 
@@ -80,7 +79,7 @@ class ServiceGenerator @Inject constructor(sessionManager: SessionManager) {
         okHttpBuilder.readTimeout(timeoutRead.toLong(), TimeUnit.SECONDS)
         val client = okHttpBuilder.build()
         retrofit = Retrofit.Builder()
-            .baseUrl("https://autonachuat.nupaybiz.com/api/").client(client)
+            .baseUrl("https://nupaybiz.com/autonach/api/").client(client)
             .addConverterFactory(GsonConverterFactory.create())
             // .addConverterFactory(MoshiConverterFactory.create(getMoshi()))
             .build()

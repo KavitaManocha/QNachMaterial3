@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_flow"
+    app:startDestination="@id/settingsFragment">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.qnachlocal.ui.components.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_helpDeskFragment"
+            app:destination="@id/helpDeskFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_myAccountFragment"
+            app:destination="@id/myAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.qnachlocal.ui.components.settings.aboutus.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.example.qnachlocal.ui.components.settings.contactus.ContactUsFragment"
+        android:label="ContactUsFragment" />
+    <fragment
+        android:id="@+id/helpDeskFragment"
+        android:name="com.example.qnachlocal.ui.components.settings.helpdesk.HelpDeskFragment"
+        android:label="HelpDeskFragment" />
+    <fragment
+        android:id="@+id/myAccountFragment"
+        android:name="com.example.qnachlocal.ui.components.settings.myaccount.MyAccountFragment"
+        android:label="MyAccountFragment" />
+</navigation>

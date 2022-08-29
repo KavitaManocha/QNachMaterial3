@@ -10,6 +10,8 @@ import com.chola.app.data.dto.mandate.MandateRequest
 import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
+import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import retrofit2.http.Query
 
 /**
@@ -56,11 +58,17 @@ internal interface RemoteDataSource {
         mandate: LinkMandateRequest
     ): Resource<LinkMandateResponse>
 
+    suspend fun doForgotPassword(
+        mandate: ForgotPasswordRequest
+    ):Resource<ResetPasswordResponse>
 
     // for mandate Search Response
     suspend fun doSearchMandate(
+        orgId:String,
         id:String,
         mandate: String
     ): Resource<MandateResponse>
 
-}
+    suspend fun doVerifyOtp(
+        mandate: VerifyOtpRequest
+    ): Resource<ResetPasswordResponse>}

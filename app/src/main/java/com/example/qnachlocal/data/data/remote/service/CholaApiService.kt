@@ -9,6 +9,8 @@ import com.chola.app.data.dto.mandate.MandateRequest
 import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
+import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -56,7 +58,19 @@ interface CholaApiService {
 
     @GET("NachMandate/searchMandate")
     suspend fun searchMandate(
+        @Query("userId") userId:String,
         @Query("id") id:String,
-        @Query("search_value") responseType:String
+        @Query("searchValue") responseType:String
     ): Response<MandateResponse>
+
+    @POST("QNachApp/forgotPassword")
+    suspend fun forgotPassword(
+        @Body forgotpasswordrequest: ForgotPasswordRequest
+    ): Response<ResetPasswordResponse>
+
+    @POST("Users/verifyOTP")
+    suspend fun verifyOtp(
+        @Body verifyOtpRequest: VerifyOtpRequest
+    ): Response<ResetPasswordResponse>
+
 }

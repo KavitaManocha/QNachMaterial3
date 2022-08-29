@@ -13,6 +13,8 @@ import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.chola.app.data.error.NETWORK_ERROR
 import com.chola.app.data.error.NO_INTERNET_CONNECTION
 import com.chola.app.data.remote.service.CholaApiService
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
+import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import com.example.qnachlocal.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
@@ -128,10 +130,35 @@ constructor(serviceGenerator: ServiceGenerator, private val networkConnectivity:
         }
     }
 
-    override suspend fun doSearchMandate( id:String,mandate: String): Resource<MandateResponse> {
-        val response = serviceApi.searchMandate(id,mandate)
+    override suspend fun doForgotPassword(mandate: ForgotPasswordRequest): Resource<ResetPasswordResponse> {
+        val response = serviceApi.forgotPassword(mandate)
+        return when (val response1 = processCall(response)) {
+            is ResetPasswordResponse -> {
+                Resource.Success(data = response1)
+            }
+            else -> {
+                Resource.DataError(errorCode = 1 as Int)
+            }
+        }
+    }
+
+
+    override suspend fun doSearchMandate(orgId:String, id:String,mandate: String): Resource<MandateResponse> {
+        val response = serviceApi.searchMandate(orgId,id,mandate)
         return when (val response1 = processCall(response)) {
             is MandateResponse -> {
+                Resource.Success(data = response1)
+            }
+            else -> {
+                Resource.DataError(errorCode = 1 as Int)
+            }
+        }
+    }
+
+    override suspend fun doVerifyOtp(mandate: VerifyOtpRequest): Resource<ResetPasswordResponse> {
+        val response = serviceApi.verifyOtp(mandate)
+        return when (val response1 = processCall(response)) {
+            is ResetPasswordResponse -> {
                 Resource.Success(data = response1)
             }
             else -> {

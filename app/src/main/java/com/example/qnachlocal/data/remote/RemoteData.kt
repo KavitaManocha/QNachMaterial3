@@ -38,7 +38,7 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
 
     override suspend fun doRemoteDecrypt(loginRequest: LoginRequest): Resource<LoginResponse> {
         val decryptData = serviceGenerator.createService(UgroApiService::class.java)
-        val response = decryptData.testDecrypt(loginRequest)
+        val response = decryptData.login(loginRequest)
         return when (val response1 = processCall(response)) {
             is LoginResponse -> {
                 Resource.Success(data = response1)

@@ -14,12 +14,12 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             val sessionManager= SessionManager(this)
             if(sessionManager.getUserDetail()!=null){
-                val i = Intent(this@SplashActivity, SplashActivity::class.java)
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
                 finish()
             }
             else{
-                val i = Intent(this@SplashActivity, SplashActivity::class.java)
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
                 finish()
             }
