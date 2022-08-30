@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }
             else{
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                val i = Intent(this@SplashActivity, DashBoardActivity::class.java)
                 startActivity(i)
                 finish()
             }

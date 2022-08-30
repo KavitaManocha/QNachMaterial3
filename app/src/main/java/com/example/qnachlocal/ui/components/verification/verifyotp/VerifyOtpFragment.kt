@@ -2,10 +2,14 @@ package com.example.qnachlocal.ui.components.verification.verifyotp
 
 import android.content.Intent
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
+import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.MainActivity
+import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import com.example.qnachlocal.data.local.SessionManager
 import com.example.qnachlocal.databinding.FragmentLoginBinding
 import com.example.qnachlocal.databinding.FragmentVerifyOtpBinding
@@ -34,12 +38,24 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
 
         binding.edtVerifyOtp.setOnClickListener {
             val otp = binding.edtOtp.text?.trim().toString()
+            val email_id: String? = arguments?.getString("email_id")
+            val mobile_no: String = arguments?.getString("mobile_no").toString()
             if(otp == ""){
                 Toast.makeText(requireContext(),"Please Enter Otp Send to You", Toast.LENGTH_LONG).show()
             }
+            else if (binding.edtNewPswd.text.toString() == ""){
+                Toast.makeText(requireContext(),"Please Enter New Password", Toast.LENGTH_LONG).show()
+            }
+            else if (binding.edtConfirmPswd.text.toString() == ""){
+                Toast.makeText(requireContext(),"Confirm Password", Toast.LENGTH_LONG).show()
+            }
+            else if (binding.edtNewPswd.text.toString() != binding.edtConfirmPswd.text.toString()){
+                Toast.makeText(requireContext(),"Password Mismatch", Toast.LENGTH_LONG).show()
+            }
             else{
-//                val loginRequest=LoginRequest(userId,password)
-//                viewModel.loginUser(loginRequest)
+                val loginRequest=VerifyOtpRequest(email_id.toString(),mobile_no.toString(),otp,
+                    binding.edtNewPswd.text.toString(),binding.edtConfirmPswd.text.toString())
+                viewModel.verifyOtp(loginRequest)
                 /*   val bundle = Bundle()
                    bundle.putString(CONTACT_NO, userId)
                    bundle.putString(AUTH_FLAG, "signIn")
@@ -72,7 +88,7 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
         Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
     }
 
-    private fun onLoginResult(status: Resource<LoginResponse>) {
+    private fun onLoginResult(status: Resource<ResetPasswordResponse>) {
 //        binding.buttonLogin.startAnimation()
         when (status) {
             is Resource.Success -> status.data?.let {
@@ -87,15 +103,10 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
         }
     }
 
-    private fun checkResponse(it: LoginResponse) {
+    private fun checkResponse(it: ResetPasswordResponse) {
         if(it.StatusCode == "NP000"){
-            val sessionManager= SessionManager(requireContext())
-            sessionManager.storeUserDetail(it)
-            // println("===========${sessionManager.getUserDetail()}")
             showAlertMessage(it.StatusDesc)
-            val intent= Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finishAffinity()
+            findNavController().navigate(R.id.action_verifyOtpFragment_to_loginFragment)
         }else{
             showAlertMessage(it.StatusDesc)
         }

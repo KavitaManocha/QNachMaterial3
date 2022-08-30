@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16dp"
-        android:layout_marginTop="156dp"
-        android:text="@string/enter_four_digit_otp_send_to_your_registered_number"
-        android:textAlignment="center"
+        android:layout_marginTop="128dp"
+        android:text="@string/verify_otp"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16dp"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_24sdp"
         android:hint="@string/enter_otp"
         android:textColorHint="@color/ring_border_color"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,14 +38,56 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_new_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:hint="@string/enter_new_password"
+        android:textColorHint="@color/ring_border_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_otp"
+        app:endIconTint="@color/teal_200"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_new_pswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_confirm_pswd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:hint="@string/confirm_password"
+        android:textColorHint="@color/ring_border_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_new_pswd"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/teal_200">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_confirm_pswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edt_verify_otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/btn_gradient"
-        android:text="@string/verify_otp"
+        android:text="@string/change_password"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

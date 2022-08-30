@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
-import com.example.qnachlocal.DashboardActivity
+import com.example.qnachlocal.DashBoardActivity
 import com.example.qnachlocal.MainActivity
 import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
@@ -109,7 +109,7 @@ findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment
             sessionManager.storeUserDetail(it)
             // println("===========${sessionManager.getUserDetail()}")
             showAlertMessage(it.StatusDesc)
-            val intent= Intent(requireContext(),DashboardActivity::class.java)
+            val intent= Intent(requireContext(),DashBoardActivity::class.java)
             startActivity(intent)
             requireActivity().finishAffinity()
         }else{

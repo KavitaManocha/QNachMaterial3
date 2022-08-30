@@ -108,6 +108,7 @@
     <string name="enter_new_password">Enter new Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="verify_otp">Verify OTP</string>
+    <string name="change_password">Change Password</string>
 
     <string name="contact_person">Contact Person:</string>
     <string name="nupay">Nupay</string>
@@ -125,4 +126,6 @@
     <string name="entellus_bsns_soln">Entellus Business Solutions Pvt. Ltd.</string>
     <string name="email">Email:</string>
     <string name="nupaydemo">nupaydemo</string>
+    <string name="title_home">Home</string>
+    <string name="reports">Reports</string>
 </resources>

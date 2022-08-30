@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
+import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.DataRepository
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.ui.base.BaseViewModel
 import com.example.qnachlocal.utils.NetworkHelper
 import com.example.qnachlocal.utils.SingleEvent
@@ -24,8 +26,8 @@ class ForgotPasswordViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    val userLoginLiveDataPrivate = LiveEvent<Resource<LoginResponse>>()
-    val userLoginLiveData: LiveData<Resource<LoginResponse>> get() = userLoginLiveDataPrivate
+    val userLoginLiveDataPrivate = LiveEvent<Resource<ResetPasswordResponse>>()
+    val userLoginLiveData: LiveData<Resource<ResetPasswordResponse>> get() = userLoginLiveDataPrivate
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showSnackBarPrivate = MutableLiveData<SingleEvent<Any>>()
@@ -36,12 +38,12 @@ class ForgotPasswordViewModel @Inject constructor(
     val showToast: LiveData<SingleEvent<Any>> get() = showToastPrivate
 
 
-    fun loginUser(loginRequest: LoginRequest) {
+    fun forgotPassword(loginRequest: ForgotPasswordRequest) {
         viewModelScope.launch {
             userLoginLiveDataPrivate.value = Resource.Loading()
             if (networkHelper.isNetworkConnected()) {
                 wrapEspressoIdlingResource {
-                    dataRepository.doRemoteDecrypt(loginRequest).collect {
+                    dataRepository.onRemoteForgotPassword(loginRequest).collect {
                         userLoginLiveDataPrivate.value = it
                     }
                 }

@@ -23,5 +23,9 @@
     <fragment
         android:id="@+id/verifyOtpFragment"
         android:name="com.example.qnachlocal.ui.components.verification.verifyotp.VerifyOtpFragment"
-        android:label="VerifyOtpFragment" />
+        android:label="VerifyOtpFragment" >
+        <action
+            android:id="@+id/action_verifyOtpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

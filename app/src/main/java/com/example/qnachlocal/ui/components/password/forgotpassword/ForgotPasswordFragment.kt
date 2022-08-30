@@ -1,11 +1,16 @@
 package com.example.qnachlocal.ui.components.password.forgotpassword
 
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
+import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.MainActivity
+import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.local.SessionManager
 import com.example.qnachlocal.databinding.FragmentForgotPasswordBinding
 import com.example.qnachlocal.ui.base.BaseFragment
@@ -43,6 +48,8 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
                 Toast.makeText(requireContext(),"Enter a valid phone number", Toast.LENGTH_LONG).show()
             }
             else{
+                val loginRequest= ForgotPasswordRequest(userId,mobileNo)
+                viewModel.forgotPassword(loginRequest)
 //                val loginRequest=LoginRequest(userId,password)
 //                viewModel.loginUser(loginRequest)
                 /*   val bundle = Bundle()
@@ -67,8 +74,8 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
             Toast.makeText(requireContext(),"Please input Password", Toast.LENGTH_LONG).show()
         }
         else{
-            val loginRequest= LoginRequest(userId,password)
-            viewModel.loginUser(loginRequest)
+            val loginRequest= ForgotPasswordRequest(userId,password)
+            viewModel.forgotPassword(loginRequest)
             /*   val bundle = Bundle()
                bundle.putString(CONTACT_NO, userId)
                bundle.putString(AUTH_FLAG, "signIn")
@@ -81,7 +88,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
         Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
     }
 
-    private fun onLoginResult(status: Resource<LoginResponse>) {
+    private fun onLoginResult(status: Resource<ResetPasswordResponse>) {
 //        binding.buttonLogin.startAnimation()
         when (status) {
             is Resource.Success -> status.data?.let {
@@ -96,15 +103,14 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
         }
     }
 
-    private fun checkResponse(it: LoginResponse) {
+    private fun checkResponse(it: ResetPasswordResponse) {
         if(it.StatusCode == "NP000"){
-            val sessionManager= SessionManager(requireContext())
-            sessionManager.storeUserDetail(it)
-            // println("===========${sessionManager.getUserDetail()}")
             showAlertMessage(it.StatusDesc)
-            val intent= Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finishAffinity()
+            val bundle = Bundle()
+            bundle.putString("email_id", binding.edtEmailId.text.toString())
+            bundle.putString("mobile_no",binding.edtPassword.text?.trim().toString() )
+           findNavController().navigate(
+               R.id.action_forgotPasswordFragment_to_verifyOtpFragment)
         }else{
             showAlertMessage(it.StatusDesc)
         }
