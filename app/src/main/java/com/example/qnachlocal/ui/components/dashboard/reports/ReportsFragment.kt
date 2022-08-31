@@ -3,8 +3,11 @@ package com.example.qnachlocal.ui.components.dashboard.reports
 import android.content.Intent
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
+import com.example.qnachlocal.CustomAdapterGreen
 import com.example.qnachlocal.DashBoardActivity
 import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
@@ -14,7 +17,9 @@ import com.example.qnachlocal.databinding.FragmentReportsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.ui.components.login.LoginViewModel
 import com.example.qnachlocal.utils.observe
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>() {
 
     override fun getViewModelClass() = ReportsViewModel::class.java
@@ -31,6 +36,11 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
     }
 
     private fun inIt() {
+
+        binding.reportsRecyclerview.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = ReportsAdapter()
+        }
 
 //        binding.btnLogin.setOnClickListener {
 //            val userId = binding.edtUsername.text?.trim().toString()
