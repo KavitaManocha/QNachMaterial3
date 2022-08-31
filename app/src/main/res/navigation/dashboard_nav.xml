@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/homeFragment">
 
-<!--    <fragment-->
-<!--        android:id="@+id/homeFragment"-->
-<!--        android:name="com.example.qnachlocal.ui.components.dashboard.home.HomeFragment"-->
-<!--        android:label="HomeFragment" />-->
-
-
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.qnachlocal.ui.components.dashboard.home.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.qnachlocal.ui.components.dashboard.dashboard.DashboardFragment"
         android:label="DashboardFragment" />
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="com.example.qnachlocal.ui.components.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment2_to_myAccountFragment2"
+            app:destination="@id/myAccountFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_contactUsFragment2"
+            app:destination="@id/contactUsFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_helpDeskFragment2"
+            app:destination="@id/helpDeskFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment2_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAccountFragment2"
+        android:name="com.example.qnachlocal.ui.components.settings.myaccount.MyAccountFragment"
+        android:label="MyAccountFragment" />
+    <fragment
+        android:id="@+id/contactUsFragment2"
+        android:name="com.example.qnachlocal.ui.components.settings.contactus.ContactUsFragment"
+        android:label="ContactUsFragment" />
+    <fragment
+        android:id="@+id/helpDeskFragment2"
+        android:name="com.example.qnachlocal.ui.components.settings.helpdesk.HelpDeskFragment"
+        android:label="HelpDeskFragment" />
+    <fragment
+        android:id="@+id/aboutUsFragment2"
+        android:name="com.example.qnachlocal.ui.components.settings.aboutus.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.qnachlocal.ui.components.dashboard.reports.ReportsFragment"
+        android:label="ReportsFragment" />
 </navigation>
