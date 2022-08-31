@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_account_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bank_details"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:textSize="@dimen/_18ssp"
+        android:gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_ifsc_code"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_account_details"
+        android:layout_height="wrap_content"
+        style="@style/textInput"
+        app:errorEnabled="true"
+        android:hint="@string/account_holder_name"
+        app:counterMaxLength="11"
+        app:counterEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_acc_holder_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_bank_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/neg_14"
+        android:hint="@string/cust_acc_no"
+        app:layout_constraintTop_toBottomOf="@id/et_ifsc_code"
+        style="@style/textInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_cust_acc_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_bank_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_bank_name"
+        style="@style/textInput"
+        android:layout_marginTop="@dimen/neg_14"
+        android:hint="@string/confirm_account_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_confirm_acc_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/select_acc_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_bank_address"
+        android:layout_marginTop="@dimen/neg_14"
+        style="@style/textInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_select_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_bank"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/select_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/select_acc_type"
+        style="@style/textInput"
+        android:hint="@string/loan_installment_payment"
+        android:layout_marginTop="@dimen/neg_14">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_categoryy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_frequencyy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/select_category"
+        android:layout_marginTop="@dimen/neg_14"
+        android:hint="@string/mnth"
+        style="@style/textInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/dp_12">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="@color/light_blue"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_mandate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/mandate"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@color/light_blue"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

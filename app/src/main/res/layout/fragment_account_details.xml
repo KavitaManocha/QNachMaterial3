@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_account_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/account_details"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:textSize="@dimen/_18ssp"
+        android:gravity="center_horizontal"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_ifsc_code"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_account_details"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        app:errorEnabled="true"
+        app:counterMaxLength="11"
+        app:counterEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_ifsc_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ifsc_code"
+            android:background="@color/white"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_bank_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_ifsc_code"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_13dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_cust_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bank_name"
+            android:background="@color/white"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_bank_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_bank_name"
+        android:layout_marginTop="@dimen/_13dp"
+        android:layout_marginHorizontal="@dimen/_16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_bank_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bank_address"
+            android:inputType="text"
+            android:background="@color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_acc_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_bank_address"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_13dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="18">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_cust_acc_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cust_acc_no"
+            android:background="@color/white"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/select_acc_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_acc_no"
+        android:layout_marginTop="@dimen/_13dp"
+        android:layout_marginHorizontal="@dimen/_16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_acc_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_acc_type"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/select_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/select_acc_type"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_13dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_frequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/select_category"
+        android:layout_marginTop="@dimen/_13dp"
+        android:layout_marginHorizontal="@dimen/_16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/spn_freq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/_18dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="@color/light_blue"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/next"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@color/light_blue"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

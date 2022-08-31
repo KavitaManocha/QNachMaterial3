@@ -128,4 +128,11 @@
     <string name="nupaydemo">nupaydemo</string>
     <string name="title_home">Home</string>
     <string name="reports">Reports</string>
+
+    <string name="bank_details">Bank Details</string>
+    <string name="account_holder_name">Account Holder Name<sup>*</sup></string>
+    <string name="confirm_account_number">Confirm Account Number<sup>*</sup></string>
+    <string name="select_bank">Select Bank<sup>*</sup></string>
+    <string name="loan_installment_payment">Loan Installment Payment</string>
+    <string name="mnth">MNTH</string>
 </resources>
