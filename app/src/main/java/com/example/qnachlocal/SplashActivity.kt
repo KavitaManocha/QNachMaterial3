@@ -6,15 +6,18 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qnachlocal.data.local.SessionManager
+import com.google.android.material.textview.MaterialTextView
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val appVersion = findViewById<MaterialTextView>(R.id.appVersion)
+        appVersion.setText(BuildConfig.VERSION_NAME)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             val sessionManager= SessionManager(this)
             if(sessionManager.getUserDetail()!=null){
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                val i = Intent(this@SplashActivity, DashBoardActivity::class.java)
                 startActivity(i)
                 finish()
             }

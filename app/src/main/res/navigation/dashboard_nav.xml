@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.example.qnachlocal.ui.components.dashboard.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/navigation_dashboard"
         android:name="com.example.qnachlocal.ui.components.dashboard.dashboard.DashboardFragment"
         android:label="DashboardFragment" />
     <fragment
-        android:id="@+id/settingsFragment2"
+        android:id="@+id/navigation_notifications"
         android:name="com.example.qnachlocal.ui.components.settings.SettingsFragment"
         android:label="SettingsFragment" >
         <action
@@ -48,7 +48,7 @@
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
     <fragment
-        android:id="@+id/reportsFragment"
+        android:id="@+id/navigation_reports"
         android:name="com.example.qnachlocal.ui.components.dashboard.reports.ReportsFragment"
         android:label="ReportsFragment" />
 </navigation>

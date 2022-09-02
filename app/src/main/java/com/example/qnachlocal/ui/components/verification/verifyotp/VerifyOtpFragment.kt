@@ -53,7 +53,7 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
                 Toast.makeText(requireContext(),"Password Mismatch", Toast.LENGTH_LONG).show()
             }
             else{
-                val loginRequest=VerifyOtpRequest(email_id.toString(),mobile_no.toString(),otp,
+                val loginRequest=VerifyOtpRequest(email_id.toString(),mobile_no,otp,
                     binding.edtNewPswd.text.toString(),binding.edtConfirmPswd.text.toString())
                 viewModel.verifyOtp(loginRequest)
                 /*   val bundle = Bundle()

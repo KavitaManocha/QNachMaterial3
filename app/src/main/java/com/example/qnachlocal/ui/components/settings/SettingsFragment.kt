@@ -60,16 +60,16 @@ class SettingsFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 //Toast.makeText(this@SettingsFragment.requireActivity(), "You clicked $position", Toast.LENGTH_SHORT).show()
                 if(mList?.get(position)?.text=="My Account"){
-                    findNavController().navigate(R.id.action_settingsFragment_to_myAccountFragment)
+                    findNavController().navigate(R.id.action_settingsFragment2_to_myAccountFragment2)
                 }
                 if(mList?.get(position)?.text=="About Us"){
-                    findNavController().navigate(R.id.action_settingsFragment_to_aboutUsFragment)
+                    findNavController().navigate(R.id.action_settingsFragment2_to_aboutUsFragment2)
                 }
                 if(mList?.get(position)?.text=="Contact Us"){
-                    findNavController().navigate(R.id.action_settingsFragment_to_contactUsFragment)
+                    findNavController().navigate(R.id.action_settingsFragment2_to_contactUsFragment2)
                 }
                 if(mList?.get(position)?.text=="HelpDesk"){
-                    findNavController().navigate(R.id.action_settingsFragment_to_helpDeskFragment)
+                    findNavController().navigate(R.id.action_settingsFragment2_to_helpDeskFragment2)
                 }
             }
 
