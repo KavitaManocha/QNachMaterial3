@@ -135,4 +135,7 @@
     <string name="select_bank">Select Bank<sup>*</sup></string>
     <string name="loan_installment_payment">Loan Installment Payment</string>
     <string name="mnth">MNTH</string>
+    <string name="qnach">qNach</string>
+    <string name="scan">Scan</string>
+    <string name="e_Mandate">E-Mandate</string>
 </resources>

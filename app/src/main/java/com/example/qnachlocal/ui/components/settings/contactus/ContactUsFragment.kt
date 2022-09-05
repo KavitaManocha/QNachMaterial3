@@ -26,7 +26,7 @@ class ContactUsFragment : Fragment() {
         _binding = FragmentContactUsBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Contact Us")
 //        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-//        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
 
         return binding.root
 

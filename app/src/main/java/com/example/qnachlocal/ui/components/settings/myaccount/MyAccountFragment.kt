@@ -27,7 +27,7 @@ class MyAccountFragment : Fragment() {
         _binding = FragmentMyAccountBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("My Account")
 //        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-//        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
 
         val sessionManager = SessionManager(requireContext())
 //        val loginResponse= sessionManager.getUserDetail()?.data
