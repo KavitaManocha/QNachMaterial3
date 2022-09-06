@@ -3,6 +3,7 @@ package com.example.qnachlocal
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -38,6 +39,7 @@ class DashBoardActivity : AppCompatActivity() {
 //        )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView!!.setupWithNavController(navController)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

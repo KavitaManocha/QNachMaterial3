@@ -1,12 +1,12 @@
 package com.example.qnachlocal.ui.components.dashboard.home
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
-import com.example.qnachlocal.CustomAdapterBlue
-import com.example.qnachlocal.CustomAdapterGreen
+import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.databinding.FragmentHomeBinding
 import com.example.qnachlocal.ui.base.BaseFragment
@@ -31,12 +31,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private fun inIt() {
             binding.rvGreenMenu.apply {
                 layoutManager = GridLayoutManager(activity,2)
-                adapter = CustomAdapterGreen()
+                var adaptter = CustomAdapterGreen()
+                adapter = adaptter
+                adaptter.setOnItemClickListener(object : CustomAdapterGreen.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finishAffinity()
+                    }
+                })
             }
 
         binding.rvBlueMenu.apply {
             layoutManager = GridLayoutManager(activity,2)
-            adapter = CustomAdapterBlue()
+            var blueAdapter = CustomAdapterBlue()
+            adapter = blueAdapter
+            blueAdapter.setOnItemClickListener(object :CustomAdapterBlue.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finishAffinity()
+                }
+
+            })
         }
 
     }

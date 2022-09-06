@@ -25,7 +25,7 @@ class HelpDeskFragment : Fragment() {
     ): View? {
         _binding = FragmentHelpdeskBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("HelpDesk")
-//        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
         return binding.root
 

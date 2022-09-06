@@ -42,7 +42,7 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility=View.VISIBLE
+        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility=View.VISIBLE
 
         mList?.clear()
 
