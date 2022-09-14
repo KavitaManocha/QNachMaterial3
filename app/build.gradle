@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -128,6 +129,9 @@ dependencies {
 
     // for root detection
     implementation 'com.scottyab:rootbeer-lib:0.1.0'
+
+    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
+    implementation project(':wizard_forms')
 
 }
 
