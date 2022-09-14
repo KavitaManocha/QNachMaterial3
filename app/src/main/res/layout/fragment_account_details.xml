@@ -64,7 +64,8 @@
             android:id="@+id/edt_ifsc_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.ifsc_code}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +82,8 @@
             android:id="@+id/edt_cust_bank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.cust_bank}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +100,8 @@
             android:id="@+id/edt_bank_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.cust_bank_add}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -134,7 +137,8 @@
             android:id="@+id/spn_acc_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:text="@{viewModel.cust_acc_type}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -186,6 +190,7 @@
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
+            android:onClick="@{(v) -> viewModel.goBack()}"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -197,6 +202,7 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
+            android:onClick="@{(v) -> viewModel.goClick()}"
             />
 
     </LinearLayout>

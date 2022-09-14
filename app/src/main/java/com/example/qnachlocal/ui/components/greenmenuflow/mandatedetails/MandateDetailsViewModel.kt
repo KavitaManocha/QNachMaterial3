@@ -40,4 +40,8 @@ class MandateDetailsViewModel: WizardPageViewModel<User>() {
         navigator?.nextPage()
 
     }
+
+    fun goBack(){
+        navigator?.previousPage()
+    }
 }

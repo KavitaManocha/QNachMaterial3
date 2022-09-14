@@ -59,7 +59,8 @@
             android:id="@+id/edt_ach_amount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:text="@={viewModel.ach_amt}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +77,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_mandate_date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:text="@={viewModel.mandate_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,6 +100,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:text="@={viewModel.start_date}"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +122,8 @@
             android:clickable="false"
             android:cursorVisible="false"
             android:focusable="false"
-            android:focusableInTouchMode="false" />
+            android:focusableInTouchMode="false"
+            android:text="@={viewModel.end_date}" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -158,7 +162,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
-            android:hint="@string/reference_number"/>
+            android:hint="@string/reference_number"
+            android:text="@={viewModel.ref_no}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,6 +184,7 @@
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
+            android:onClick="@{(v) -> viewModel.goBack()}"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -190,6 +196,7 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
+            android:onClick="@{(v) -> viewModel.goClick()}"
             />
 
     </LinearLayout>

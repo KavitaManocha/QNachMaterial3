@@ -44,4 +44,6 @@ class PersonalDetailsViewModel : WizardPageViewModel<User>() {
         stateHolder?.notifyStateChange()
         navigator?.nextPage()
     }
+
+
 }

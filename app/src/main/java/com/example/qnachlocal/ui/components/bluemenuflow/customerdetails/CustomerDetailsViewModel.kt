@@ -13,6 +13,7 @@ import com.chola.app.data.dto.login.LoginResponse
 import com.example.qnachlocal.data.DataRepository
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.User
+import com.example.qnachlocal.data.data.dto.Users
 import com.example.qnachlocal.data.error.NO_INTERNET_CONNECTION
 import com.example.qnachlocal.ui.base.BaseViewModel
 import com.example.qnachlocal.utils.NetworkHelper
@@ -24,13 +25,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 //@HiltViewModel
-class CustomerDetailsViewModel : WizardPageViewModel<User>() {
+class CustomerDetailsViewModel : WizardPageViewModel<Users>() {
 
-    val ifsc_code = ObservableField<String>()
-    val cust_bank = ObservableField<String>()
-    val cust_bank_add = ObservableField<String>()
-    val cust_acc_no = ObservableField<String>()
-    var cust_acc_type = ObservableField<String>()
+    val loan_id = ObservableField<String>()
+    val cust_mob = ObservableField<String>()
+    val cust_email = ObservableField<String>()
+    val ach_amt = ObservableField<String>()
+    var start_date = ObservableField<String>()
+    var end_date = ObservableField<String>()
     //        .apply {
 //        addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback(){
 //            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -38,43 +40,14 @@ class CustomerDetailsViewModel : WizardPageViewModel<User>() {
 //            }
 //        })
 //    }
-    val custt_acc_type = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-
-        }
-
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            cust_acc_type = parent?.getItemAtPosition(position) as ObservableField<String>
-        }
-    }
-    var category = ObservableField<String>()
-    val categorry = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-
-        }
-
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            category = parent?.getItemAtPosition(position) as ObservableField<String>
-        }
-    }
-
-    var frequency = ObservableField<String>()
-    val freqquency = object : AdapterView.OnItemSelectedListener {
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-
-        }
-
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            frequency = parent?.getItemAtPosition(position) as ObservableField<String>
-        }
-    }
 
     fun goClick() {
-        stateHolder?.stateDto?.ifsc_code = ifsc_code.get()
-        stateHolder?.stateDto?.cust_bank = cust_bank.get()
-        stateHolder?.stateDto?.cust_bank_add = cust_bank_add.get()
-        stateHolder?.stateDto?.cust_acc_no = cust_acc_no.get()
-        stateHolder?.stateDto?.cust_acc_type = cust_acc_type.get().toString()
+        stateHolder?.stateDto?.loan_id = loan_id.get()
+        stateHolder?.stateDto?.cust_mob = cust_mob.get()
+        stateHolder?.stateDto?.cust_email = cust_email.get()
+        stateHolder?.stateDto?.ach_amt = ach_amt.get()
+        stateHolder?.stateDto?.start_date = start_date.get().toString()
+        stateHolder?.stateDto?.end_date = end_date.get().toString()
 //        stateHolder?.stateDto?.category = category.get().toString()
 //        stateHolder?.stateDto?.frequency = frequency.get().toString()
         stateHolder?.notifyStateChange()

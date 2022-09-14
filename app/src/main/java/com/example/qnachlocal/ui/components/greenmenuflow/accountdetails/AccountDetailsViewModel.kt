@@ -79,4 +79,8 @@ class AccountDetailsViewModel : WizardPageViewModel<User>() {
         stateHolder?.notifyStateChange()
         navigator?.nextPage()
     }
+
+    fun goBack(){
+        navigator?.previousPage()
+    }
 }
