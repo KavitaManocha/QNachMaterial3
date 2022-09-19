@@ -1,5 +1,106 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.personaldetails
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.qnachlocal.R
+import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
+
+
+
+class PersonalDetailsFragment: Fragment(){
+
+    private var _binding: FragmentPersonalDetailsBinding? = null
+    //    lateinit var et_loan_id: TextInputEditText
+//    lateinit var et_benef_name: TextInputEditText
+//    lateinit var et_cust_mob: TextInputEditText
+//    lateinit var et_cust_email: TextInputEditText
+    private val binding get() = _binding!!
+    private lateinit var personalDetailsViewModel: SharedViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentPersonalDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+
+        personalDetailsViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+
+        binding.buttonNext.setOnClickListener{
+            if (binding.edtCustId.text.toString() == ""){
+                Toast.makeText(requireActivity(),"Enter Loan Id",Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.edtBenefName.text.toString() == ""){
+                Toast.makeText(requireActivity(),"Enter Beneficiary Name",Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.edtCustMob.text.toString() == ""){
+                Toast.makeText(requireActivity(),"Enter Mobile Number",Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.edtCustMob.text.toString().length<10||binding.edtCustMob.text.toString().length>10){
+                Toast.makeText(requireActivity(),"Enter Valid Mobile Number",Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.edtCustEmail.text.toString() == ""){
+                Toast.makeText(requireActivity(),"Enter Loan Id",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                personalDetailsViewModel?.setLoanId(binding.edtCustId.text?.toString())
+                personalDetailsViewModel?.setBenefName(binding.edtBenefName.text?.toString())
+                personalDetailsViewModel?.setCustMob(binding.edtCustMob.text?.toString())
+                personalDetailsViewModel?.setCustEmail(binding.edtCustEmail.text?.toString())
+                findNavController().navigate(R.id.action_personalDetailsFragment_to_accountDetailsFragment)
+            }
+        }
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        personalDetailsViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+        personalDetailsViewModel.getLoanId()?.observe(viewLifecycleOwner,object :
+            Observer<String?> {
+            override fun onChanged(charSequence: String?) {
+                binding.edtCustId.setText(charSequence)
+            }
+        })
+
+        personalDetailsViewModel.getBenefName()?.observe(viewLifecycleOwner,object :
+            Observer<String?> {
+            override fun onChanged(charSequence: String?) {
+                binding.edtBenefName.setText(charSequence)
+            }
+        })
+
+        personalDetailsViewModel.getCustMob()?.observe(viewLifecycleOwner,object :
+            Observer<String?> {
+            override fun onChanged(charSequence: String?) {
+                binding.edtCustMob.setText(charSequence)
+            }
+        })
+
+        personalDetailsViewModel.getCustEmail()?.observe(viewLifecycleOwner,object :
+            Observer<String?> {
+            override fun onChanged(charSequence: String?) {
+                binding.edtCustEmail.setText(charSequence)
+            }
+        })
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+}
+
 //import android.content.Intent
 //import android.widget.Toast
 //import androidx.navigation.fragment.findNavController

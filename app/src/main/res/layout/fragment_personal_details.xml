@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.qnachlocal.ui.components.greenmenuflow.personaldetails.PersonalDetailsViewModel" />
+            type="com.example.qnachlocal.SharedViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.loan_id}"/>
+            android:text="@={viewModel.loanId}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.benef_name}"/>
+            android:text="@={viewModel.benefName}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="@={viewModel.cust_mob}"/>
+            android:text="@={viewModel.custMob}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.cust_email}"/>
+            android:text="@={viewModel.custEmail}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -139,8 +139,7 @@
         android:layout_marginBottom="@dimen/_16sdp"
         android:layout_marginHorizontal="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="@{(v) -> viewModel.goClick()}"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

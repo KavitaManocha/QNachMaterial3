@@ -18,7 +18,8 @@ data class User(
     var mandate_date : String?,
     var start_date : String?,
     var end_date : String?,
-    var ref_no : String?){
+    var ref_no : String?
+    ){
 
 //    val emailError = MediatorLiveData<String?>().apply {
 //        value = ""

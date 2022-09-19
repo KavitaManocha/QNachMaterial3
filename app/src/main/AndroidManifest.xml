@@ -24,12 +24,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="32">
-        <activity android:name=".DashBoardActivity"
-            android:exported="false"/>
-        <activity android:name=".GreenMenuActivity"
-            android:exported="false"/>
-        <activity android:name=".BlueMenuActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".SampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GreenMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BlueMenuActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
