@@ -43,9 +43,6 @@ class MandateDetailsFragment : Fragment() {
         )
         binding.viewModel = viewModel//attach your viewModel to xml
 
-        val date_n: String = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
-        binding.edtMandateDate.setText(date_n)
-
         binding.edtMandateDate.setOnClickListener {
 
             // on below line we are getting

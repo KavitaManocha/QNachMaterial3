@@ -77,6 +77,10 @@
             android:id="@+id/edt_mandate_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@={viewModel.mandate_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
