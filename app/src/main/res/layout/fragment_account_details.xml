@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout>
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.qnachlocal.ui.components.greenmenuflow.accountdetails.AccountDetailsViewModel" />
+            type="com.example.qnachlocal.SharedViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -101,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.cust_bank_add}"/>
+            android:text="@={viewModel.bank_add}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -120,7 +119,8 @@
             android:id="@+id/edt_cust_acc_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:text="@={viewModel.cust_acc_no}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -138,7 +138,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@{viewModel.cust_acc_type}"/>
+            android:text="@={viewModel.acc_type}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +154,8 @@
             android:id="@+id/spn_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:text="@={viewModel.category}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -170,7 +171,8 @@
             android:id="@+id/spn_freq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:text="@={viewModel.frequencyy}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -190,7 +192,6 @@
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
-            android:onClick="@{(v) -> viewModel.goBack()}"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -202,7 +203,6 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
-            android:onClick="@{(v) -> viewModel.goClick()}"
             />
 
     </LinearLayout>

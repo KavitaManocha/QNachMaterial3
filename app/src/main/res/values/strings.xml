@@ -138,4 +138,8 @@
     <string name="qnach">qNach</string>
     <string name="scan">Scan</string>
     <string name="e_Mandate">E-Mandate</string>
+    <string name="enter_loan_id">Enter Loan Id</string>
+    <string name="enter_benef_name">Enter Beneficiary Name</string>
+    <string name="enter_valid_mobile_number">Enter Valid Mobile Number</string>
+    <string name="enter_email_id">Enter Email Id</string>
 </resources>

@@ -1,55 +1,70 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.personaldetails
 
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import br.com.leandroferreira.wizard_forms.contract.WizardPageViewModel
+import com.chola.app.data.dto.login.LoginRequest
+import com.chola.app.data.dto.login.LoginResponse
+import com.example.qnachlocal.R
+import com.example.qnachlocal.data.DataRepository
+import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.User
+import com.example.qnachlocal.data.data.dto.UserReq
+import com.example.qnachlocal.ui.base.BaseViewModel
+import com.example.qnachlocal.utils.NetworkHelper
+import com.example.qnachlocal.utils.SingleEvent
+import com.example.qnachlocal.utils.wrapEspressoIdlingResource
+import com.hadilq.liveevent.LiveEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 //@HiltViewModel
-class PersonalDetailsViewModel : WizardPageViewModel<User>() {
-
-//    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-
-    val loan_id = ObservableField<String>()
-    val benef_name = ObservableField<String>()
-    val cust_mob = ObservableField<String>()
-    val cust_email = ObservableField<String>()
-
-    fun goClick() {
-
-        println("===========test====="+stateHolder?.stateDto?.loan_id)
-
-        if(stateHolder?.stateDto?.loan_id?.isNullOrBlank() == true){
-            loan_id.set("Enter Loan Id")
-        } else{
-            stateHolder?.stateDto?.loan_id = loan_id.get()
-        }
-
-        if(stateHolder?.stateDto?.benef_name?.isNullOrBlank() == true){
-            loan_id.set("Enter Beneficiary Name")
-        } else{
-            stateHolder?.stateDto?.benef_name = benef_name.get()
-        }
-
-        if(stateHolder?.stateDto?.cust_mob?.length!! < 10 || stateHolder?.stateDto?.cust_mob?.length!! > 10){
-            cust_mob.set("Enter a Valid Phone Number")
-        } else if (stateHolder?.stateDto?.cust_mob?.isNullOrBlank() == true){
-            cust_mob.set("Enter Phone Number")
-        }
-        else{
-            stateHolder?.stateDto?.cust_mob = cust_mob.get().toString()
-        }
-
-        if(stateHolder?.stateDto?.cust_email?.isNullOrBlank() == true){
-            loan_id.set("Enter Beneficiary Name")
-        } else{
-            stateHolder?.stateDto?.cust_email = cust_email.get().toString()
-        }
-
-//        stateHolder?.stateDto?.cust_email = cust_email.get()
-
-        stateHolder?.notifyStateChange()
-        navigator?.nextPage()
-    }
-
-
-}
+//class PersonalDetailsViewModel @Inject constructor(
+//    private val dataRepository: DataRepository,
+//    private val networkHelper: NetworkHelper
+//) : BaseViewModel() {
+//
+//    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+//    val userLoginLiveDataPrivate = LiveEvent<Resource<User>>()
+//    val userLoginLiveData: LiveData<Resource<User>> get() = userLoginLiveDataPrivate
+//
+//    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+//    private val showSnackBarPrivate = MutableLiveData<SingleEvent<Any>>()
+//    val showSnackBar: LiveData<SingleEvent<Any>> get() = showSnackBarPrivate
+//
+//    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+//    private val showToastPrivate = MutableLiveData<SingleEvent<Any>>()
+//    val showToast: LiveData<SingleEvent<Any>> get() = showToastPrivate
+//
+//
+//    fun showToastMessage(errorCode: Int) {
+//        val error = errorManager.getError(errorCode)
+//        showToastPrivate.value = SingleEvent(error.description)
+//    }
+//
+//    fun loginUserDaata(user: UserReq) {
+//        if(user.loan_id.equals("")){
+//            showToastPrivate.value = SingleEvent(R.string.enter_loan_id)
+//        }
+//        else if (user.benef_name.equals("")){
+//            showToastPrivate.value = SingleEvent(R.string.enter_benef_name)
+//        }
+//        else if (user.cust_mob.equals("")){
+//            showToastPrivate.value = SingleEvent(R.string.enter_mobile_no)
+//        }
+//        else if (user.cust_mob.length<10|| user.cust_mob.length>10){
+//            showToastPrivate.value = SingleEvent(R.string.enter_valid_mobile_number)
+//        }
+//        else if (user.cust_email.equals("")){
+//            showToastPrivate.value = SingleEvent(R.string.enter_email_id)
+//        }
+//        else {
+//
+//        }
+//
+//    }
+//}

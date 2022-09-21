@@ -21,27 +21,27 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@HiltViewModel
-class MandateDetailsViewModel: WizardPageViewModel<User>() {
-
-    val ach_amt = ObservableField<String>()
-    val mandate_date = ObservableField<String>()
-    val start_date = ObservableField<String>()
-    val end_date = ObservableField<String>()
-    val ref_no = ObservableField<String>()
-
-    fun goClick() {
-        stateHolder?.stateDto?.ach_amt = ach_amt.get().toString()
-        stateHolder?.stateDto?.mandate_date = mandate_date.get().toString()
-        stateHolder?.stateDto?.start_date = start_date.get().toString()
-        stateHolder?.stateDto?.end_date = end_date.get().toString()
-        stateHolder?.stateDto?.ref_no = ref_no.get().toString()
-        stateHolder?.notifyStateChange()
-        navigator?.nextPage()
-
-    }
-
-    fun goBack(){
-        navigator?.previousPage()
-    }
-}
+////@HiltViewModel
+//class MandateDetailsViewModel: WizardPageViewModel<User>() {
+//
+//    val ach_amt = ObservableField<String>()
+//    val mandate_date = ObservableField<String>()
+//    val start_date = ObservableField<String>()
+//    val end_date = ObservableField<String>()
+//    val ref_no = ObservableField<String>()
+//
+//    fun goClick() {
+//        stateHolder?.stateDto?.ach_amt = ach_amt.get().toString()
+//        stateHolder?.stateDto?.mandate_date = mandate_date.get().toString()
+//        stateHolder?.stateDto?.start_date = start_date.get().toString()
+//        stateHolder?.stateDto?.end_date = end_date.get().toString()
+//        stateHolder?.stateDto?.ref_no = ref_no.get().toString()
+//        stateHolder?.notifyStateChange()
+//        navigator?.nextPage()
+//
+//    }
+//
+//    fun goBack(){
+//        navigator?.previousPage()
+//    }
+//}

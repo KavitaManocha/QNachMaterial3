@@ -1,110 +1,93 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.accountdetails
 
-//import android.content.Intent
-//import android.widget.Toast
-//import com.chola.app.data.dto.login.LoginResponse
-//import com.example.qnachlocal.DashBoardActivity
-//import com.example.qnachlocal.data.Resource
-//import com.example.qnachlocal.data.local.SessionManager
-//import com.example.qnachlocal.databinding.FragmentAccountDetailsBinding
-//import com.example.qnachlocal.ui.base.BaseFragment
-//import com.example.qnachlocal.utils.observe
-//import dagger.hilt.android.AndroidEntryPoint
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.chola.app.data.dto.login.LoginResponse
+import com.example.qnachlocal.DashBoardActivity
+import com.example.qnachlocal.R
+import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.User
+import com.example.qnachlocal.data.local.SessionManager
+import com.example.qnachlocal.databinding.FragmentAccountDetailsBinding
+import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
+import com.example.qnachlocal.ui.base.BaseFragment
+import com.example.qnachlocal.utils.observe
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.regex.Pattern
+
 //
-//@AndroidEntryPoint
-//class AccountDetailsFragment : BaseFragment<FragmentAccountDetailsBinding, AccountDetailsViewModel>() {
-//
-//    override fun getViewModelClass() = AccountDetailsViewModel::class.java
-//    override fun getViewBinding() = FragmentAccountDetailsBinding.inflate(layoutInflater)
-//    val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    override fun setUpViews() {
-//        observeViewModel()
-//        inIt()
-//    }
-//
-//    private fun observeViewModel() {
-//        observe(viewModel.userLoginLiveData, ::onLoginResult)
-//    }
-//
-//    private fun inIt() {
-//
-//
-//        binding.btnNext.setOnClickListener {
-//            val ifscCode = binding.edtIfscCode.text?.trim().toString()
-//            val custBank = binding.edtCustBank.text?.trim().toString()
-//            val bankAdd = binding.edtBankAddress.text?.trim().toString()
-//            val custAccNo = binding.edtCustAccNo.text?.trim().toString()
-//            val accType = binding.spnAccType.text?.trim().toString()
-//            val category = binding.spnCategory.text?.trim().toString()
-//            val frequency = binding.spnFreq.text?.trim().toString()
-//            if(ifscCode == ""){
-//                Toast.makeText(requireContext(),"Enter IFSC Code", Toast.LENGTH_LONG).show()
-//            }
-//            else if(custBank==""){
-//                Toast.makeText(requireContext(),"Kindly Input Customer Bank", Toast.LENGTH_LONG).show()
-//            }
-//            else if(bankAdd==""){
-//                Toast.makeText(requireContext(),"Enter Bank Address", Toast.LENGTH_LONG).show()
-//            }
-//            else if(custAccNo==""){
-//                Toast.makeText(requireContext(),"Kindly Enter Customer Account Number", Toast.LENGTH_LONG).show()
-//            }
-//            else if(accType==""){
-//                Toast.makeText(requireContext(),"Select an Account Type", Toast.LENGTH_LONG).show()
-//            }
-//            else if(category==""){
-//                Toast.makeText(requireContext(),"Select a Category", Toast.LENGTH_LONG).show()
-//            }
-//            else if(frequency==""){
-//                Toast.makeText(requireContext(),"Select a Frequency", Toast.LENGTH_LONG).show()
-//            }
-//            else{
-////                val loginRequest= LoginRequest(userId,password)
-////                viewModel.loginUser(loginRequest)
-//                /*   val bundle = Bundle()
-//                   bundle.putString(CONTACT_NO, userId)
-//                   bundle.putString(AUTH_FLAG, "signIn")
-//                   findNavController().navigate(R.id.action_logIn_to_otp, bundle)*/
-////                findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
-//
-//            }
-//        }
-//
-//
-//    }
-//
-//    private fun showAlertMessage(s: String) {
-//        Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
-//    }
-//
-//    private fun onLoginResult(status: Resource<LoginResponse>) {
-////        binding.buttonLogin.startAnimation()
-//        when (status) {
-//            is Resource.Success -> status.data?.let {
-//                checkResponse(it)
-////                binding.buttonLogin.revertAnimation()
-//            }
-//            is Resource.DataError -> {
-////                binding.buttonLogin.revertAnimation()
-//                //status.errorCode?.let { viewModel.showToastMessage(it) }
-//            }
-//            else -> {}
-//        }
-//    }
-//
-//    private fun checkResponse(it: LoginResponse) {
-//        if(it.StatusCode == "NP001"){
-//            val sessionManager= SessionManager(requireContext())
-//            sessionManager.storeUserDetail(it)
-//            // println("===========${sessionManager.getUserDetail()}")
-//            showAlertMessage(it.StatusDesc)
-//            val intent= Intent(requireContext(), DashBoardActivity::class.java)
-//            startActivity(intent)
-//            requireActivity().finishAffinity()
-//        }else{
-//            showAlertMessage(it.StatusDesc)
-//        }
-//        // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
-//    }
-//}
+@AndroidEntryPoint
+class AccountDetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentAccountDetailsBinding
+    private lateinit var viewModel: SharedViewModel
+    val IFSC_CODE_PATTERN = Pattern.compile(
+         "^[A-Z]{4}0[A-Z0-9]{6}$"
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = activity?.run {
+            ViewModelProvider(this)[SharedViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentAccountDetailsBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_account_details, container, false)
+        binding.viewModel = viewModel//attach your viewModel to xml
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_accountDetailsFragment_to_personalDetailsFragment)
+        }
+
+        binding.btnNext.setOnClickListener {
+            if (binding.edtIfscCode.text?.trim().toString() ==""){
+                binding.edtIfscCode.error="Enter IFSC Code"
+            }
+            else if (binding.edtIfscCode.text?.trim().toString().length >11|| binding.edtIfscCode.text?.trim().toString().length <11
+                || !IFSC_CODE_PATTERN.matcher(binding.edtIfscCode.text?.trim().toString()).matches()){
+                binding.edtIfscCode.error="Enter Valid IFSC Code"
+            }
+            else if (binding.edtCustBank.text?.trim().toString() == ""){
+                binding.edtCustBank.error="Enter Customer Bank"
+            }
+            else if (binding.edtBankAddress.text?.trim().toString() == ""){
+                binding.edtBankAddress.error="Enter Bank Address"
+            }
+            else if (binding.edtCustAccNo.text?.trim().toString() == ""){
+                binding.edtCustAccNo.error="Enter Customer Account Number"
+            }
+            else if (binding.edtCustAccNo.text?.trim().toString().length>18 || binding.edtCustAccNo.text?.trim().toString().length<18){
+                binding.edtCustAccNo.error="Enter valid Customer Account Number"
+            }
+            else if (binding.spnAccType.text?.trim().toString() == ""){
+                binding.spnAccType.error="Select Account Type"
+            }
+            else if (binding.spnCategory.text?.trim().toString() == ""){
+                binding.spnCategory.error="Select Category"
+            }
+            else if (binding.spnFreq.text?.trim().toString() == ""){
+                binding.spnFreq.error="Select Frequency"
+            }
+            else{
+                findNavController().navigate(R.id.action_accountDetailsFragment_to_mandateDetailsFragment)
+            }
+        }
+        return binding.root
+    }
+
+
+}

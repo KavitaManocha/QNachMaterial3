@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.leandroferreira.wizard_forms.contract.WizardNavigator
 import com.example.qnachlocal.databinding.ActivityGreenMenuBinding
+import com.example.qnachlocal.databinding.ActivityMainBinding
 import com.example.qnachlocal.ui.components.greenmenuflow.personaldetails.PersonalDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,20 +16,7 @@ class GreenMenuActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGreenMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        binding.viewModel = GreenMenuViewModel(this)
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container_a, PersonalDetailsFragment())
-            .commit()
     }
-
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivityGreenMenuBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-////        binding.viewModel = GreenMenuViewModel(this)
-//    }
-
 }
 
 //    override fun nextPage() {

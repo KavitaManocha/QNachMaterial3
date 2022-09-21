@@ -1,105 +1,174 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails
 
-//import android.content.Intent
-//import android.widget.Toast
-//import androidx.navigation.fragment.findNavController
-//import com.chola.app.data.dto.login.LoginRequest
-//import com.chola.app.data.dto.login.LoginResponse
-//import com.example.qnachlocal.DashBoardActivity
-//import com.example.qnachlocal.R
-//import com.example.qnachlocal.data.Resource
-//import com.example.qnachlocal.data.local.SessionManager
-//import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
-//import com.example.qnachlocal.ui.base.BaseFragment
-//import com.example.qnachlocal.utils.observe
-//import dagger.hilt.android.AndroidEntryPoint
-//
-//@AndroidEntryPoint
-//class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, MandateDetailsViewModel>() {
-//
-//    override fun getViewModelClass() = MandateDetailsViewModel::class.java
-//    override fun getViewBinding() = FragmentMandateDetailsBinding.inflate(layoutInflater)
-//    val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    override fun setUpViews() {
-//        observeViewModel()
-//        inIt()
-//    }
-//
-//    private fun observeViewModel() {
-//        observe(viewModel.userLoginLiveData, ::onLoginResult)
-//    }
-//
-//    private fun inIt() {
-//
-//        binding.btnGen.setOnClickListener {
-//            val achAmt = binding.edtAchAmount.text?.trim().toString()
-//            val mandateDate = binding.edtMandateDate.text?.trim().toString()
-//            val startDate = binding.edtStartDate.text?.trim().toString()
-//            val endDate = binding.edtEndDate.text?.trim().toString()
-//            val untilChecked = binding.chkbxCheck.isChecked.toString()
-//            val referenceNo = binding.edtReferenceNo.text?.trim().toString()
-//            if(achAmt == ""){
-//                Toast.makeText(requireContext(),"Please enter Amount", Toast.LENGTH_LONG).show()
-//            }
-//            else if(mandateDate==""){
-//                Toast.makeText(requireContext(),"Please enter Mandate Details", Toast.LENGTH_LONG).show()
-//            }
-//            else if (startDate == ""){
-//                Toast.makeText(requireContext(),"Please enter Start Date", Toast.LENGTH_LONG).show()
-//            }
-//            else if (endDate == "" && untilChecked == ""){
-//                Toast.makeText(requireContext(),"Please enter End Date or select Checkbox ", Toast.LENGTH_LONG).show()
-//            }
-//            else if (referenceNo == ""){
-//                Toast.makeText(requireContext(),"The length of password must be of 6 digits", Toast.LENGTH_LONG).show()
-//            }
-//            else{
-////                val loginRequest=LoginRequest(userId,password)
-////                viewModel.loginUser(loginRequest)
-//                /*   val bundle = Bundle()
-//                   bundle.putString(CONTACT_NO, userId)
-//                   bundle.putString(AUTH_FLAG, "signIn")
-//                   findNavController().navigate(R.id.action_logIn_to_otp, bundle)*/
-////                findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
-//
-//            }
-//        }
-//
-//
-//    }
-//
-//    private fun showAlertMessage(s: String) {
-//        Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
-//    }
-//
-//    private fun onLoginResult(status: Resource<LoginResponse>) {
-////        binding.buttonLogin.startAnimation()
-//        when (status) {
-//            is Resource.Success -> status.data?.let {
-//                checkResponse(it)
-////                binding.buttonLogin.revertAnimation()
-//            }
-//            is Resource.DataError -> {
-////                binding.buttonLogin.revertAnimation()
-//                //status.errorCode?.let { viewModel.showToastMessage(it) }
-//            }
-//            else -> {}
-//        }
-//    }
-//
-//    private fun checkResponse(it: LoginResponse) {
-//        if(it.StatusCode == "NP001"){
-//            val sessionManager= SessionManager(requireContext())
-//            sessionManager.storeUserDetail(it)
-//            // println("===========${sessionManager.getUserDetail()}")
-//            showAlertMessage(it.StatusDesc)
-//            val intent= Intent(requireContext(), DashBoardActivity::class.java)
-//            startActivity(intent)
-//            requireActivity().finishAffinity()
-//        }else{
-//            showAlertMessage(it.StatusDesc)
-//        }
-//        // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
-//    }
-//}
+import android.app.DatePickerDialog
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.qnachlocal.R
+import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.regex.Pattern
+
+@AndroidEntryPoint
+class MandateDetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentMandateDetailsBinding
+    private lateinit var viewModel: SharedViewModel
+    val IFSC_CODE_PATTERN = Pattern.compile(
+        "^[A-Z]{4}0[A-Z0-9]{6}$"
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = activity?.run {
+            ViewModelProvider(this)[SharedViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentMandateDetailsBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_mandate_details, container, false
+        )
+        binding.viewModel = viewModel//attach your viewModel to xml
+
+        val date_n: String = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
+        binding.edtMandateDate.setText(date_n)
+
+        binding.edtMandateDate.setOnClickListener {
+
+            // on below line we are getting
+            // the instance of our calendar.
+            val c = Calendar.getInstance()
+
+            // on below line we are getting
+            // our day, month and year.
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            // on below line we are creating a
+            // variable for date picker dialog.
+            val datePickerDialog = DatePickerDialog(
+                // on below line we are passing context.
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    binding.edtMandateDate.setText(dat)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
+        binding.edtStartDate.setOnClickListener {
+
+            // on below line we are getting
+            // the instance of our calendar.
+            val c = Calendar.getInstance()
+
+            // on below line we are getting
+            // our day, month and year.
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            // on below line we are creating a
+            // variable for date picker dialog.
+            val datePickerDialog = DatePickerDialog(
+                // on below line we are passing context.
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    binding.edtStartDate.setText(dat)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
+        binding.edtEndDate.setOnClickListener {
+
+            // on below line we are getting
+            // the instance of our calendar.
+            val c = Calendar.getInstance()
+
+            // on below line we are getting
+            // our day, month and year.
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            // on below line we are creating a
+            // variable for date picker dialog.
+            val datePickerDialog = DatePickerDialog(
+                // on below line we are passing context.
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    binding.edtEndDate.setText(dat)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_mandateDetailsFragment_to_accountDetailsFragment)
+        }
+
+        binding.btnGen.setOnClickListener {
+            if (binding.edtAchAmount.text?.trim().toString() == "") {
+                binding.edtAchAmount.error = "Enter Ach Amount"
+            } else if (binding.edtMandateDate.text?.trim().toString() == "") {
+                binding.edtMandateDate.error = "Enter Mandate Date"
+            } else if (binding.edtStartDate.text?.trim().toString() == "") {
+                binding.edtStartDate.error = "Enter Start Date"
+            } else if (binding.edtEndDate.text?.trim().toString() == "") {
+                binding.edtEndDate.error = "Enter End Date"
+            } else if (binding.edtReferenceNo.text?.trim().toString() == "") {
+                binding.edtReferenceNo.error = "Enter Reference Number"
+            } else {
+                findNavController().navigate(R.id.action_mandateDetailsFragment_to_accountDetailsFragment)
+            }
+        }
+        return binding.root
+    }
+
+
+}

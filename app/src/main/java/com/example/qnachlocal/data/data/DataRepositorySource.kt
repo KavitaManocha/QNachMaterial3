@@ -9,6 +9,8 @@ import com.chola.app.data.dto.mandate.MandateRequest
 import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
+import com.example.qnachlocal.data.data.dto.User
+import com.example.qnachlocal.data.data.dto.UserReq
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import kotlinx.coroutines.flow.Flow
@@ -48,4 +50,6 @@ interface DataRepositorySource {
 
     // For Search Mandate
     suspend fun doRemoteSearchMandate(orgId:String,id:String,query: String): Flow<Resource<MandateResponse>>
+
+
 }

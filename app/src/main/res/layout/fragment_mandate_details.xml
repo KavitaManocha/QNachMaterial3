@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout>
 
     <data>
         <variable
             name="viewModel"
-            type="com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails.MandateDetailsViewModel" />
+            type="com.example.qnachlocal.SharedViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -100,8 +99,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@={viewModel.start_date}"
-            />
+            android:text="@={viewModel.start_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +121,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@={viewModel.end_date}" />
+            android:text="@={viewModel.end_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -184,7 +182,6 @@
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
-            android:onClick="@{(v) -> viewModel.goBack()}"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -196,7 +193,6 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:background="@color/light_blue"
             android:textColor="@color/black"
-            android:onClick="@{(v) -> viewModel.goClick()}"
             />
 
     </LinearLayout>
