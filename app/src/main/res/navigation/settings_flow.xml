@@ -2,6 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settings_flow">
+    android:id="@+id/settings_flow"
+    app:startDestination="@id/customerDetailsFragment">
 
+    <fragment
+        android:id="@+id/customerDetailsFragment"
+        android:name="com.example.qnachlocal.ui.components.bluemenuflow.customerdetails.CustomerDetailsFragment"
+        android:label="CustomerDetailsFragment" >
+        <action
+            android:id="@+id/action_customerDetailsFragment_to_bankDetailsFragment"
+            app:destination="@id/bankDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankDetailsFragment"
+        android:name="com.example.qnachlocal.ui.components.bluemenuflow.bankdetails.BankDetailsFragment"
+        android:label="BankDetailsFragment" >
+        <action
+            android:id="@+id/action_bankDetailsFragment_to_customerDetailsFragment"
+            app:destination="@id/customerDetailsFragment" />
+    </fragment>
 </navigation>

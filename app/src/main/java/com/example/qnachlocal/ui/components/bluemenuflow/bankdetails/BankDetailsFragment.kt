@@ -9,10 +9,88 @@ package com.example.qnachlocal.ui.components.bluemenuflow.bankdetails
 //import com.example.qnachlocal.databinding.FragmentBankDetailsBinding
 //import com.example.qnachlocal.ui.base.BaseFragment
 //import com.example.qnachlocal.utils.observe
-//import dagger.hilt.android.AndroidEntryPoint
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.qnachlocal.BlueMenuViewModel
+import com.example.qnachlocal.R
+import com.example.qnachlocal.databinding.FragmentBankDetailsBinding
+import com.example.qnachlocal.databinding.FragmentCustomerDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class BankDetailsFragment : Fragment(){
+
+    private lateinit var binding: FragmentBankDetailsBinding
+    private lateinit var viewModel: BlueMenuViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = activity?.run {
+            ViewModelProvider(this)[BlueMenuViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentBankDetailsBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_bank_details, container, false
+        )
+        binding.viewModel = viewModel//attach your viewModel to xml
+
+        val frequency = resources.getStringArray(R.array.frequency)
+        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,frequency)
+        binding.spnFrequency.setAdapter(arrayAdapter)
+
+        val category = resources.getStringArray(R.array.category)
+        val arrayAdapterCategory = ArrayAdapter(requireContext(),R.layout.dropdown_item,category)
+        binding.spnCategoryy.setAdapter(arrayAdapterCategory)
+
+        val bank = resources.getStringArray(R.array.bank)
+        val arrayAdapterAccType = ArrayAdapter(requireContext(),R.layout.dropdown_item,bank)
+        binding.spnSelectBank.setAdapter(arrayAdapterAccType)
+
+        binding.buttonMandate.setOnClickListener {
+            if (binding.edtAccHolderName.text?.trim().toString() ==""){
+                binding.edtAccHolderName.error="Enter Account Holder Name"
+            }
+            else if (binding.edtCustAccNo.text?.trim().toString() == ""){
+                binding.edtCustAccNo.error="Enter Account Number"
+            }
+            else if (binding.edtConfirmAccNo.text?.trim().toString() == ""){
+                binding.edtConfirmAccNo.error="Re enter Account Number"
+            }
+            else if (binding.edtCustAccNo.text?.trim().toString()!= binding.edtConfirmAccNo.text?.trim().toString()){
+                binding.edtConfirmAccNo.error="Account Number Mismatch"
+            }
+            else if (binding.spnSelectBank.text?.trim().toString() == ""){
+                binding.spnSelectBank.error="Select a Bank"
+            }
+            else if (binding.spnCategoryy.text?.trim().toString() == ""){
+                binding.spnCategoryy.error="Select a Category"
+            }
+            else if (binding.spnFrequency.text?.trim().toString() == ""){
+                binding.spnFrequency.error="Select Frequency"
+            }
+            else{
+                findNavController().navigate(R.id.action_bankDetailsFragment_to_customerDetailsFragment)
+            }
+        }
+
+        return binding.root
+    }
+}
 //
-//@AndroidEntryPoint
-//class BankDetailsFragment : BaseFragment<FragmentBankDetailsBinding, BankDetailsViewModel>() {
+// BaseFragment<FragmentBankDetailsBinding, BankDetailsViewModel>() {
 //
 //    override fun getViewModelClass() = BankDetailsViewModel::class.java
 //    override fun getViewBinding() = FragmentBankDetailsBinding.inflate(layoutInflater)

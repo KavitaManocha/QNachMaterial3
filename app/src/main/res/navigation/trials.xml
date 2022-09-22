@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/trials"
+    app:startDestination="@id/personalDetailsFragment">
+
+
+    <fragment
+        android:id="@+id/personalDetailsFragment"
+        android:name="com.example.qnachlocal.ui.components.greenmenuflow.personaldetails.PersonalDetailsFragment"
+        android:label="PersonalDetailsFragment" >
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.example.qnachlocal.ui.components.greenmenuflow.accountdetails.AccountDetailsFragment"
+        android:label="AccountDetailsFragment" >
+        <action
+            android:id="@+id/action_accountDetailsFragment_to_personalDetailsFragment"
+            app:destination="@id/personalDetailsFragment" />
+        <action
+            android:id="@+id/action_accountDetailsFragment_to_mandateDetailsFragment"
+            app:destination="@id/mandateDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mandateDetailsFragment"
+        android:name="com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails.MandateDetailsFragment"
+        android:label="MandateDetailsFragment" >
+        <action
+            android:id="@+id/action_mandateDetailsFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
+    </fragment>
+</navigation>

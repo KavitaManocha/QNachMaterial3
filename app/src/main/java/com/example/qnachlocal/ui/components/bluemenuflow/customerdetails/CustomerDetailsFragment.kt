@@ -1,22 +1,155 @@
 package com.example.qnachlocal.ui.components.bluemenuflow.customerdetails
+
+import android.app.DatePickerDialog
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.qnachlocal.BlueMenuViewModel
+import com.example.qnachlocal.R
+import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.databinding.FragmentCustomerDetailsBinding
+import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import java.util.regex.Pattern
+
+@AndroidEntryPoint
+class CustomerDetailsFragment : Fragment(){
+
+    private lateinit var binding: FragmentCustomerDetailsBinding
+    private lateinit var viewModel: BlueMenuViewModel
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = activity?.run {
+            ViewModelProvider(this)[BlueMenuViewModel::class.java]
+        } ?: throw Exception("Invalid Activity")
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val binding: FragmentCustomerDetailsBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_customer_details, container, false)
+        binding.viewModel = viewModel//attach your viewModel to xml
+
+        binding.edtFirstCollDate.setOnClickListener {
+            // on below line we are getting
+            // the instance of our calendar.
+            val c = Calendar.getInstance()
+
+            // on below line we are getting
+            // our day, month and year.
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            // on below line we are creating a
+            // variable for date picker dialog.
+            val datePickerDialog = DatePickerDialog(
+                // on below line we are passing context.
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    binding.edtFirstCollDate.setText(dat)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
+        binding.edtFinalCollDate.setOnClickListener {
+            // on below line we are getting
+            // the instance of our calendar.
+            val c = Calendar.getInstance()
+
+            // on below line we are getting
+            // our day, month and year.
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            // on below line we are creating a
+            // variable for date picker dialog.
+            val datePickerDialog = DatePickerDialog(
+                // on below line we are passing context.
+                requireActivity(),
+                { view, year, monthOfYear, dayOfMonth ->
+                    // on below line we are setting
+                    // date to our edit text.
+                    val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
+                    binding.edtFinalCollDate.setText(dat)
+                },
+                // on below line we are passing year, month
+                // and day for the selected date in our date picker.
+                year,
+                month,
+                day
+            )
+            // at last we are calling show
+            // to display our date picker dialog.
+            datePickerDialog.show()
+        }
+
+        binding.buttonNext.setOnClickListener {
+            if (binding.edtCustomerId.text?.trim().toString() ==""){
+                binding.edtCustomerId.error="Enter Loan Id"
+            }
+            else if (binding.edtMobileNumber.text?.trim().toString() == ""){
+                binding.edtMobileNumber.error="Enter Mobile Number"
+            }
+            else if (binding.edtMobileNumber.text?.trim().toString().length<10 || binding.edtMobileNumber.text?.trim().toString().length>10){
+                binding.edtMobileNumber.error="Enter Valid Mobile Number"
+            }
+            else if (binding.edtEmail.text?.trim().toString() == ""){
+                binding.edtEmail.error="Enter Email Id"
+            }
+            else if (!EMAIL_ADDRESS_PATTERN.matcher(binding.edtEmail.text?.trim().toString()).matches()){
+                binding.edtEmail.error="Enter Valid Email Id"
+            }
+            else if (binding.edtAchAmount.text?.trim().toString() == ""){
+                binding.edtAchAmount.error="Enter Ach Amount"
+            }
+            else if (binding.edtFirstCollDate.text?.trim().toString() == ""){
+                binding.edtFirstCollDate.error="Select First Collection Date"
+            }
+            else if (binding.edtFinalCollDate.text?.trim().toString() == ""){
+                binding.edtFinalCollDate.error="Select Final Collection Date"
+            }
+            else{
+                findNavController().navigate(R.id.action_customerDetailsFragment_to_bankDetailsFragment)
+            }
+        }
+        return binding.root
+    }
+
+}
 //
-//import android.content.Intent
-//import android.widget.Toast
-//import androidx.navigation.fragment.findNavController
-//import com.chola.app.data.dto.login.LoginRequest
-//import com.chola.app.data.dto.login.LoginResponse
-//import com.example.qnachlocal.DashBoardActivity
-//import com.example.qnachlocal.R
-//import com.example.qnachlocal.data.Resource
-//import com.example.qnachlocal.data.local.SessionManager
-//import com.example.qnachlocal.databinding.FragmentCustomerDetailsBinding
-//import com.example.qnachlocal.ui.base.BaseFragment
-//import com.example.qnachlocal.utils.observe
-//import dagger.hilt.android.AndroidEntryPoint
-//import java.util.regex.Pattern
 //
-//@AndroidEntryPoint
-//class CustomerDetailsFragment : BaseFragment<FragmentCustomerDetailsBinding, CustomerDetailsViewModel>() {
+// BaseFragment<FragmentCustomerDetailsBinding, CustomerDetailsViewModel>() {
 //
 //    override fun getViewModelClass() = CustomerDetailsViewModel::class.java
 //    override fun getViewBinding() = FragmentCustomerDetailsBinding.inflate(layoutInflater)

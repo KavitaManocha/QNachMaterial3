@@ -96,6 +96,12 @@
     <string name="ok">Ok</string>
     <string name="reset_password">Reset Password</string>
     <string name="proceed">Proceed</string>
+    <string-array name="bank">
+        <item>PNB</item>
+        <item>Karnataka Bank</item>
+        <item>ICICI Bank</item>
+        <item>HDFC</item>
+    </string-array>
     <string-array name="accType">
         <item>SB</item>
         <item>CA</item>
