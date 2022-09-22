@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
-            android:text="@={viewModel.ach_amt}"/>
+            android:text="@={viewModel.data.ach_amt}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +81,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@={viewModel.mandate_date}"/>
+            android:text="@={viewModel.data.mandate_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +103,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@={viewModel.start_date}"/>
+            android:text="@={viewModel.data.start_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,7 +125,7 @@
             android:cursorVisible="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@={viewModel.end_date}"/>
+            android:text="@={viewModel.data.end_date}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -165,7 +165,7 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
             android:hint="@string/reference_number"
-            android:text="@={viewModel.ref_no}"/>
+            android:text="@={viewModel.data.ref_no}"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

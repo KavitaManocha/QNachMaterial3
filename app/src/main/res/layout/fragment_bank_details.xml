@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.qnachlocal.ui.components.bluemenuflow.bankdetails.BankDetailsViewModel" />
+            type="com.example.qnachlocal.BlueMenuViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,7 +63,8 @@
             android:id="@+id/edt_acc_holder_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.dataa.acc_holder}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +81,8 @@
             android:id="@+id/edt_cust_acc_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.dataa.cust_acc_no}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -97,7 +99,8 @@
             android:id="@+id/edt_confirm_acc_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="@={viewModel.dataa.conf_acc_no}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -106,14 +109,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_bank_address"
         android:layout_marginTop="-15dp"
-        style="@style/textInput"
+        android:layout_marginHorizontal="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:background="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_select_bank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/select_bank"
+            android:inputType="none"
+            android:text="@={viewModel.dataa.cust_bank}"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,15 +128,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/select_acc_type"
-        style="@style/textInput"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:hint="@string/loan_installment_payment"
-        android:layout_marginTop="-15dp"
+        android:layout_marginHorizontal="16dp"
         android:background="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_categoryy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="@={viewModel.dataa.category}"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,15 +147,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/select_category"
-        android:layout_marginTop="-15dp"
         android:hint="@string/mnth"
-        style="@style/textInput"
+        android:layout_marginHorizontal="16dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:background="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_frequency"
             android:layout_width="match_parent"
+            android:inputType="none"
             android:layout_height="wrap_content"
+            android:text="@={viewModel.dataa.frequency}"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.qnachlocal.ui.components.bluemenuflow.customerdetails.CustomerDetailsViewModel" />
+            type="com.example.qnachlocal.BlueMenuViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:text="@={viewModel.loan_id}"/>
+                    android:text="@={viewModel.dataa.loan_id}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +95,8 @@
                     android:id="@+id/edt_mobile_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:text="@={viewModel.dataa.cust_mob}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,7 +116,8 @@
                     android:id="@+id/edt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:text="@={viewModel.dataa.cust_email}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -132,7 +134,8 @@
                     android:id="@+id/edt_ach_amount"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:text="@={viewModel.dataa.ach_amt}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,7 +151,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
-                    android:hint="@string/first_collection_date"/>
+                    android:hint="@string/first_collection_date"
+                    android:text="@={viewModel.dataa.start_date}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,7 +168,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
-                    android:hint="@string/final_collection_date"/>
+                    android:hint="@string/final_collection_date"
+                    android:text="@={viewModel.dataa.end_date}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

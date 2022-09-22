@@ -25,9 +25,6 @@
         android:theme="@style/AppTheme"
         tools:targetApi="32">
         <activity
-            android:name=".SampleActivity"
-            android:exported="false" />
-        <activity
             android:name=".DashBoardActivity"
             android:exported="false" />
         <activity

@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.ifsc_code}"/>
+            android:text="@={viewModel.data.ifsc_code}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.cust_bank}"/>
+            android:text="@={viewModel.data.cust_bank}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="@={viewModel.bank_add}"/>
+            android:text="@={viewModel.data.cust_bank_add}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -120,10 +120,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="@={viewModel.cust_acc_no}"/>
+            android:text="@={viewModel.data.cust_acc_no}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:id="@+id/select_acc_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,15 +134,17 @@
         android:hint="@string/select_acc_type"
         android:background="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_acc_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@={viewModel.acc_type}"/>
+            android:text="@={viewModel.data.cust_acc_type}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:id="@+id/select_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -150,15 +153,17 @@
         android:layout_marginHorizontal="@dimen/_16dp"
         android:layout_marginTop="@dimen/_13dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@={viewModel.category}"/>
+            android:text="@={viewModel.data.category}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:id="@+id/et_frequency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -167,12 +172,13 @@
         android:layout_marginHorizontal="@dimen/_16dp"
         android:background="@color/white">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_freq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="none"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
-            android:text="@={viewModel.frequencyy}"/>
+            android:text="@={viewModel.data.frequency}"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout

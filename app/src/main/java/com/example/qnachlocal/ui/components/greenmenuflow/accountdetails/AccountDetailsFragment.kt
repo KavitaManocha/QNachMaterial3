@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -48,6 +49,18 @@ class AccountDetailsFragment : Fragment() {
         val binding: FragmentAccountDetailsBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_account_details, container, false)
         binding.viewModel = viewModel//attach your viewModel to xml
+
+        val frequency = resources.getStringArray(R.array.frequency)
+        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,frequency)
+        binding.spnFreq.setAdapter(arrayAdapter)
+
+        val category = resources.getStringArray(R.array.category)
+        val arrayAdapterCategory = ArrayAdapter(requireContext(),R.layout.dropdown_item,category)
+        binding.spnCategory.setAdapter(arrayAdapterCategory)
+
+        val accType = resources.getStringArray(R.array.accType)
+        val arrayAdapterAccType = ArrayAdapter(requireContext(),R.layout.dropdown_item,accType)
+        binding.spnAccType.setAdapter(arrayAdapterAccType)
 
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_accountDetailsFragment_to_personalDetailsFragment)
