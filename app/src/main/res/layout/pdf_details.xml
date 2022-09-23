@@ -25,9 +25,12 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:id="@+id/lly_fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
@@ -38,153 +41,241 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/nupay_ref"
-                android:textSize="17sp"/>
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/cust_id_"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/sales_query_code"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/acc_holder_name"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textColor="@color/ring_border_color"
                 android:layout_height="wrap_content"
-                />
+                android:textSize="21sp"/>
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:text="@string/mobile_noo"
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/ach_amnt"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="12dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:text="@string/acc_number"
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/bank_namee"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:text="@string/ifsc_codee"
+                android:textSize="21sp"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="2.5"
                 android:layout_height="wrap_content"
-                />
+                android:textColor="@color/ring_border_color"
+                android:textSize="21sp"/>
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lly_fields"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_22dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/previous"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:textSize="17sp"
+            android:paddingVertical="4dp"
+            android:background="@color/turquoise"
+            android:textColor="@color/white"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/next"
+            android:textSize="17sp"
+            android:paddingVertical="4dp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@color/turquoise"
+            android:textColor="@color/white"
+            />
 
     </LinearLayout>
 

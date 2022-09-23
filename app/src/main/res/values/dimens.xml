@@ -36,4 +36,5 @@
     <dimen name="_0pt2dp">0.2dp</dimen>
     <dimen name="_118dp">118dp</dimen>
     <dimen name="sp_18">18sp</dimen>
+    <dimen name="_22dp">22dp</dimen>
 </resources>

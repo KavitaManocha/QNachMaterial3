@@ -157,4 +157,13 @@
     <string name="download">Download</string>
     <string name="pdf_gen_successfully">Pdf Generated Successfully</string>
     <string name="share_via">You May Share via SMS or whatsapp etc.</string>
+    <string name="cust_id_">Cust ID:</string>
+    <string name="acc_holder_name">Account Holder Name:</string>
+    <string name="mobile_noo">Mobile Number:</string>
+    <string name="ach_amnt">Ach Amount:</string>
+    <string name="acc_number">Account Number:</string>
+    <string name="bank_namee">Bank Name:</string>
+    <string name="ifsc_codee">IFSC Code:</string>
+    <string name="previous">Previous</string>
+
 </resources>
