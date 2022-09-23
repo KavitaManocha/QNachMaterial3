@@ -154,4 +154,7 @@
     <string name="enter_benef_name">Enter Beneficiary Name</string>
     <string name="enter_valid_mobile_number">Enter Valid Mobile Number</string>
     <string name="enter_email_id">Enter Email Id</string>
+    <string name="download">Download</string>
+    <string name="pdf_gen_successfully">Pdf Generated Successfully</string>
+    <string name="share_via">You May Share via SMS or whatsapp etc.</string>
 </resources>
