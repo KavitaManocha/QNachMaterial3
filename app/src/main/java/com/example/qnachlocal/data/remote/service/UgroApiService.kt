@@ -9,6 +9,8 @@ import com.chola.app.data.dto.mandate.MandateRequest
 import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import retrofit2.Response
@@ -37,6 +39,11 @@ interface UgroApiService {
     suspend fun verifyOtp(
         @Body verifyOtpRequest: VerifyOtpRequest
     ): Response<ResetPasswordResponse>
+
+    @POST("QNachApp/createNachPDF")
+    suspend fun createPDF(
+        @Body user: User
+    ): Response<PDFResponse>
 
 }
 
