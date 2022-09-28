@@ -10,6 +10,8 @@ import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 
@@ -25,5 +27,7 @@ internal interface RemoteDataSource {
 suspend fun doForgotPassword(loginRequest:ForgotPasswordRequest): Resource<ResetPasswordResponse>
 
 suspend fun doVerifyOtp(loginRequest:VerifyOtpRequest): Resource<ResetPasswordResponse>
+
+suspend fun doGeneratePdf(user:User): Resource<PDFResponse>
 
 }

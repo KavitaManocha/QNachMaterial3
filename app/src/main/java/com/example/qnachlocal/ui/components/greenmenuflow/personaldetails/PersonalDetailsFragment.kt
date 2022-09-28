@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.qnachlocal.CONTACT_NO
@@ -71,6 +72,11 @@ class PersonalDetailsFragment : Fragment() {
                 binding.edtCustEmail.error="Enter Valid Email Id"
             }
             else{
+                val bundle = Bundle()
+                bundle.putString("loan_id",binding.edtCustId.text?.trim().toString())
+                bundle.putString("benef_name",binding.edtBenefName.text?.trim().toString())
+                bundle.putString("cust_mob",binding.edtCustMob.text?.trim().toString())
+                bundle.putString("cust_email",binding.edtCustEmail.text?.trim().toString())
                 findNavController().navigate(R.id.action_personalDetailsFragment_to_accountDetailsFragment)
             }
         }

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chola.app.data.dto.login.LoginResponse
@@ -67,6 +68,12 @@ class AccountDetailsFragment : Fragment() {
         }
 
         binding.btnNext.setOnClickListener {
+
+            val loan_id = getArguments()?.getString("loan_id")
+            val benef_name = getArguments()?.getString("benef_name")
+            val cust_mob = getArguments()?.getString("cust_mob")
+            val cust_email = getArguments()?.getString("cust_email")
+
             if (binding.edtIfscCode.text?.trim().toString() ==""){
                 binding.edtIfscCode.error="Enter IFSC Code"
             }
@@ -96,6 +103,18 @@ class AccountDetailsFragment : Fragment() {
                 binding.spnFreq.error="Select Frequency"
             }
             else{
+                val bundle = Bundle()
+                bundle.putString("loan_id",loan_id)
+                bundle.putString("benef_name",benef_name)
+                bundle.putString("cust_mob",cust_mob)
+                bundle.putString("cust_email",cust_email)
+                bundle.putString("ifsc_code",binding.edtIfscCode.text?.trim().toString())
+                bundle.putString("cust_bank",binding.edtCustBank.text?.trim().toString())
+                bundle.putString("bank_add",binding.edtBankAddress.text?.trim().toString())
+                bundle.putString("cust_acc_no",binding.edtCustAccNo.text?.trim().toString())
+                bundle.putString("acc_type",binding.spnAccType.text?.trim().toString())
+                bundle.putString("category",binding.spnCategory.text?.trim().toString())
+                bundle.putString("freq",binding.spnFreq.text?.trim().toString())
                 findNavController().navigate(R.id.action_accountDetailsFragment_to_mandateDetailsFragment)
             }
         }

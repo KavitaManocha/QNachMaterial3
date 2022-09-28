@@ -19,6 +19,7 @@ class GreenMenuActivity: AppCompatActivity() {
     }
 }
 
+
 //    override fun nextPage() {
 //        if (binding.viewPager.currentItem < binding.viewPager.adapter!!.count) {
 //            binding.viewPager.currentItem = binding.viewPager.currentItem + 1

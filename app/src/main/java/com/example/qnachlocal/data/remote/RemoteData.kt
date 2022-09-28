@@ -10,6 +10,8 @@ import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
 import com.example.qnachlocal.data.error.NETWORK_ERROR
@@ -76,6 +78,19 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         val response = decryptData.verifyOtp(loginRequest)
         return when (val response1 = processCall(response)) {
             is ResetPasswordResponse -> {
+                Resource.Success(data = response1)
+            }
+            else -> {
+                Resource.DataError(errorCode = response1 as Int)
+            }
+        }
+    }
+
+    override suspend fun doGeneratePdf(user: User): Resource<PDFResponse> {
+        val decryptData = serviceGenerator.createService(UgroApiService::class.java)
+        val response = decryptData.createPDF(user)
+        return when (val response1 = processCall(response)) {
+            is PDFResponse -> {
                 Resource.Success(data = response1)
             }
             else -> {

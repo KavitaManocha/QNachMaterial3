@@ -1,47 +1,34 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails
 
 import android.app.DatePickerDialog
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.qnachlocal.R
 import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
+import com.example.qnachlocal.ui.base.BaseFragment
+import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Pattern
 
 @AndroidEntryPoint
-class MandateDetailsFragment : Fragment() {
+class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, SharedViewModel>(){
+    override fun getViewModelClass() = SharedViewModel::class.java
+    override fun getViewBinding() = FragmentMandateDetailsBinding.inflate(layoutInflater)
 
-    private lateinit var binding: FragmentMandateDetailsBinding
-    private lateinit var viewModel: SharedViewModel
-    val IFSC_CODE_PATTERN = Pattern.compile(
-        "^[A-Z]{4}0[A-Z0-9]{6}$"
-    )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = activity?.run {
-            ViewModelProvider(this)[SharedViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+    override fun setUpViews() {
+        observeViewModel()
+        inIt()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentMandateDetailsBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_mandate_details, container, false
-        )
-        binding.viewModel = viewModel//attach your viewModel to xml
+    private fun observeViewModel() {
+        observe(viewModel.userLoginLiveData, ::onLoginResult)
+    }
+
+    private fun inIt() {
 
         binding.edtMandateDate.setOnClickListener {
 
@@ -150,22 +137,84 @@ class MandateDetailsFragment : Fragment() {
         }
 
         binding.btnGen.setOnClickListener {
+
+            val loan_id = getArguments()?.getString("loan_id")
+            val benef_name = getArguments()?.getString("benef_name")
+            val cust_mob = getArguments()?.getString("cust_mob")
+            val cust_email = getArguments()?.getString("cust_email")
+            val ifsc_code = getArguments()?.getString("ifsc_code")
+            val cust_bank = getArguments()?.getString("cust_bank")
+            val cust_bank_add = getArguments()?.getString("bank_add")
+            val cust_acc_no = getArguments()?.getString("cust_acc_no")
+            val acc_type = getArguments()?.getString("acc_type")
+            val category = getArguments()?.getString("category")
+            val freq = getArguments()?.getString("freq")
+
+
             if (binding.edtAchAmount.text?.trim().toString() == "") {
                 binding.edtAchAmount.error = "Enter Ach Amount"
-            } else if (binding.edtMandateDate.text?.trim().toString() == "") {
+            }
+            else if (binding.edtMandateDate.text?.trim().toString() == "") {
                 binding.edtMandateDate.error = "Enter Mandate Date"
-            } else if (binding.edtStartDate.text?.trim().toString() == "") {
+            }
+            else if (binding.edtStartDate.text?.trim().toString() == "") {
                 binding.edtStartDate.error = "Enter Start Date"
-            } else if (binding.edtEndDate.text?.trim().toString() == "") {
+            }
+            else if (binding.edtEndDate.text?.trim().toString() == "") {
                 binding.edtEndDate.error = "Enter End Date"
-            } else if (binding.edtReferenceNo.text?.trim().toString() == "") {
+            }
+            else if (binding.edtReferenceNo.text?.trim().toString() == "") {
                 binding.edtReferenceNo.error = "Enter Reference Number"
-            } else {
-                findNavController().navigate(R.id.action_mandateDetailsFragment_to_accountDetailsFragment)
+
+            }else{
+                val loginRequest= User(loan_id,benef_name,
+                    cust_mob.toString(),cust_email.toString(),
+                    ifsc_code,cust_bank,cust_bank_add,cust_acc_no,acc_type,
+                    category,freq,binding.edtAchAmount.text?.trim().toString(),
+                    binding.edtMandateDate.text?.trim().toString(),
+                    binding.edtStartDate.text?.trim().toString(),
+                    binding.edtEndDate.text?.trim().toString(),
+                    binding.edtReferenceNo.text?.trim().toString() )
+                viewModel.genpdf(loginRequest)
+                /*   val bundle = Bundle()
+                   bundle.putString(CONTACT_NO, userId)
+                   bundle.putString(AUTH_FLAG, "signIn")
+                   findNavController().navigate(R.id.action_logIn_to_otp, bundle)*/
+//                findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
+
             }
         }
-        return binding.root
+
+
     }
 
+    private fun showAlertMessage(s: String) {
+        Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
+    }
 
+    private fun onLoginResult(status: Resource<PDFResponse>) {
+//        binding.buttonLogin.startAnimation()
+        when (status) {
+            is Resource.Success -> status.data?.let {
+                checkResponse(it)
+//                binding.buttonLogin.revertAnimation()
+            }
+            is Resource.DataError -> {
+//                binding.buttonLogin.revertAnimation()
+                //status.errorCode?.let { viewModel.showToastMessage(it) }
+            }
+            else -> {}
+        }
+    }
+
+    private fun checkResponse(it: PDFResponse) {
+        if(it.StatusCode == "NP001"){
+
+            showAlertMessage(it.StatusDesc.toString())
+
+        }else{
+            showAlertMessage(it.StatusDesc.toString())
+        }
+        // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
+    }
 }
