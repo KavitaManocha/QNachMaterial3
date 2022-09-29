@@ -1,7 +1,9 @@
 package com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
 import com.example.qnachlocal.R
 import com.example.qnachlocal.SharedViewModel
@@ -210,9 +212,26 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
     private fun checkResponse(it: PDFResponse) {
         if(it.StatusCode == "NP001"){
 
-            showAlertMessage(it.StatusDesc.toString())
+            val builder= AlertDialog.Builder(requireContext(), androidx.constraintlayout.widget.R.style.AlertDialog_AppCompat).create()
+            val view = layoutInflater.inflate(R.layout.dialog_pdf_generated,null)
 
-        }else{
+            builder.setView(view)
+
+            val home= view.findViewById<AppCompatButton>(R.id.btn_home)
+            home.setOnClickListener {
+
+            }
+
+            val download = view.findViewById<AppCompatButton>(R.id.btn_download)
+            download.setOnClickListener {
+
+            }
+
+            builder.setCanceledOnTouchOutside(false)
+            builder.show()
+        }
+        else{
+
             showAlertMessage(it.StatusDesc.toString())
         }
         // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
