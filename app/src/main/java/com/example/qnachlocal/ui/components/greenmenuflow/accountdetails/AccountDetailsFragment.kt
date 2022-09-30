@@ -13,9 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.chola.app.data.dto.login.LoginResponse
-import com.example.qnachlocal.DashBoardActivity
-import com.example.qnachlocal.R
-import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.local.SessionManager
@@ -69,52 +67,52 @@ class AccountDetailsFragment : Fragment() {
 
         binding.btnNext.setOnClickListener {
 
-            val loan_id = getArguments()?.getString("loan_id")
-            val benef_name = getArguments()?.getString("benef_name")
-            val cust_mob = getArguments()?.getString("cust_mob")
-            val cust_email = getArguments()?.getString("cust_email")
+            val loan_id = getArguments()?.getString(LOAN_ID)
+            val benef_name = getArguments()?.getString(BENEFICIARY_NAME)
+            val cust_mob = getArguments()?.getString(CUSTOMER_MOBILE)
+            val cust_email = getArguments()?.getString(CUSTOMER_EMAIL)
 
             if (binding.edtIfscCode.text?.trim().toString() ==""){
-                binding.edtIfscCode.error="Enter IFSC Code"
+                binding.edtIfscCode.error=getString(R.string.error_ifsc_code)
             }
             else if (binding.edtIfscCode.text?.trim().toString().length >11|| binding.edtIfscCode.text?.trim().toString().length <11
                 || !IFSC_CODE_PATTERN.matcher(binding.edtIfscCode.text?.trim().toString()).matches()){
-                binding.edtIfscCode.error="Enter Valid IFSC Code"
+                binding.edtIfscCode.error=getString(R.string.error_ifsc_code_validation)
             }
             else if (binding.edtCustBank.text?.trim().toString() == ""){
-                binding.edtCustBank.error="Enter Customer Bank"
+                binding.edtCustBank.error=getString(R.string.error_customer_bank)
             }
             else if (binding.edtBankAddress.text?.trim().toString() == ""){
-                binding.edtBankAddress.error="Enter Bank Address"
+                binding.edtBankAddress.error=getString(R.string.error_bank_address)
             }
             else if (binding.edtCustAccNo.text?.trim().toString() == ""){
-                binding.edtCustAccNo.error="Enter Customer Account Number"
+                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number)
             }
             else if (binding.edtCustAccNo.text?.trim().toString().length>18 || binding.edtCustAccNo.text?.trim().toString().length<18){
-                binding.edtCustAccNo.error="Enter valid Customer Account Number"
+                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number_validation)
             }
             else if (binding.spnAccType.text?.trim().toString() == ""){
-                binding.spnAccType.error="Select Account Type"
+                binding.spnAccType.error=getString(R.string.error_account_type)
             }
             else if (binding.spnCategory.text?.trim().toString() == ""){
-                binding.spnCategory.error="Select Category"
+                binding.spnCategory.error=getString(R.string.error_category)
             }
             else if (binding.spnFreq.text?.trim().toString() == ""){
-                binding.spnFreq.error="Select Frequency"
+                binding.spnFreq.error=getString(R.string.error_frequency)
             }
             else{
                 val bundle = Bundle()
-                bundle.putString("loan_id",loan_id)
-                bundle.putString("benef_name",benef_name)
-                bundle.putString("cust_mob",cust_mob)
-                bundle.putString("cust_email",cust_email)
-                bundle.putString("ifsc_code",binding.edtIfscCode.text?.trim().toString())
-                bundle.putString("cust_bank",binding.edtCustBank.text?.trim().toString())
-                bundle.putString("bank_add",binding.edtBankAddress.text?.trim().toString())
-                bundle.putString("cust_acc_no",binding.edtCustAccNo.text?.trim().toString())
-                bundle.putString("acc_type",binding.spnAccType.text?.trim().toString())
-                bundle.putString("category",binding.spnCategory.text?.trim().toString())
-                bundle.putString("freq",binding.spnFreq.text?.trim().toString())
+                bundle.putString(LOAN_ID,loan_id)
+                bundle.putString(BENEFICIARY_NAME,benef_name)
+                bundle.putString(CUSTOMER_MOBILE,cust_mob)
+                bundle.putString(CUSTOMER_EMAIL,cust_email)
+                bundle.putString(IFSC_CODE,binding.edtIfscCode.text?.trim().toString())
+                bundle.putString(CUSTOMER_BANK,binding.edtCustBank.text?.trim().toString())
+                bundle.putString(BANK_ADDRESS,binding.edtBankAddress.text?.trim().toString())
+                bundle.putString(CUSTOMER_ACC_NO,binding.edtCustAccNo.text?.trim().toString())
+                bundle.putString(ACCOUNT_TYPE,binding.spnAccType.text?.trim().toString())
+                bundle.putString(CATEGORY,binding.spnCategory.text?.trim().toString())
+                bundle.putString(FREQUENCY,binding.spnFreq.text?.trim().toString())
                 findNavController().navigate(R.id.action_accountDetailsFragment_to_mandateDetailsFragment)
             }
         }

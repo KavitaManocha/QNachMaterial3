@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.qnachlocal.CONTACT_NO
-import com.example.qnachlocal.R
-import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.UserReq
@@ -54,29 +52,29 @@ class PersonalDetailsFragment : Fragment() {
 
         binding.buttonNext.setOnClickListener {
             if (binding.edtCustId.text?.trim().toString() ==""){
-                binding.edtCustId.error="Enter Loan Id"
+                binding.edtCustId.error= getString(R.string.error_loan_id)
             }
             else if (binding.edtBenefName.text?.trim().toString() == ""){
-                binding.edtBenefName.error="Enter Beneficiary Name"
+                binding.edtBenefName.error=getString(R.string.error_beneficiary_name)
             }
             else if (binding.edtCustMob.text?.trim().toString() == ""){
-                binding.edtCustMob.error="Enter Mobile Number"
+                binding.edtCustMob.error= getString(R.string.error_mobile_no)
             }
             else if (binding.edtCustMob.text?.trim().toString().length<10 || binding.edtCustMob.text?.trim().toString().length>10){
-                binding.edtCustMob.error="Enter Valid Mobile Number"
+                binding.edtCustMob.error= getString(R.string.error_mobile_validation)
             }
             else if (binding.edtCustEmail.text?.trim().toString() == ""){
-                binding.edtCustEmail.error="Enter Email Id"
+                binding.edtCustEmail.error= getString(R.string.error_mail_id)
             }
             else if (!EMAIL_ADDRESS_PATTERN.matcher(binding.edtCustEmail.text?.trim().toString()).matches()){
-                binding.edtCustEmail.error="Enter Valid Email Id"
+                binding.edtCustEmail.error= getString(R.string.error_mail_validation)
             }
             else{
                 val bundle = Bundle()
-                bundle.putString("loan_id",binding.edtCustId.text?.trim().toString())
-                bundle.putString("benef_name",binding.edtBenefName.text?.trim().toString())
-                bundle.putString("cust_mob",binding.edtCustMob.text?.trim().toString())
-                bundle.putString("cust_email",binding.edtCustEmail.text?.trim().toString())
+                bundle.putString(LOAN_ID,binding.edtCustId.text?.trim().toString())
+                bundle.putString(BENEFICIARY_NAME,binding.edtBenefName.text?.trim().toString())
+                bundle.putString(CUSTOMER_MOBILE,binding.edtCustMob.text?.trim().toString())
+                bundle.putString(CUSTOMER_EMAIL,binding.edtCustEmail.text?.trim().toString())
                 findNavController().navigate(R.id.action_personalDetailsFragment_to_accountDetailsFragment)
             }
         }

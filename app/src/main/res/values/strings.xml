@@ -166,4 +166,27 @@
     <string name="ifsc_codee">IFSC Code:</string>
     <string name="previous">Previous</string>
 
+    // error messages
+    <string name="error_loan_id">Enter Loan Id</string>
+    <string name="error_beneficiary_name">Enter Beneficiary Name</string>
+    <string name="error_mobile_no">Enter Mobile Number</string>
+    <string name="error_mobile_validation">Enter Valid Mobile Number</string>
+    <string name="error_mail_id">Enter Email Id</string>
+    <string name="error_mail_validation">Enter Valid Email Id</string>
+
+    <string name="error_ifsc_code">Enter IFSC Code</string>
+    <string name="error_ifsc_code_validation">Enter Valid IFSC Code</string>
+    <string name="error_customer_bank">Enter Customer Bank</string>
+    <string name="error_bank_address">Enter Bank Address</string>
+    <string name="error_customer_account_number">Enter Customer Account Number</string>
+    <string name="error_customer_account_number_validation">Enter valid Customer Account Number</string>
+    <string name="error_account_type">Select Account Type</string>
+    <string name="error_category">Select Category</string>
+    <string name="error_frequency">Select Frequency</string>
+
+    <string name="error_ach_amount">Enter Ach Amount</string>
+    <string name="error_mandate_date">Enter Mandate Date</string>
+    <string name="error_start_date">Enter Start Date</string>
+    <string name="error_end_date">Enter End Date</string>
+    <string name="error_ref_no">Enter Reference Number</string>
 </resources>

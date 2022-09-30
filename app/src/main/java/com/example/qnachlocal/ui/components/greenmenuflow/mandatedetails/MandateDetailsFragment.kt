@@ -7,8 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
 import com.chola.app.data.local.SessionManager
-import com.example.qnachlocal.R
-import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.User
@@ -16,6 +15,7 @@ import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -35,6 +35,7 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
     private fun inIt() {
 
         binding.edtMandateDate.setOnClickListener {
+
 
             // on below line we are getting
             // the instance of our calendar.
@@ -142,33 +143,33 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
 
         binding.btnGen.setOnClickListener {
 
-            val loan_id = getArguments()?.getString("loan_id")
-            val benef_name = getArguments()?.getString("benef_name")
-            val cust_mob = getArguments()?.getString("cust_mob")
-            val cust_email = getArguments()?.getString("cust_email")
-            val ifsc_code = getArguments()?.getString("ifsc_code")
-            val cust_bank = getArguments()?.getString("cust_bank")
-            val cust_bank_add = getArguments()?.getString("bank_add")
-            val cust_acc_no = getArguments()?.getString("cust_acc_no")
-            val acc_type = getArguments()?.getString("acc_type")
-            val category = getArguments()?.getString("category")
-            val freq = getArguments()?.getString("freq")
-
+            val loan_id = getArguments()?.getString(LOAN_ID)
+            val benef_name = getArguments()?.getString(BENEFICIARY_NAME)
+            val cust_mob = getArguments()?.getString(CUSTOMER_MOBILE)
+            val cust_email = getArguments()?.getString(CUSTOMER_EMAIL)
+            val ifsc_code = getArguments()?.getString(IFSC_CODE)
+            val cust_bank = getArguments()?.getString(CUSTOMER_BANK)
+            val cust_bank_add = getArguments()?.getString(BANK_ADDRESS)
+            val cust_acc_no = getArguments()?.getString(CUSTOMER_ACC_NO)
+            val acc_type = getArguments()?.getString(ACCOUNT_TYPE)
+            val category = getArguments()?.getString(CATEGORY)
+            val freq = getArguments()?.getString(FREQUENCY)
 
             if (binding.edtAchAmount.text?.trim().toString() == "") {
-                binding.edtAchAmount.error = "Enter Ach Amount"
+                binding.edtAchAmount.error = getString(R.string.error_ach_amount)
             }
             else if (binding.edtMandateDate.text?.trim().toString() == "") {
-                binding.edtMandateDate.error = "Enter Mandate Date"
+                binding.edtMandateDate.error = getString(R.string.error_mandate_date)
             }
             else if (binding.edtStartDate.text?.trim().toString() == "") {
-                binding.edtStartDate.error = "Enter Start Date"
+                binding.edtStartDate.error = getString(R.string.error_start_date)
             }
             else if (binding.edtEndDate.text?.trim().toString() == "") {
-                binding.edtEndDate.error = "Enter End Date"
+                binding.edtEndDate.error = getString(R.string.error_end_date)
             }
+
             else if (binding.edtReferenceNo.text?.trim().toString() == "") {
-                binding.edtReferenceNo.error = "Enter Reference Number"
+                binding.edtReferenceNo.error = getString(R.string.error_ref_no)
 
             }else{
                 val loginRequest= User(loan_id,benef_name,
