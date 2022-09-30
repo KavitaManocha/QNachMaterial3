@@ -2,9 +2,11 @@ package com.example.qnachlocal.ui.components.greenmenuflow.mandatedetails
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
+import com.chola.app.data.local.SessionManager
 import com.example.qnachlocal.R
 import com.example.qnachlocal.SharedViewModel
 import com.example.qnachlocal.data.Resource
@@ -216,6 +218,11 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
             val view = layoutInflater.inflate(R.layout.dialog_pdf_generated,null)
 
             builder.setView(view)
+
+            val sessionManager = SessionManager(requireContext())
+            val pdf_url = sessionManager.getPdfDetails()?.pdf
+            var url = view.findViewById<TextView>(R.id.tv_link_to_pdf)
+            url.text = pdf_url
 
             val home= view.findViewById<AppCompatButton>(R.id.btn_home)
             home.setOnClickListener {

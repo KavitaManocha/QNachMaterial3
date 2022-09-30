@@ -3,6 +3,8 @@ package com.chola.app.data.local
 import android.content.Context
 import android.content.SharedPreferences
 import com.chola.app.data.dto.login.LoginResponse
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.local.SessionManager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -84,6 +86,39 @@ class SessionManager @Inject constructor(@ApplicationContext private val context
         return sharedPref.getBoolean("isFirst", false)
 
 
+    }
+
+    fun storePdfDetails(pdf: PDFResponse?){
+        val editor: SharedPreferences.Editor
+        val sharedPref: SharedPreferences = context.getSharedPreferences(
+            SessionManager.PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
+        if (pdf!=null){
+            authToken(pdf.pdf)
+        }
+        editor = sharedPref.edit()
+        val gson=Gson()
+        val json = gson.toJson(pdf)
+        editor.putString(SessionManager.PDF_, json)
+        editor.apply()
+    }
+
+    fun getPdfDetails():PDFResponse?{
+        try {
+            val sharedPref: SharedPreferences =
+                context.getSharedPreferences(SessionManager.PREFS_NAME, Context.MODE_PRIVATE)
+            val gson = Gson()
+            val json = sharedPref.getString(SessionManager.LOGIN_, "")
+
+            return gson.fromJson(json, PDFResponse::class.java)
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        } catch (e: JsonSyntaxException) {
+            e.printStackTrace()
+        }
+
+        return null
     }
 
     // Store Firebase Token

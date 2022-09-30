@@ -3,6 +3,7 @@ package com.example.qnachlocal.data.local
 import android.content.Context
 import android.content.SharedPreferences
 import com.chola.app.data.dto.login.LoginResponse
+import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -16,6 +17,7 @@ class SessionManager @Inject constructor(@ApplicationContext private val context
         const val LOGIN_ = "login_"
         const val FCM_TOKEN = "fcm_token"
         const val AUTH_TOKEN = "auth_token"
+        const val PDF_ = "pdf"
     }
 
 
@@ -30,6 +32,21 @@ class SessionManager @Inject constructor(@ApplicationContext private val context
         editor.apply()
     }
 
+    fun storePdfDetails(pdf:PDFResponse?){
+        val editor: SharedPreferences.Editor
+        val sharedPref: SharedPreferences = context.getSharedPreferences(
+            PREFS_NAME,
+            Context.MODE_PRIVATE
+        )
+        if (pdf!=null){
+            authToken(pdf.pdf)
+        }
+        editor = sharedPref.edit()
+        val gson=Gson()
+        val json = gson.toJson(pdf)
+        editor.putString(PDF_, json)
+        editor.apply()
+    }
 
     fun storeUserDetail(user: LoginResponse?) {
         val editor: SharedPreferences.Editor
