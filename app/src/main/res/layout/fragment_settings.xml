@@ -20,6 +20,7 @@
             android:background="@color/purple_200">
 
             <ImageView
+                android:id="@+id/iv_scan_qr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_qr_code_scanner_24"
