@@ -1,5 +1,7 @@
 package com.example.qnachlocal.ui.components.settings
 
+import android.app.SearchManager
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.example.qnachlocal.R
 import com.example.qnachlocal.data.local.SessionManager
 import com.example.qnachlocal.databinding.FragmentSettingsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,6 +78,13 @@ class SettingsFragment : Fragment() {
 
         })
 
+        // Code to open QR Code Scanner
+        binding.ivScanQr.setOnClickListener {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
+        }
+
 //        val recyclerview = root.findViewById<RecyclerView>(R.id.recyclerview_setting)
 //
 //        val data = ArrayList<ItemsViewModel>()
@@ -122,6 +132,24 @@ class SettingsFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(resultCode, data)
+        if (result != null) {
+            AlertDialog.Builder(requireContext())
+                .setMessage("Would you like to go to ${result.contents}?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                    val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                    intent.putExtra(SearchManager.QUERY,result.contents)
+                    startActivity(intent)
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->  })
+                .create()
+                .show()
+
+        }
     }
 
     override fun onDestroyView() {
