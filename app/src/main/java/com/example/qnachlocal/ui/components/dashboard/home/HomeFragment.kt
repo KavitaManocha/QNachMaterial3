@@ -1,7 +1,10 @@
 package com.example.qnachlocal.ui.components.dashboard.home
 
+import android.app.SearchManager
+import android.content.DialogInterface
 import android.content.Intent
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +14,7 @@ import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.databinding.FragmentHomeBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
+import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +33,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun inIt() {
+
+        binding.ivScanQr.setOnClickListener {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
+        }
+
             binding.rvGreenMenu.apply {
                 layoutManager = GridLayoutManager(activity,2)
                 var adaptter = CustomAdapterGreen()
@@ -81,5 +92,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun checkResponse(it: LoginResponse) {
         // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(resultCode, data)
+        if (result != null) {
+            AlertDialog.Builder(requireContext())
+                .setMessage("Would you like to go to ${result.contents}?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                    val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                    intent.putExtra(SearchManager.QUERY,result.contents)
+                    startActivity(intent)
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->  })
+                .create()
+                .show()
+
+        }
     }
 }

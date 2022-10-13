@@ -1,6 +1,10 @@
 package com.example.qnachlocal.ui.components.dashboard.dashboard
 
+import android.app.SearchManager
+import android.content.DialogInterface
+import android.content.Intent
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
@@ -12,6 +16,7 @@ import com.example.qnachlocal.databinding.FragmentHomeBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.ui.components.dashboard.home.HomeViewModel
 import com.example.qnachlocal.utils.observe
+import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,6 +45,30 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding,DashboardViewMod
             adapter = CustomAdapterBlue()
         }
 
+        binding.ivScanQr.apply {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this@DashboardFragment)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(resultCode, data)
+        if (result != null) {
+            AlertDialog.Builder(requireContext())
+                .setMessage("Would you like to go to ${result.contents}?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
+                    val intent = Intent(Intent.ACTION_WEB_SEARCH)
+                    intent.putExtra(SearchManager.QUERY,result.contents)
+                    startActivity(intent)
+                })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->  })
+                .create()
+                .show()
+
+        }
     }
 
     private fun observeViewModel() {
