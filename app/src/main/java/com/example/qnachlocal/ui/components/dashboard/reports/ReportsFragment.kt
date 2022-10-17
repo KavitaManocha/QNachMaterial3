@@ -20,10 +20,11 @@ import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>() {
+class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>(), SortingListener {
 
     override fun getViewModelClass() = ReportsViewModel::class.java
     override fun getViewBinding() = FragmentReportsBinding.inflate(layoutInflater)
+    private var callback: SortingListener? = null
     val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
     //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
     override fun setUpViews() {
@@ -40,6 +41,12 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
         binding.reportsRecyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = ReportsAdapter()
+        }
+
+        callback = this@ReportsFragment
+        binding.ivCalendar.setOnClickListener {
+            val sort = SortBottomDialogFragment(callback)
+            sort.show(childFragmentManager, "SortDialogFragment")
         }
 
 //        binding.btnLogin.setOnClickListener {
@@ -121,5 +128,9 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
             showAlertMessage(it.StatusDesc)
         }
         // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
+    }
+
+    override fun onSorting(startdate: String?, endDate: String?) {
+
     }
 }

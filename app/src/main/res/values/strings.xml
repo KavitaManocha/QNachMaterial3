@@ -189,4 +189,9 @@
     <string name="error_start_date">Enter Start Date</string>
     <string name="error_end_date">Enter End Date</string>
     <string name="error_ref_no">Enter Reference Number</string>
+
+    <string name="sort_today">Today</string>
+    <string name="sort_yesterday">Yesterday</string>
+    <string name="sort_seven_days">Last 7 Days</string>
+    <string name="last_30">Last 30 Days</string>
 </resources>
