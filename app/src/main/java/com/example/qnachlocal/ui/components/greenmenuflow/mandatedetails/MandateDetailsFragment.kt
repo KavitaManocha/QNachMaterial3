@@ -134,6 +134,7 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
             )
             // at last we are calling show
             // to display our date picker dialog.
+            datePickerDialog.datePicker.minDate = c.getTimeInMillis()
             datePickerDialog.show()
         }
 
