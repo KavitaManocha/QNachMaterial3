@@ -34,6 +34,10 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
 
     private fun inIt() {
 
+        val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
+
+        binding.edtMandateDate.setText(date_n)
+
         binding.edtMandateDate.setOnClickListener {
 
 
@@ -211,6 +215,12 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
             }
             else -> {}
         }
+    }
+
+    fun getCurrentDate(): String? {
+        val c = Calendar.getInstance()
+        val df = SimpleDateFormat("dd-MMM-yyyy")
+        return df.format(c.time)
     }
 
     private fun checkResponse(it: PDFResponse) {

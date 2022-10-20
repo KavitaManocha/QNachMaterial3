@@ -80,8 +80,7 @@
             android:clickable="false"
             android:cursorVisible="false"
             android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:text="@={viewModel.data.mandate_date}"/>
+            android:focusableInTouchMode="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
