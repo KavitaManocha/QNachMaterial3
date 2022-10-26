@@ -88,7 +88,7 @@ class AccountDetailsFragment : Fragment() {
             else if (binding.edtCustAccNo.text?.trim().toString() == ""){
                 binding.edtCustAccNo.error=getString(R.string.error_customer_account_number)
             }
-            else if (binding.edtCustAccNo.text?.trim().toString().length>18 || binding.edtCustAccNo.text?.trim().toString().length<18){
+            else if (binding.edtCustAccNo.text?.trim().toString().length>18 || binding.edtCustAccNo.text?.trim().toString().length<9){
                 binding.edtCustAccNo.error=getString(R.string.error_customer_account_number_validation)
             }
             else if (binding.spnAccType.text?.trim().toString() == ""){

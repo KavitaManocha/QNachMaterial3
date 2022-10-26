@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.chola.app.data.local.SessionManager
 import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
@@ -177,14 +178,18 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
                 binding.edtReferenceNo.error = getString(R.string.error_ref_no)
 
             }else{
-                val loginRequest= User(loan_id,benef_name,
-                    cust_mob.toString(),cust_email.toString(),
-                    ifsc_code,cust_bank,cust_bank_add,cust_acc_no,acc_type,
-                    category,freq,binding.edtAchAmount.text?.trim().toString(),
-                    binding.edtMandateDate.text?.trim().toString(),
-                    binding.edtStartDate.text?.trim().toString(),
-                    binding.edtEndDate.text?.trim().toString(),
-                    binding.edtReferenceNo.text?.trim().toString() )
+                val loginRequest= Usser(benef_name,cust_acc_no,"1","2",binding.edtAchAmount.text?.trim().toString(),"6","2",
+                cust_bank,loan_id,"2",cust_email,binding.edtEndDate.text?.trim().toString(),"",ifsc_code,"1",loan_id,binding.edtMandateDate.text?.trim().toString(),
+                "1",binding.edtAchAmount.text?.trim().toString(),cust_mob,"","2",binding.edtReferenceNo.text?.trim().toString(),
+                "","4",binding.edtStartDate.text?.trim().toString(),"1","440")
+                    //Usser(loan_id,benef_name,
+//                    cust_mob.toString(),cust_email.toString(),
+//                    ifsc_code,cust_bank,cust_bank_add,cust_acc_no,acc_type,
+//                    category,freq,binding.edtAchAmount.text?.trim().toString(),
+//                    binding.edtMandateDate.text?.trim().toString(),
+//                    binding.edtStartDate.text?.trim().toString(),
+//                    binding.edtEndDate.text?.trim().toString(),
+//                    binding.edtReferenceNo.text?.trim().toString() )
                 viewModel.genpdf(loginRequest)
                 /*   val bundle = Bundle()
                    bundle.putString(CONTACT_NO, userId)

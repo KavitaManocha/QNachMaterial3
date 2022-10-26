@@ -9,6 +9,7 @@ import com.chola.app.data.dto.mandate.MandateRequest
 import com.chola.app.data.dto.mandate.MandateResponse
 import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
+import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
@@ -42,7 +43,7 @@ interface UgroApiService {
 
     @POST("QNachApp/createNachPDF")
     suspend fun createPDF(
-        @Body user: User
+        @Body user: Usser
     ): Response<PDFResponse>
 
 }

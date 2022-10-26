@@ -9,6 +9,7 @@ import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
 import com.example.qnachlocal.data.DataRepository
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.ui.base.BaseViewModel
@@ -41,7 +42,7 @@ class SharedViewModel@Inject constructor(
 
     val data:MutableLiveData<User> = MutableLiveData()
 
-    fun genpdf(user: User) {
+    fun genpdf(user: Usser) {
         viewModelScope.launch {
             userLoginLiveDataPrivate.value = Resource.Loading()
             if (networkHelper.isNetworkConnected()) {

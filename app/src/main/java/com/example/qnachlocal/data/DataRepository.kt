@@ -35,7 +35,7 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
         return flow { emit(remoteRepository.doVerifyOtp(loginRequest)) }.flowOn(ioDispatcher)
     }
 
-    override suspend fun onGenPdf(user: User): Flow<Resource<PDFResponse>> {
+    override suspend fun onGenPdf(user: Usser): Flow<Resource<PDFResponse>> {
         return flow { emit(remoteRepository.doGeneratePdf(user)) }.flowOn(ioDispatcher)
     }
 

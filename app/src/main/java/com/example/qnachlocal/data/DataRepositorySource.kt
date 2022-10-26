@@ -23,5 +23,5 @@ interface DataRepositorySource {
 
     suspend fun onRemoteVerifyOtp(loginRequest:VerifyOtpRequest): Flow<Resource<ResetPasswordResponse>>
 
-    suspend fun onGenPdf(user: User): Flow<Resource<PDFResponse>>
+    suspend fun onGenPdf(user: Usser): Flow<Resource<PDFResponse>>
 }
