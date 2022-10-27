@@ -12,6 +12,7 @@ import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.REquestReport
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
@@ -30,5 +31,7 @@ suspend fun doForgotPassword(loginRequest:ForgotPasswordRequest): Resource<Reset
 suspend fun doVerifyOtp(loginRequest:VerifyOtpRequest): Resource<ResetPasswordResponse>
 
 suspend fun doGeneratePdf(user: Usser): Resource<PDFResponse>
+
+suspend fun doRequestReport(requestReport: REquestReport): Resource<PDFResponse>
 
 }

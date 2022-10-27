@@ -11,6 +11,8 @@ import com.example.qnachlocal.CustomAdapterGreen
 import com.example.qnachlocal.DashBoardActivity
 import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.REquestReport
 import com.example.qnachlocal.data.local.SessionManager
 import com.example.qnachlocal.databinding.FragmentLoginBinding
 import com.example.qnachlocal.databinding.FragmentReportsBinding
@@ -18,6 +20,8 @@ import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.ui.components.login.LoginViewModel
 import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>(), SortingListener {
@@ -37,6 +41,15 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
     }
 
     private fun inIt() {
+        val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
+
+        val sessionManager = SessionManager(requireContext())
+        val loginResponse = sessionManager.getUserDetail()
+
+        val rEquestReport = REquestReport(date_n, date_n)
+viewModel.loginUser(rEquestReport)
+
+
 
         binding.reportsRecyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
@@ -100,7 +113,7 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
         Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
     }
 
-    private fun onLoginResult(status: Resource<LoginResponse>) {
+    private fun onLoginResult(status: Resource<PDFResponse>) {
 //        binding.buttonLogin.startAnimation()
         when (status) {
             is Resource.Success -> status.data?.let {
@@ -115,17 +128,13 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
         }
     }
 
-    private fun checkResponse(it: LoginResponse) {
+    private fun checkResponse(it: PDFResponse) {
         if(it.StatusCode == "NP001"){
-            val sessionManager= SessionManager(requireContext())
-            sessionManager.storeUserDetail(it)
-            // println("===========${sessionManager.getUserDetail()}")
-            showAlertMessage(it.StatusDesc)
-            val intent= Intent(requireContext(), DashBoardActivity::class.java)
-            startActivity(intent)
-            requireActivity().finishAffinity()
+
+            showAlertMessage(it.StatusDesc.toString())
+
         }else{
-            showAlertMessage(it.StatusDesc)
+            showAlertMessage(it.StatusDesc.toString())
         }
         // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
     }

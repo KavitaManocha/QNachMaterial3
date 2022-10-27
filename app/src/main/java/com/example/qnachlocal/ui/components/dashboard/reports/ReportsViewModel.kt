@@ -8,6 +8,8 @@ import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
 import com.example.qnachlocal.data.DataRepository
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.REquestReport
 import com.example.qnachlocal.data.error.NO_INTERNET_CONNECTION
 import com.example.qnachlocal.ui.base.BaseViewModel
 import com.example.qnachlocal.utils.NetworkHelper
@@ -25,8 +27,8 @@ class ReportsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    val userLoginLiveDataPrivate = LiveEvent<Resource<LoginResponse>>()
-    val userLoginLiveData: LiveData<Resource<LoginResponse>> get() = userLoginLiveDataPrivate
+    val userLoginLiveDataPrivate = LiveEvent<Resource<PDFResponse>>()
+    val userLoginLiveData: LiveData<Resource<PDFResponse>> get() = userLoginLiveDataPrivate
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showSnackBarPrivate = MutableLiveData<SingleEvent<Any>>()
@@ -37,12 +39,12 @@ class ReportsViewModel @Inject constructor(
     val showToast: LiveData<SingleEvent<Any>> get() = showToastPrivate
 
 
-    fun loginUser(loginRequest: LoginRequest) {
+    fun loginUser(loginRequest: REquestReport) {
         viewModelScope.launch {
             userLoginLiveDataPrivate.value = Resource.Loading()
             if (networkHelper.isNetworkConnected()) {
                 wrapEspressoIdlingResource {
-                    dataRepository.doRemoteDecrypt(loginRequest).collect {
+                    dataRepository.onRequestReport(loginRequest).collect {
                         userLoginLiveDataPrivate.value = it
                     }
                 }

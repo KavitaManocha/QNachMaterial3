@@ -5,6 +5,7 @@ import com.chola.app.data.dto.login.LoginRequest
 import com.chola.app.data.dto.login.LoginResponse
 import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.REquestReport
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
@@ -37,6 +38,10 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
 
     override suspend fun onGenPdf(user: Usser): Flow<Resource<PDFResponse>> {
         return flow { emit(remoteRepository.doGeneratePdf(user)) }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun onRequestReport(requestReport: REquestReport): Flow<Resource<PDFResponse>> {
+        return flow { emit(remoteRepository.doRequestReport(requestReport)) }.flowOn(ioDispatcher)
     }
 
 }
