@@ -151,6 +151,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:hint="@string/first_collection_date"
                     android:text="@={viewModel.dataa.start_date}"/>
 
@@ -168,6 +172,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:hint="@string/final_collection_date"
                     android:text="@={viewModel.dataa.end_date}"/>
 

@@ -1,51 +1,41 @@
 package com.example.qnachlocal.ui.components.bluemenuflow.bankdetails
 
-//import android.content.Intent
-//import android.widget.Toast
-//import com.chola.app.data.dto.login.LoginResponse
-//import com.example.qnachlocal.DashBoardActivity
-//import com.example.qnachlocal.data.Resource
-//import com.example.qnachlocal.data.local.SessionManager
-//import com.example.qnachlocal.databinding.FragmentBankDetailsBinding
-//import com.example.qnachlocal.ui.base.BaseFragment
-//import com.example.qnachlocal.utils.observe
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.app.AlertDialog
 import android.widget.ArrayAdapter
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.fragment.findNavController
-import com.example.qnachlocal.BlueMenuViewModel
-import com.example.qnachlocal.R
+import com.chola.app.data.local.SessionManager
+import com.example.qnachlocal.*
+import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.Usser
+import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.databinding.FragmentBankDetailsBinding
-import com.example.qnachlocal.databinding.FragmentCustomerDetailsBinding
+import com.example.qnachlocal.ui.base.BaseFragment
+import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
-class BankDetailsFragment : Fragment(){
+class BankDetailsFragment : BaseFragment<FragmentBankDetailsBinding, SharedViewModel>() {
 
-    private lateinit var binding: FragmentBankDetailsBinding
-    private lateinit var viewModel: BlueMenuViewModel
+    override fun getViewModelClass() = SharedViewModel::class.java
+    override fun getViewBinding() = FragmentBankDetailsBinding.inflate(layoutInflater)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = activity?.run {
-            ViewModelProvider(this)[BlueMenuViewModel::class.java]
-        } ?: throw Exception("Invalid Activity")
+    override fun setUpViews() {
+        observeViewModel()
+        inIt()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentBankDetailsBinding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_bank_details, container, false
-        )
-        binding.viewModel = viewModel//attach your viewModel to xml
+    private fun observeViewModel() {
+        observe(viewModel.userLoginLiveData, ::onLoginResult)
+    }
+
+    private fun inIt() {
+
+        val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
 
         val frequency = resources.getStringArray(R.array.frequency)
         val arrayAdapter = ArrayAdapter(requireContext(),R.layout.dropdown_item,frequency)
@@ -59,7 +49,21 @@ class BankDetailsFragment : Fragment(){
         val arrayAdapterAccType = ArrayAdapter(requireContext(),R.layout.dropdown_item,bank)
         binding.spnSelectBank.setAdapter(arrayAdapterAccType)
 
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_bankDetailsFragment_to_customerDetailsFragment)
+        }
+
         binding.buttonMandate.setOnClickListener {
+
+            val loan_id = getArguments()?.getString(LOAN_ID)
+            val cust_mob = getArguments()?.getString(CUSTOMER_MOBILE)
+            val cust_email = getArguments()?.getString(CUSTOMER_EMAIL)
+            val ach_amt = getArguments()?.getString(ACH_AMT)
+            val first_coll_date = getArguments()?.getString(FIRST_COLLECTION_DATE)
+            val final_coll_date = getArguments()?.getString(FINAL_COLLECTION_DATE)
+            val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
+
             if (binding.edtAccHolderName.text?.trim().toString() ==""){
                 binding.edtAccHolderName.error="Enter Account Holder Name"
             }
@@ -82,108 +86,67 @@ class BankDetailsFragment : Fragment(){
                 binding.spnFrequency.error="Select Frequency"
             }
             else{
-                findNavController().navigate(R.id.action_bankDetailsFragment_to_customerDetailsFragment)
+                val loginRequest= Usser(binding.edtAccHolderName.text?.trim().toString(),binding.edtCustAccNo.text?.trim().toString(),"1","2",ach_amt,"6","2",
+                    binding.spnSelectBank.text?.trim().toString(),loan_id,"2",cust_email,final_coll_date,"","SBIN0002772","1",loan_id,date_n,
+                    "1",ach_amt,cust_mob,"","2","",
+                    "","4",first_coll_date,"1","440")
+                viewModel.genpdf(loginRequest)
             }
+
         }
 
-        return binding.root
     }
+
+    private fun showAlertMessage(s: String) {
+        Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
+    }
+
+    private fun onLoginResult(status: Resource<PDFResponse>) {
+//        binding.buttonLogin.startAnimation()
+        when (status) {
+            is Resource.Success -> status.data?.let {
+                checkResponse(it)
+//                binding.buttonLogin.revertAnimation()
+            }
+            is Resource.DataError -> {
+//                binding.buttonLogin.revertAnimation()
+                //status.errorCode?.let { viewModel.showToastMessage(it) }
+            }
+            else -> {}
+        }
+    }
+
+    private fun checkResponse(it: PDFResponse) {
+        if(it.StatusCode == "NP001"){
+
+            val builder= AlertDialog.Builder(requireContext(), androidx.constraintlayout.widget.R.style.AlertDialog_AppCompat).create()
+            val view = layoutInflater.inflate(R.layout.dialog_pdf_generated,null)
+
+            builder.setView(view)
+
+            val sessionManager = SessionManager(requireContext())
+            val pdf_url = sessionManager.getPdfDetails()?.pdf
+            var url = view.findViewById<TextView>(R.id.tv_link_to_pdf)
+            url.text = pdf_url
+
+            val home= view.findViewById<AppCompatButton>(R.id.btn_home)
+            home.setOnClickListener {
+
+            }
+
+            val download = view.findViewById<AppCompatButton>(R.id.btn_download)
+            download.setOnClickListener {
+
+            }
+
+            builder.setCanceledOnTouchOutside(false)
+            builder.show()
+        }
+        else{
+
+            showAlertMessage(it.StatusDesc.toString())
+        }
+        // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
+    }
+
 }
-//
-// BaseFragment<FragmentBankDetailsBinding, BankDetailsViewModel>() {
-//
-//    override fun getViewModelClass() = BankDetailsViewModel::class.java
-//    override fun getViewBinding() = FragmentBankDetailsBinding.inflate(layoutInflater)
-//    val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-//    override fun setUpViews() {
-//        observeViewModel()
-//        inIt()
-//    }
-//
-//    private fun observeViewModel() {
-//        observe(viewModel.userLoginLiveData, ::onLoginResult)
-//    }
-//
-//    private fun inIt() {
-//
-//        binding.buttonMandate.setOnClickListener {
-//            val acc_holder_name = binding.edtAccHolderName.text?.trim().toString()
-//            val cust_acc_no = binding.edtCustAccNo.text?.trim().toString()
-//            val confirm_account_no = binding.edtConfirmAccNo.text?.trim().toString()
-//            val select_bank = binding.spnSelectBank.text?.trim().toString()
-//            val category = binding.spnCategoryy.text?.trim().toString()
-//            val frequency = binding.spnFrequency.text?.trim().toString()
-//            if(acc_holder_name == ""){
-//                Toast.makeText(requireContext(),"Please Enter Account Holder Name", Toast.LENGTH_LONG).show()
-//            }
-//            else if(cust_acc_no==""){
-//                Toast.makeText(requireContext(),"Please Enter Customer Account Number", Toast.LENGTH_LONG).show()
-//            }
-//            else if (cust_acc_no.length< 9){
-//                Toast.makeText(requireContext(),"The Length of Customer Account Number must be of 6 digits", Toast.LENGTH_LONG).show()
-//            }
-//            else if (confirm_account_no == ""){
-//                Toast.makeText(requireContext(),"Confirm Customer Account Number", Toast.LENGTH_LONG).show()
-//            }
-//            else if(cust_acc_no != confirm_account_no){
-//                Toast.makeText(requireContext(),"Account Number Mismatch", Toast.LENGTH_LONG).show()
-//            }
-//            else if(select_bank==""){
-//                Toast.makeText(requireContext(),"Kindly Select a Bank", Toast.LENGTH_LONG).show()
-//            }
-//            else if(category==""){
-//                Toast.makeText(requireContext(),"Kindly Select Category", Toast.LENGTH_LONG).show()
-//            }
-//            else if(frequency==""){
-//                Toast.makeText(requireContext(),"Kindly Select Frequency", Toast.LENGTH_LONG).show()
-//            }
-//            else{
-////                val loginRequest= LoginRequest(userId,password)
-////                viewModel.loginUser(loginRequest)
-//                /*   val bundle = Bundle()
-//                   bundle.putString(CONTACT_NO, userId)
-//                   bundle.putString(AUTH_FLAG, "signIn")
-//                   findNavController().navigate(R.id.action_logIn_to_otp, bundle)*/
-////                findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
-//
-//            }
-//        }
-//
-//
-//    }
-//
-//    private fun showAlertMessage(s: String) {
-//        Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
-//    }
-//
-//    private fun onLoginResult(status: Resource<LoginResponse>) {
-////        binding.buttonLogin.startAnimation()
-//        when (status) {
-//            is Resource.Success -> status.data?.let {
-//                checkResponse(it)
-////                binding.buttonLogin.revertAnimation()
-//            }
-//            is Resource.DataError -> {
-////                binding.buttonLogin.revertAnimation()
-//                //status.errorCode?.let { viewModel.showToastMessage(it) }
-//            }
-//            else -> {}
-//        }
-//    }
-//
-//    private fun checkResponse(it: LoginResponse) {
-//        if(it.StatusCode == "NP001"){
-//            val sessionManager= SessionManager(requireContext())
-//            sessionManager.storeUserDetail(it)
-//            // println("===========${sessionManager.getUserDetail()}")
-//            showAlertMessage(it.StatusDesc)
-//            val intent= Intent(requireContext(), DashBoardActivity::class.java)
-//            startActivity(intent)
-//            requireActivity().finishAffinity()
-//        }else{
-//            showAlertMessage(it.StatusDesc)
-//        }
-//        // showAlertMessage(it.ciphertext + it.aesCipher_nonce + it.authTag)
-//    }
-//}

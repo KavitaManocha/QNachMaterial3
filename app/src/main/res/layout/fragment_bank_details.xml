@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -8,10 +9,9 @@
             type="com.example.qnachlocal.BlueMenuViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -83,6 +83,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:text="@={viewModel.dataa.cust_acc_no}"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -138,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            android:text="@={viewModel.dataa.category}"
+            android:text="@string/loan_installment_payment"
             android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,10 +156,11 @@
         <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/spn_frequency"
             android:layout_width="match_parent"
-            android:inputType="none"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.dataa.frequency}"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+            android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+            android:inputType="none"
+            android:text="@string/mnth" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout

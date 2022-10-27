@@ -9,9 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.qnachlocal.BlueMenuViewModel
-import com.example.qnachlocal.R
-import com.example.qnachlocal.SharedViewModel
+import com.example.qnachlocal.*
 import com.example.qnachlocal.databinding.FragmentCustomerDetailsBinding
 import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -140,6 +138,13 @@ class CustomerDetailsFragment : Fragment(){
                 binding.edtFinalCollDate.error="Select Final Collection Date"
             }
             else{
+                val bundle = Bundle()
+                bundle.putString(LOAN_ID,binding.edtCustomerId.text?.trim().toString())
+                bundle.putString(CUSTOMER_MOBILE,binding.edtMobileNumber.text?.trim().toString())
+                bundle.putString(CUSTOMER_EMAIL,binding.edtEmail.text?.trim().toString())
+                bundle.putString(ACH_AMT,binding.edtAchAmount.text?.trim().toString())
+                bundle.putString(FIRST_COLLECTION_DATE,binding.edtFirstCollDate.text?.trim().toString())
+                bundle.putString(FINAL_COLLECTION_DATE,binding.edtFinalCollDate.text?.trim().toString())
                 findNavController().navigate(R.id.action_customerDetailsFragment_to_bankDetailsFragment)
             }
         }
