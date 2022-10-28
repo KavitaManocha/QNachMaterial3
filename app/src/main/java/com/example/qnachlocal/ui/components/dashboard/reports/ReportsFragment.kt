@@ -46,7 +46,7 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
         val sessionManager = SessionManager(requireContext())
         val loginResponse = sessionManager.getUserDetail()
 
-        val rEquestReport = REquestReport(date_n, date_n)
+        val rEquestReport = REquestReport(loginResponse?.data!!.org_id,loginResponse?.data!!.user_id,date_n, date_n)
 viewModel.loginUser(rEquestReport)
 
 

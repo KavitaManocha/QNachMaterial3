@@ -1,0 +1,32 @@
+package com.example.qnachlocal.data
+
+data class Usser(
+    var account_hol_name: String?,
+    var account_no: String?,
+    var account_type: String?,
+    var amount_type: String?,
+    var collection_amt: String?,
+    var collection_frequency: String?,
+    var collection_type: String?,
+    var customer_bank: String?,
+    var customer_id: String?,
+    var debit_type: String?,
+    var email_id: String?,
+    var end_date: String?,
+    var id: String?,
+    var ifsc_code: String?,
+    var is_qr: String?,
+    var loan_no: String?,
+    var mandate_date: String?,
+    var mandate_type: String?,
+    var max_coll_amt: String?,
+    var mobile_no: String?,
+    var nach_id: String?,
+    var org_id: String?,
+    var reference_number: String?,
+    var sales_query_code: String?,
+    var sponsor_bank: String?,
+    var start_date: String?,
+    var until_cancel: String?,
+    var user_id: String?
+)
