@@ -50,8 +50,7 @@ class ServiceGenerator @Inject constructor(sessionManager: SessionManager) {
         val request = original.newBuilder()
             .header(contentType, contentTypeValue)
             .addHeader(deviceType, deviceTypeValue)
-            .addHeader(apiKey,"OGUyOTZhMDY3YTM3NTYzMzcwZGVkMDVmNWEzYmYz")
-            .addHeader(token,token)
+            .addHeader(apiKey,"DGUyOTZhMDY3YTM3NTYzMzcQaGVkMDVmNWEzYmmN")
             .method(original.method, original.body)
             .build()
 
