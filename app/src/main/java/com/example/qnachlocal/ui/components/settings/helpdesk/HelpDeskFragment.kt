@@ -27,6 +27,10 @@ class HelpDeskFragment : Fragment() {
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("HelpDesk")
 //        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+
+        binding.toolbar.getChildAt(0).setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
         return binding.root
 
     }

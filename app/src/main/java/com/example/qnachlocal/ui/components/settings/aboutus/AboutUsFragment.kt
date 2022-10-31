@@ -10,6 +10,8 @@ import com.example.qnachlocal.R
 import com.example.qnachlocal.databinding.FragmentAboutUsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.reflect.jvm.internal.impl.builtins.StandardNames.FqNames.number
+
 
 @AndroidEntryPoint
 class AboutUsFragment : Fragment() {
@@ -27,6 +29,10 @@ class AboutUsFragment : Fragment() {
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("About Us")
 //        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
+
+        binding.toolbar.getChildAt(0).setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
         return binding.root
 
