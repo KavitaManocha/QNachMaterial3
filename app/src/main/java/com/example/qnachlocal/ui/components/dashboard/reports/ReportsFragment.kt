@@ -13,6 +13,7 @@ import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 import com.example.qnachlocal.data.local.SessionManager
 import com.example.qnachlocal.databinding.FragmentLoginBinding
 import com.example.qnachlocal.databinding.FragmentReportsBinding
@@ -22,6 +23,7 @@ import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>(), SortingListener {
@@ -30,6 +32,10 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
     override fun getViewBinding() = FragmentReportsBinding.inflate(layoutInflater)
     private var callback: SortingListener? = null
     val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
+
+    var listItems: ArrayList<ReportResponse>? = ArrayList()
+
+
     //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
     override fun setUpViews() {
         observeViewModel()
@@ -53,7 +59,7 @@ viewModel.loginUser(rEquestReport)
 
         binding.reportsRecyclerview.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ReportsAdapter()
+            adapter = ReportsAdapter(listItems!!)
         }
 
         callback = this@ReportsFragment
@@ -113,7 +119,7 @@ viewModel.loginUser(rEquestReport)
         Toast.makeText(requireContext(), s, Toast.LENGTH_LONG).show()
     }
 
-    private fun onLoginResult(status: Resource<PDFResponse>) {
+    private fun onLoginResult(status: Resource<ReportResponse>) {
 //        binding.buttonLogin.startAnimation()
         when (status) {
             is Resource.Success -> status.data?.let {
@@ -128,7 +134,7 @@ viewModel.loginUser(rEquestReport)
         }
     }
 
-    private fun checkResponse(it: PDFResponse) {
+    private fun checkResponse(it: ReportResponse) {
         if(it.StatusCode == "NP001"){
 
             showAlertMessage(it.StatusDesc.toString())

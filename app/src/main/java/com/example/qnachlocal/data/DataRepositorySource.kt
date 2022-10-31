@@ -6,6 +6,7 @@ import com.chola.app.data.dto.reset.ResetPasswordRequest
 import com.chola.app.data.dto.reset.ResetPasswordResponse
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
@@ -26,5 +27,5 @@ interface DataRepositorySource {
 
     suspend fun onGenPdf(user: Usser): Flow<Resource<PDFResponse>>
 
-    suspend fun onRequestReport(requestReport: REquestReport): Flow<Resource<PDFResponse>>
+    suspend fun onRequestReport(requestReport: REquestReport): Flow<Resource<ReportResponse>>
 }

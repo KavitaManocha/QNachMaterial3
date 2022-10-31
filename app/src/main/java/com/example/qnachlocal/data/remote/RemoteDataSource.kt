@@ -13,6 +13,7 @@ import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
@@ -32,6 +33,6 @@ suspend fun doVerifyOtp(loginRequest:VerifyOtpRequest): Resource<ResetPasswordRe
 
 suspend fun doGeneratePdf(user: Usser): Resource<PDFResponse>
 
-suspend fun doRequestReport(requestReport: REquestReport): Resource<PDFResponse>
+suspend fun doRequestReport(requestReport: REquestReport): Resource<ReportResponse>
 
 }

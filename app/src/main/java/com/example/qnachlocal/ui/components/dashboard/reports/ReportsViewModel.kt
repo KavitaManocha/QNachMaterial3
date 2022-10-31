@@ -10,6 +10,7 @@ import com.example.qnachlocal.data.DataRepository
 import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 import com.example.qnachlocal.data.error.NO_INTERNET_CONNECTION
 import com.example.qnachlocal.ui.base.BaseViewModel
 import com.example.qnachlocal.utils.NetworkHelper
@@ -27,8 +28,8 @@ class ReportsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    val userLoginLiveDataPrivate = LiveEvent<Resource<PDFResponse>>()
-    val userLoginLiveData: LiveData<Resource<PDFResponse>> get() = userLoginLiveDataPrivate
+    val userLoginLiveDataPrivate = LiveEvent<Resource<ReportResponse>>()
+    val userLoginLiveData: LiveData<Resource<ReportResponse>> get() = userLoginLiveDataPrivate
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     private val showSnackBarPrivate = MutableLiveData<SingleEvent<Any>>()

@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qnachlocal.CustomAdapterGreen
 import com.example.qnachlocal.R
+import com.example.qnachlocal.data.data.dto.PDFResponse
+import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 
-class ReportsAdapter : RecyclerView.Adapter<ReportsAdapter.ViewHolder>() {
+class ReportsAdapter(var listItems: ArrayList<ReportResponse>) : RecyclerView.Adapter<ReportsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_pdf_report, parent, false)
@@ -21,7 +24,7 @@ class ReportsAdapter : RecyclerView.Adapter<ReportsAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return listItems.size
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {

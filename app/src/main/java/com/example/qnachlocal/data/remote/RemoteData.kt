@@ -13,6 +13,7 @@ import com.example.qnachlocal.data.Resource
 import com.example.qnachlocal.data.Usser
 import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.data.data.dto.REquestReport
+import com.example.qnachlocal.data.data.dto.ReportResponse
 import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.data.data.dto.forgotpassword.ForgotPasswordRequest
 import com.example.qnachlocal.data.data.dto.verifyotp.VerifyOtpRequest
@@ -101,11 +102,11 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
-    override suspend fun doRequestReport(requestReport: REquestReport): Resource<PDFResponse> {
+    override suspend fun doRequestReport(requestReport: REquestReport): Resource<ReportResponse> {
         val decryptData = serviceGenerator.createService(UgroApiService::class.java)
         val response = decryptData.viewReport(requestReport)
         return when (val response1 = processCall(response)) {
-            is PDFResponse -> {
+            is ReportResponse -> {
                 Resource.Success(data = response1)
             }
             else -> {
