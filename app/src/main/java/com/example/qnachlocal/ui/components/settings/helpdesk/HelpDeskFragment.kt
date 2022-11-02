@@ -2,6 +2,7 @@ package com.example.qnachlocal.ui.components.settings.helpdesk
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +26,12 @@ class HelpDeskFragment : Fragment() {
     ): View? {
         _binding = FragmentHelpdeskBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("HelpDesk")
-//        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
 
-        binding.toolbar.getChildAt(0).setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
+//        binding.toolbar.getChildAt(0).setOnClickListener {
+//            fragmentManager?.popBackStack()
+//        }
         return binding.root
 
     }

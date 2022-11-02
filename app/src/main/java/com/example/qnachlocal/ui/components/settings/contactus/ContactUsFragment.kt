@@ -25,11 +25,11 @@ class ContactUsFragment : Fragment() {
     ): View? {
         _binding = FragmentContactUsBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Contact Us")
-//        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
-        binding.toolbar.getChildAt(0).setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
+//        binding.toolbar.getChildAt(0).setOnClickListener {
+//            fragmentManager?.popBackStack()
+//        }
 
         return binding.root
 

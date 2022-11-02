@@ -26,12 +26,13 @@ class MyAccountFragment : Fragment() {
     ): View? {
         _binding = FragmentMyAccountBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("My Account")
-//        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar!!.setDisplayHomeAsUpEnabled(false)
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility = View.GONE
 
-        binding.toolbar.getChildAt(0).setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
+
+//        binding.toolbar.getChildAt(0).setOnClickListener {
+//            fragmentManager?.popBackStack()
+//        }
 
         val sessionManager = SessionManager(requireContext())
 //        val loginResponse= sessionManager.getUserDetail()?.data
