@@ -79,11 +79,11 @@ class SettingsFragment : Fragment() {
         })
 
         // Code to open QR Code Scanner
-        binding.ivScanQr.setOnClickListener {
-            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
-            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
-            intentIntegrator.initiateScan()
-        }
+//        binding.ivScanQr.setOnClickListener {
+//            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
+//            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+//            intentIntegrator.initiateScan()
+//        }
 
 //        val recyclerview = root.findViewById<RecyclerView>(R.id.recyclerview_setting)
 //

@@ -34,11 +34,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun inIt() {
 
-        binding.ivScanQr.setOnClickListener {
-            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
-            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
-            intentIntegrator.initiateScan()
-        }
 
             binding.rvGreenMenu.apply {
                 layoutManager = GridLayoutManager(activity,2)

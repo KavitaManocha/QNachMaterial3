@@ -45,11 +45,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding,DashboardViewMod
             adapter = CustomAdapterBlue()
         }
 
-        binding.ivScanQr.setOnClickListener {
-            val intentIntegrator = IntentIntegrator.forSupportFragment(this@DashboardFragment)//IntentIntegrator(requireActivity())
-            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
-            intentIntegrator.initiateScan()
-        }
+//        binding.ivScanQr.setOnClickListener {
+//            val intentIntegrator = IntentIntegrator.forSupportFragment(this@DashboardFragment)//IntentIntegrator(requireActivity())
+//            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+//            intentIntegrator.initiateScan()
+//        }
 
     }
 
