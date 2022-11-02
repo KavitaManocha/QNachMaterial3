@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
 import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.RecyclerviewItem
 import com.example.qnachlocal.databinding.FragmentHomeBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
@@ -23,6 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
     private var adapterr: RecyclerView.Adapter<CustomAdapterBlue.ViewHolder>? = null
+    private lateinit var menuu: ArrayList<RecyclerviewItem>
 
     override fun getViewModelClass() = HomeViewModel::class.java
     override fun getViewBinding() = FragmentHomeBinding.inflate(layoutInflater)
@@ -34,18 +36,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun inIt() {
 
-
+          menuu= ArrayList()
+        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_generate_pdf_green,"Generate PDF",R.drawable.ic_qnach_rightarrow_green))
+        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_scannach_mandate,"Scan Nach Mandate",R.drawable.ic_qnach_rightarrow_green))
+//        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_green))
+//        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_scannach_mandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_green))
             binding.rvGreenMenu.apply {
                 layoutManager = GridLayoutManager(activity,2)
-                var adaptter = CustomAdapterGreen()
+                var adaptter = CustomAdapterGreen(menuu)
                 adapter = adaptter
-                adaptter.setOnItemClickListener(object : CustomAdapterGreen.onItemClickListener{
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(requireContext(), GreenMenuActivity::class.java)
-                        startActivity(intent)
-                        requireActivity().finishAffinity()
-                    }
-                })
+//                adaptter.setOnItemClickListener(object : CustomAdapterGreen.onItemClickListener{
+//                    override fun onItemClick(position: Int) {
+//                        val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+//                        startActivity(intent)
+//                        requireActivity().finishAffinity()
+//                    }
+//                })
             }
 
         binding.rvBlueMenu.apply {

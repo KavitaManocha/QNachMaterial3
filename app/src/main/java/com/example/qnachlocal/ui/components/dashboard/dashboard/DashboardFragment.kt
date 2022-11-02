@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
 import com.example.qnachlocal.CustomAdapterBlue
 import com.example.qnachlocal.CustomAdapterGreen
+import com.example.qnachlocal.R
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.RecyclerviewItem
 import com.example.qnachlocal.databinding.FragmentDashboardBinding
 import com.example.qnachlocal.databinding.FragmentHomeBinding
 import com.example.qnachlocal.ui.base.BaseFragment
@@ -20,11 +22,12 @@ import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment : BaseFragment<FragmentDashboardBinding,DashboardViewModel>() {
+class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewModel>() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
     private var adapterr: RecyclerView.Adapter<CustomAdapterBlue.ViewHolder>? = null
+    private lateinit var menuu: ArrayList<RecyclerviewItem>
 
     override fun getViewModelClass() = DashboardViewModel::class.java
     override fun getViewBinding() = FragmentDashboardBinding.inflate(layoutInflater)
@@ -35,9 +38,42 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding,DashboardViewMod
     }
 
     private fun inIt() {
+
+        menuu = ArrayList()
+        menuu.add(
+            RecyclerviewItem(
+                R.color.light_green,
+                R.drawable.ic_qnach_generate_pdf_green, "Generate PDF",
+                R.drawable.ic_qnach_rightarrow_green
+            )
+        )
+        menuu.add(
+            RecyclerviewItem(
+                R.color.light_green,
+                R.drawable.ic_qnach_scannach_mandate, "Scan Nach Mandate",
+                R.drawable.ic_qnach_rightarrow_green
+            )
+        )
+//        menuu.add(
+//            RecyclerviewItem(
+//                R.color.light_blue,
+//                R.drawable.ic_qnach_generate_link,
+//                "Generate Link For eMandate",
+//                R.drawable.ic_qnach_rightarrow_3
+//            )
+//        )
+//        menuu.add(
+//            RecyclerviewItem(
+//                R.color.light_blue,
+//                R.drawable.ic_qnach_scannach_mandate,
+//                "Register eMandate",
+//                R.drawable.ic_qnach_rightarrow_3
+//            )
+//        )
+
         binding.dashboardRecyclerview.apply {
-            layoutManager = GridLayoutManager(activity,2)
-            adapter = CustomAdapterGreen()
+            layoutManager = GridLayoutManager(activity, 2)
+            adapter = CustomAdapterGreen(menuu)
         }
 
         binding.dashboardRecyclerviewBlue.apply {
@@ -61,10 +97,10 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding,DashboardViewMod
                 .setMessage("Would you like to go to ${result.contents}?")
                 .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                     val intent = Intent(Intent.ACTION_WEB_SEARCH)
-                    intent.putExtra(SearchManager.QUERY,result.contents)
+                    intent.putExtra(SearchManager.QUERY, result.contents)
                     startActivity(intent)
                 })
-                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->  })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i -> })
                 .create()
                 .show()
 
