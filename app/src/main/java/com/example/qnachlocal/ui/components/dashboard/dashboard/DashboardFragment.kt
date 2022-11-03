@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
@@ -39,6 +40,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
     }
 
     private fun inIt() {
+
+        if((activity as AppCompatActivity).supportActionBar != null){
+            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Dashboard Fragment")
+            (activity as AppCompatActivity).supportActionBar!!.show()
+        }
 
         menuu = ArrayList()
         menuu.add(

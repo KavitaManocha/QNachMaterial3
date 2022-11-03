@@ -2,6 +2,7 @@ package com.example.qnachlocal.ui.components.dashboard.reports
 
 import android.content.Intent
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +48,10 @@ class ReportsFragment : BaseFragment<FragmentReportsBinding, ReportsViewModel>()
     }
 
     private fun inIt() {
+
+        if((activity as AppCompatActivity).supportActionBar != null){
+        (activity as AppCompatActivity).supportActionBar!!.hide()}
+
         val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
 
         val sessionManager = SessionManager(requireContext())

@@ -27,6 +27,8 @@ class DashBoardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         navView = binding.navView
 
 

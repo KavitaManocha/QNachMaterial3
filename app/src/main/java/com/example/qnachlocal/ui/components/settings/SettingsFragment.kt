@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -48,6 +49,11 @@ class SettingsFragment : Fragment() {
         requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility=View.VISIBLE
 
         mList?.clear()
+
+        if((activity as AppCompatActivity).supportActionBar != null){
+            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Settings")
+            (activity as AppCompatActivity).supportActionBar!!.show()
+        }
 
         lManager = LinearLayoutManager(requireContext())
         binding.recyclerviewSetting.layoutManager = lManager
