@@ -9,10 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chola.app.data.dto.login.LoginResponse
-import com.example.qnachlocal.CustomAdapterBlue
-import com.example.qnachlocal.CustomAdapterGreen
-import com.example.qnachlocal.R
+import com.example.qnachlocal.*
 import com.example.qnachlocal.data.Resource
+import com.example.qnachlocal.data.data.dto.DashboardItem
 import com.example.qnachlocal.data.data.dto.RecyclerviewItem
 import com.example.qnachlocal.databinding.FragmentDashboardBinding
 import com.example.qnachlocal.databinding.FragmentHomeBinding
@@ -28,8 +27,8 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
     private var adapterr: RecyclerView.Adapter<CustomAdapterBlue.ViewHolder>? = null
-    private lateinit var menuu: ArrayList<RecyclerviewItem>
-    private lateinit var menuBlue: ArrayList<RecyclerviewItem>
+    private lateinit var menuu: ArrayList<DashboardItem>
+    private lateinit var menuBlue: ArrayList<DashboardItem>
 
     override fun getViewModelClass() = DashboardViewModel::class.java
     override fun getViewBinding() = FragmentDashboardBinding.inflate(layoutInflater)
@@ -48,16 +47,16 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
 
         menuu = ArrayList()
         menuu.add(
-            RecyclerviewItem(
+            DashboardItem(
                 R.color.light_green,
-                R.drawable.ic_qnach_generate_pdf_green, "Generate PDF",
+                "0", getString(R.string.nach_pdf_gend),
                 R.drawable.ic_qnach_rightarrow_green
             )
         )
         menuu.add(
-            RecyclerviewItem(
+            DashboardItem(
                 R.color.light_green,
-                R.drawable.ic_qnach_scannach_mandate, "Scan Nach Mandate",
+                "0", getString(R.string.phy_nach_scanned),
                 R.drawable.ic_qnach_rightarrow_green
             )
         )
@@ -80,16 +79,16 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
 
         binding.dashboardRecyclerview.apply {
             layoutManager = GridLayoutManager(activity, 2)
-            adapter = CustomAdapterGreen(menuu)
+            adapter = DashboardAdapterGreen(menuu)
         }
 
         menuBlue= ArrayList()
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_3))
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(DashboardItem(R.color.light_blue,"0",getString(R.string.emandates_pending),R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(DashboardItem(R.color.light_blue,"0",getString(R.string.emandates_completed),R.drawable.ic_qnach_rightarrow_3))
 
         binding.dashboardRecyclerviewBlue.apply {
             layoutManager = GridLayoutManager(activity,2)
-            adapter = CustomAdapterBlue(menuBlue)
+            adapter = DashboardAdapterBlue(menuBlue)
         }
 
         binding.ivScanQr.setOnClickListener {

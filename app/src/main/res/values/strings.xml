@@ -204,4 +204,8 @@
     <string name="emandate">eMandate</string>
     <string name="scan">Scan</string>
     <string name="e_Mandate">E-Mandate</string>
+    <string name="nach_pdf_gend">Nach PDF \n Generated</string>
+    <string name="phy_nach_scanned">Physical NACH \n Scanned</string>
+    <string name="emandates_pending">eMandates \n Pending</string>
+    <string name="emandates_completed">eMandates \n Completed</string>
 </resources>
