@@ -43,8 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
 
           menuu= ArrayList()
-        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_generate_pdf_green,"Generate PDF",R.drawable.ic_qnach_rightarrow_green))
-        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_scannach_mandate,"Scan Nach Mandate",R.drawable.ic_qnach_rightarrow_green))
+        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_generate_pdf_green,getString(R.string.generate_pdf),R.drawable.ic_qnach_rightarrow_green))
+        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_scannach_mandate,getString(R.string.scan_nach_mandate),R.drawable.ic_qnach_rightarrow_green))
 //        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_green))
 //        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_scannach_mandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_green))
             binding.rvGreenMenu.apply {
@@ -59,8 +59,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             }
 
         menuBlue= ArrayList()
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_3))
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate),R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate),R.drawable.ic_qnach_rightarrow_3))
         binding.rvBlueMenu.apply {
             layoutManager = GridLayoutManager(activity,2)
             var blueAdapter = CustomAdapterBlue(menuBlue)

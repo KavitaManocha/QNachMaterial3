@@ -28,14 +28,6 @@
     <string name="hello">Hello</string>
     <string name="nupayDemo">Nupay Demo</string>
     <string name="welcome_to_qnach_mandate">Welcome to qNach Mandate</string>
-    <string name="generate">Generate</string>
-    <string name="pdf">PDF</string>
-    <string name="scan_nach">Scan Nach</string>
-    <string name="mandate">Mandate</string>
-    <string name="generate_link">Generate Link</string>
-    <string name="for_emandate">For eMandate</string>
-    <string name="register">Register</string>
-    <string name="emandate">eMandate</string>
     <string name="home">Home</string>
     <string name="dashboard">Dashboard</string>
     <string name="report">Reports</string>
@@ -148,8 +140,6 @@
     <string name="loan_installment_payment">Loan Installment Payment</string>
     <string name="mnth">MNTH</string>
     <string name="qnach">qNach</string>
-    <string name="scan">Scan</string>
-    <string name="e_Mandate">E-Mandate</string>
     <string name="enter_loan_id">Enter Loan Id</string>
     <string name="enter_benef_name">Enter Beneficiary Name</string>
     <string name="enter_valid_mobile_number">Enter Valid Mobile Number</string>
@@ -198,5 +188,9 @@
     <string name="sb">SB</string>
     <string name="dialogTitle">Alert</string>
     <string name="message">Are you sure you want to leave this process?</string>
-    
+
+    <string name="generate_pdf">Generate \n PDF</string>
+    <string name="scan_nach_mandate">Scan Nach \n Mandate</string>
+    <string name="gen_link_for_emandate">Generate Link \n for eMandate</string>
+    <string name="reg_emandate">Register \n eMandate</string>
 </resources>
