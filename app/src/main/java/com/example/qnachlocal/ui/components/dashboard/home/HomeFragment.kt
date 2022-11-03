@@ -25,6 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
     private var adapterr: RecyclerView.Adapter<CustomAdapterBlue.ViewHolder>? = null
     private lateinit var menuu: ArrayList<RecyclerviewItem>
+    private lateinit var menuBlue: ArrayList<RecyclerviewItem>
 
     override fun getViewModelClass() = HomeViewModel::class.java
     override fun getViewBinding() = FragmentHomeBinding.inflate(layoutInflater)
@@ -45,27 +46,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 layoutManager = GridLayoutManager(activity,2)
                 var adaptter = CustomAdapterGreen(menuu)
                 adapter = adaptter
-//                adaptter.setOnItemClickListener(object : CustomAdapterGreen.onItemClickListener{
-//                    override fun onItemClick(position: Int) {
-//                        val intent = Intent(requireContext(), GreenMenuActivity::class.java)
-//                        startActivity(intent)
-//                        requireActivity().finishAffinity()
-//                    }
-//                })
+                adaptter.onItemClick = {
+                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finishAffinity()
+                }
             }
 
+        menuBlue= ArrayList()
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_3))
         binding.rvBlueMenu.apply {
             layoutManager = GridLayoutManager(activity,2)
-            var blueAdapter = CustomAdapterBlue()
+            var blueAdapter = CustomAdapterBlue(menuBlue)
             adapter = blueAdapter
-            blueAdapter.setOnItemClickListener(object :CustomAdapterBlue.onItemClickListener{
-                override fun onItemClick(position: Int) {
-                    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().finishAffinity()
-                }
-
-            })
+blueAdapter.onItemClick = {
+    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+    startActivity(intent)
+    requireActivity().finishAffinity()
+}
         }
 
     }

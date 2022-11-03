@@ -28,6 +28,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
     private var adapterr: RecyclerView.Adapter<CustomAdapterBlue.ViewHolder>? = null
     private lateinit var menuu: ArrayList<RecyclerviewItem>
+    private lateinit var menuBlue: ArrayList<RecyclerviewItem>
 
     override fun getViewModelClass() = DashboardViewModel::class.java
     override fun getViewBinding() = FragmentDashboardBinding.inflate(layoutInflater)
@@ -76,9 +77,13 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
             adapter = CustomAdapterGreen(menuu)
         }
 
+        menuBlue= ArrayList()
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_3))
+        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_3))
+
         binding.dashboardRecyclerviewBlue.apply {
             layoutManager = GridLayoutManager(activity,2)
-            adapter = CustomAdapterBlue()
+            adapter = CustomAdapterBlue(menuBlue)
         }
 
 //        binding.ivScanQr.setOnClickListener {

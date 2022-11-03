@@ -13,6 +13,8 @@ import com.example.qnachlocal.data.data.dto.RecyclerviewItem
 
 class CustomAdapterGreen(private var menuItems: ArrayList<RecyclerviewItem>): RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>(){
 
+    var onItemClick:((RecyclerviewItem) -> Unit)?= null
+
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         var backgroundd: CardView= itemView.findViewById(R.id.cv_green)
         var icon: ImageView = itemView.findViewById(R.id.iv_icon)
@@ -32,6 +34,10 @@ var menu = menuItems[position]
         holder.icon.setImageResource(menu.desc_image)
         holder.task.setText(menu.task)
         holder.proceed.setImageResource(menu.forward_image)
+
+        holder.backgroundd.setOnClickListener {
+onItemClick?.invoke(menu)
+        }
     }
 
     override fun getItemCount(): Int {
