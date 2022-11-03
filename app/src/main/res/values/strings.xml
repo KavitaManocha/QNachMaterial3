@@ -193,4 +193,15 @@
     <string name="scan_nach_mandate">Scan Nach \n Mandate</string>
     <string name="gen_link_for_emandate">Generate Link \n for eMandate</string>
     <string name="reg_emandate">Register \n eMandate</string>
+
+    <string name="generate">Generate</string>
+    <string name="pdf">PDF</string>
+    <string name="scan_nach">Scan Nach</string>
+    <string name="mandate">Mandate</string>
+    <string name="generate_link">Generate Link</string>
+    <string name="for_emandate">For eMandate</string>
+    <string name="register">Register</string>
+    <string name="emandate">eMandate</string>
+    <string name="scan">Scan</string>
+    <string name="e_Mandate">E-Mandate</string>
 </resources>

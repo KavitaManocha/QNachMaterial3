@@ -38,8 +38,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun inIt() {
         if((activity as AppCompatActivity).supportActionBar != null){
-            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Home Fragment")
-            (activity as AppCompatActivity).supportActionBar!!.show()
+            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("qNach")
+            (activity as AppCompatActivity).supportActionBar!!.hide()
+        }
+
+        binding.ivScanQr.setOnClickListener {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this@HomeFragment)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
         }
 
           menuu= ArrayList()

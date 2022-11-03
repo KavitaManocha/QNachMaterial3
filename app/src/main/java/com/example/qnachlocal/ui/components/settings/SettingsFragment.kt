@@ -52,7 +52,7 @@ class SettingsFragment : Fragment() {
 
         if((activity as AppCompatActivity).supportActionBar != null){
             (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Settings")
-            (activity as AppCompatActivity).supportActionBar!!.show()
+            (activity as AppCompatActivity).supportActionBar!!.hide()
         }
 
         lManager = LinearLayoutManager(requireContext())
@@ -84,12 +84,12 @@ class SettingsFragment : Fragment() {
 
         })
 
-        // Code to open QR Code Scanner
-//        binding.ivScanQr.setOnClickListener {
-//            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
-//            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
-//            intentIntegrator.initiateScan()
-//        }
+//         Code to open QR Code Scanner
+        binding.ivScanQr.setOnClickListener {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
+        }
 
 //        val recyclerview = root.findViewById<RecyclerView>(R.id.recyclerview_setting)
 //

@@ -42,8 +42,8 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
     private fun inIt() {
 
         if((activity as AppCompatActivity).supportActionBar != null){
-            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Dashboard Fragment")
-            (activity as AppCompatActivity).supportActionBar!!.show()
+            (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("Dashboard")
+            (activity as AppCompatActivity).supportActionBar!!.hide()
         }
 
         menuu = ArrayList()
@@ -92,11 +92,11 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, DashboardViewMo
             adapter = CustomAdapterBlue(menuBlue)
         }
 
-//        binding.ivScanQr.setOnClickListener {
-//            val intentIntegrator = IntentIntegrator.forSupportFragment(this@DashboardFragment)//IntentIntegrator(requireActivity())
-//            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
-//            intentIntegrator.initiateScan()
-//        }
+        binding.ivScanQr.setOnClickListener {
+            val intentIntegrator = IntentIntegrator.forSupportFragment(this@DashboardFragment)//IntentIntegrator(requireActivity())
+            intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
+            intentIntegrator.initiateScan()
+        }
 
     }
 
