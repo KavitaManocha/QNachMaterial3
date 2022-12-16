@@ -180,12 +180,12 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
             }else{
                 val loginRequest= Usser(
                     benef_name.toString(),
-                    "123456780",
-                    "1",
+                    cust_acc_no,
+                    "1",// acc type drawer id
                     "2",
                     binding.edtAchAmount.text?.trim().toString(),
-                    "6",
-                    "2",
+                    "6",  // freq type id value
+                    "2",  //1 for fixed, 2 for var
                     cust_bank,
                     loan_id,
                     "2",

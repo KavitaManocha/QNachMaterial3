@@ -136,6 +136,7 @@ dependencies {
 
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation project(':wizard_forms')
+    implementation project(':loading-button-android')
 
     implementation"androidx.activity:activity-compose:1.6.0"
 

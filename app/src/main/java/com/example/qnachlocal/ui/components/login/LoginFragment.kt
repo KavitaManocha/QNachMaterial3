@@ -21,7 +21,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     override fun getViewModelClass() = LoginViewModel::class.java
     override fun getViewBinding() = FragmentLoginBinding.inflate(layoutInflater)
     val regex = "^[A-Z]{5}[-][A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
-    //val regex1 = "^[A-Z]{2}[-][0-9]{2}[-][0-9]{7}\$".toRegex()
+
     override fun setUpViews() {
         observeViewModel()
         inIt()
@@ -33,12 +33,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     private fun inIt() {
 
-        binding.tvForgotUrPswd.setOnClickListener {
+        binding.tvForgotPassword.setOnClickListener {
 findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
         binding.btnLogin.setOnClickListener {
-            val userId = binding.edtUsername.text?.trim().toString()
+            val userId = binding.edtUserName.text?.trim().toString()
             val password = binding.edtPassword.text?.trim().toString()
             if(userId == ""){
                 Toast.makeText(requireContext(),"Please input UserId", Toast.LENGTH_LONG).show()
@@ -65,7 +65,7 @@ findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment
     }
 
     private fun checkPhoneValidation() {
-        val userId = binding.edtUsername.text?.trim().toString()
+        val userId = binding.edtUserName.text?.trim().toString()
         val password = binding.edtPassword.text?.trim().toString()
         if(userId == ""){
             Toast.makeText(requireContext(),"Please input UserId", Toast.LENGTH_LONG).show()
@@ -89,15 +89,15 @@ findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment
     }
 
     private fun onLoginResult(status: Resource<LoginResponse>) {
-//        binding.buttonLogin.startAnimation()
+        binding.btnLogin.startAnimation()
         when (status) {
             is Resource.Success -> status.data?.let {
                 checkResponse(it)
-//                binding.buttonLogin.revertAnimation()
+                binding.btnLogin.revertAnimation()
             }
             is Resource.DataError -> {
-//                binding.buttonLogin.revertAnimation()
-                //status.errorCode?.let { viewModel.showToastMessage(it) }
+                binding.btnLogin.revertAnimation()
+                status.errorCode?.let { viewModel.showToastMessage(it) }
             }
             else -> {}
         }

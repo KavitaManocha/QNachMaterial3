@@ -36,13 +36,13 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
     private fun inIt() {
 
         binding.edtResetPassword.setOnClickListener {
-            val userId = binding.edtEmailId.text?.trim().toString()
-            val mobileNo = binding.edtPassword.text?.trim().toString()
+            val userId = binding.edtMail.text?.trim().toString()
+            val mobileNo = binding.edtPhoneNo.text?.trim().toString()
             if(userId == ""){
                 Toast.makeText(requireContext(),"Please input UserId", Toast.LENGTH_LONG).show()
             }
             else if(mobileNo==""){
-                Toast.makeText(requireContext(),"Please input Password", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Please enter Mobile Number", Toast.LENGTH_LONG).show()
             }
             else if (mobileNo.length<10 || mobileNo.length>10){
                 Toast.makeText(requireContext(),"Enter a valid phone number", Toast.LENGTH_LONG).show()
@@ -65,8 +65,8 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
     }
 
     private fun checkPhoneValidation() {
-        val userId = binding.edtEmailId.text?.trim().toString()
-        val password = binding.edtPassword.text?.trim().toString()
+        val userId = binding.edtMail.text?.trim().toString()
+        val password = binding.edtPhoneNo.text?.trim().toString()
         if(userId == ""){
             Toast.makeText(requireContext(),"Please input UserId", Toast.LENGTH_LONG).show()
         }
@@ -107,8 +107,8 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
         if(it.StatusCode == "NP000"){
             showAlertMessage(it.StatusDesc)
             val bundle = Bundle()
-            bundle.putString("email_id", binding.edtEmailId.text.toString())
-            bundle.putString("mobile_no",binding.edtPassword.text?.trim().toString() )
+            bundle.putString("email_id", binding.edtMail.text.toString())
+            bundle.putString("mobile_no",binding.edtPhoneNo.text.toString() )
            findNavController().navigate(
                R.id.action_forgotPasswordFragment_to_verifyOtpFragment)
         }else{

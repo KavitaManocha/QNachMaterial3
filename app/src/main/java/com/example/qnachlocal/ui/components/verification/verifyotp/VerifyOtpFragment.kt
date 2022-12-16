@@ -39,22 +39,22 @@ class VerifyOtpFragment : BaseFragment<FragmentVerifyOtpBinding, VerifyOtpViewMo
         binding.edtVerifyOtp.setOnClickListener {
             val otp = binding.edtOtp.text?.trim().toString()
             val email_id: String? = arguments?.getString("email_id")
-            val mobile_no: String = arguments?.getString("mobile_no").toString()
+            val mobile_no: String? = arguments?.getString("mobile_no")
             if(otp == ""){
                 Toast.makeText(requireContext(),"Please Enter Otp Send to You", Toast.LENGTH_LONG).show()
             }
             else if (binding.edtNewPswd.text.toString() == ""){
                 Toast.makeText(requireContext(),"Please Enter New Password", Toast.LENGTH_LONG).show()
             }
-            else if (binding.edtConfirmPswd.text.toString() == ""){
+            else if (binding.edtConfirmPassword.text.toString() == ""){
                 Toast.makeText(requireContext(),"Confirm Password", Toast.LENGTH_LONG).show()
             }
-            else if (binding.edtNewPswd.text.toString() != binding.edtConfirmPswd.text.toString()){
+            else if (binding.edtNewPswd.text.toString() != binding.edtConfirmPassword.text.toString()){
                 Toast.makeText(requireContext(),"Password Mismatch", Toast.LENGTH_LONG).show()
             }
             else{
-                val loginRequest=VerifyOtpRequest(email_id.toString(),mobile_no,otp,
-                    binding.edtNewPswd.text.toString(),binding.edtConfirmPswd.text.toString())
+                val loginRequest=VerifyOtpRequest(email_id.toString(),mobile_no.toString(),otp,
+                    binding.edtNewPswd.text.toString(),binding.edtConfirmPassword.text.toString())
                 viewModel.verifyOtp(loginRequest)
                 /*   val bundle = Bundle()
                    bundle.putString(CONTACT_NO, userId)

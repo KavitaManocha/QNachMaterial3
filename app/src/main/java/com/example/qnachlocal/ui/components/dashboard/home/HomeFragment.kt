@@ -1,5 +1,6 @@
 package com.example.qnachlocal.ui.components.dashboard.home
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.DialogInterface
 import android.content.Intent
@@ -36,6 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         inIt()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun inIt() {
         if((activity as AppCompatActivity).supportActionBar != null){
             (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("qNach")
