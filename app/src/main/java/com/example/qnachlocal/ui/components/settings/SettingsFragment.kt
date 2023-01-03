@@ -46,7 +46,7 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        requireActivity().findViewById<BottomNavigationView>(R.id.nav_view).visibility=View.VISIBLE
+        activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.visibility=View.VISIBLE
 
         mList?.clear()
 
@@ -57,7 +57,6 @@ class SettingsFragment : Fragment() {
 
         lManager = LinearLayoutManager(requireContext())
         binding.recyclerviewSetting.layoutManager = lManager
-        mList?.add(ItemsViewModel(R.drawable.ic_baseline_account_circle_24, "My Account"))
         mList?.add(ItemsViewModel(R.drawable.ic_baseline_info_24, "About Us"))
         mList?.add(ItemsViewModel(R.drawable.ic_baseline_contacts_24, "Contact Us"))
         mList?.add(ItemsViewModel(R.drawable.ic_baseline_help_24, "HelpDesk"))
@@ -68,9 +67,9 @@ class SettingsFragment : Fragment() {
         mAdapter.setOnItemClickListener(object: SettingAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 //Toast.makeText(this@SettingsFragment.requireActivity(), "You clicked $position", Toast.LENGTH_SHORT).show()
-                if(mList?.get(position)?.text=="My Account"){
-                    findNavController().navigate(R.id.action_settingsFragment2_to_myAccountFragment2)
-                }
+//                if(mList?.get(position)?.text=="My Account"){
+//                    findNavController().navigate(R.id.action_settingsFragment2_to_myAccountFragment2)
+//                }
                 if(mList?.get(position)?.text=="About Us"){
                     findNavController().navigate(R.id.action_settingsFragment2_to_aboutUsFragment2)
                 }

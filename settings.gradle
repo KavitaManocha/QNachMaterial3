@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "QNachLocal"
 include ':app'
 include ':wizard_forms'
+include ':loading-button-android'

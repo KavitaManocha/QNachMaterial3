@@ -8,7 +8,7 @@
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/_7dp"
+        android:paddingVertical="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginHorizontal="@dimen/_16dp"
-            android:layout_marginVertical="@dimen/_10dp">
+            android:layout_marginVertical="@dimen/_12sdp">
 
             <ImageView
                 android:id="@+id/imgvw"
@@ -32,19 +32,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16dp"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/gray"
                 android:textSize="@dimen/_16ssp"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview"
-        android:background="@color/separator"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_1dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/cardview"-->
+<!--        android:background="@color/separator"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
