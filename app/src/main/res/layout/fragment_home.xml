@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/qnach"
-            android:background="@color/purple_200">
+            android:background="@color/colorAccent">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -32,84 +33,205 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_layout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingVertical="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="@dimen/_1sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardview_bg_blue"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_21sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_hello"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/hello"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                android:textAlignment="viewEnd"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="21dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_nupay_demo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nupayDemo"
+                android:textSize="@dimen/_15ssp"
+                android:textColor="@color/black"
+                android:textAlignment="viewEnd"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_to_qnach_mandate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textAlignment="viewEnd"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_green"
+        app:spanCount="2"
+        android:id="@+id/rv_green"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:orientation="vertical"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/ic_background">
+        app:layout_constraintTop_toBottomOf="@id/cv_id"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_hello"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/hello"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="21dp" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_nupay_demo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nupayDemo"
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_to_qnach_mandate"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_2sdp"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_blue"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_green_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_layout"
-            android:layout_marginTop="@dimen/_135sdp"
-            android:layout_marginHorizontal="16dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_blue_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_green_menu"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginHorizontal="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </LinearLayout>
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/rv_green"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools">-->
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:id="@+id/toolbar">-->
+
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:title="@string/qnach"-->
+<!--            android:background="@color/purple_200">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/iv_scan_qr"-->
+<!--                android:src="@drawable/ic_baseline_qr_code_scanner_24"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:paddingRight="15dp"/>-->
+
+<!--        </com.google.android.material.appbar.MaterialToolbar>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_marginTop="1dp"-->
+<!--        android:background="@drawable/ic_background">-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/tv_hello"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--            android:layout_marginTop="@dimen/_12sdp"-->
+<!--            android:text="@string/hello"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_14ssp"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:layout_editor_absoluteX="21dp" />-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/tv_nupay_demo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/nupayDemo"-->
+<!--            android:textSize="@dimen/_15ssp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--            android:layout_marginTop="@dimen/_2sdp"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4"/>-->
+
+<!--        <com.google.android.material.textview.MaterialTextView-->
+<!--            android:id="@+id/tv_welcome"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/welcome_to_qnach_mandate"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_12ssp"-->
+<!--            android:layout_marginHorizontal="@dimen/_16sdp"-->
+<!--            android:layout_marginTop="@dimen/_2sdp"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView5" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_green_menu"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linear_layout"-->
+<!--            android:layout_marginTop="@dimen/_135sdp"-->
+<!--            android:layout_marginHorizontal="16dp"/>-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_blue_menu"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/rv_green_menu"-->
+<!--            android:layout_marginTop="@dimen/_20sdp"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--    </LinearLayout>-->
+
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

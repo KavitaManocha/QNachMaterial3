@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,28 +16,26 @@ class CustomAdapterGreen(private var menuItems: ArrayList<RecyclerviewItem>): Re
 
     var onItemClick:((RecyclerviewItem) -> Unit)?= null
 
-    class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var backgroundd: CardView= itemView.findViewById(R.id.cv_green)
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        var backgroundd: LinearLayout = itemView.findViewById(R.id.cv_green)
         var icon: ImageView = itemView.findViewById(R.id.iv_icon)
         var task: TextView = itemView.findViewById(R.id.tv_task)
-        var proceed: ImageView = itemView.findViewById(R.id.iv_forward)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.rowlayout_green, parent, false)
+            .inflate(R.layout.item_green, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-var menu = menuItems[position]
-        holder.backgroundd.setCardBackgroundColor(menu.background)
+        var menu = menuItems[position]
+        holder.backgroundd.setBackgroundColor(menu.background)
         holder.icon.setImageResource(menu.desc_image)
         holder.task.setText(menu.task)
-        holder.proceed.setImageResource(menu.forward_image)
 
         holder.backgroundd.setOnClickListener {
-onItemClick?.invoke(menu)
+            onItemClick?.invoke(menu)
         }
     }
 
@@ -45,6 +44,40 @@ onItemClick?.invoke(menu)
     }
 
 }
+
+//class CustomAdapterGreen(private var menuItems: ArrayList<RecyclerviewItem>): RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>(){
+
+//    var onItemClick:((RecyclerviewItem) -> Unit)?= null
+//
+//    class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+//        var backgroundd: CardView= itemView.findViewById(R.id.cv_green)
+//        var icon: ImageView = itemView.findViewById(R.id.iv_icon)
+//        var task: TextView = itemView.findViewById(R.id.tv_task)
+//        var proceed: ImageView = itemView.findViewById(R.id.iv_forward)
+//    }
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+//        val view = LayoutInflater.from(parent.context)
+//            .inflate(R.layout.rowlayout_green, parent, false)
+//        return ViewHolder(view)
+//    }
+//
+//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+//var menu = menuItems[position]
+//        holder.backgroundd.setCardBackgroundColor(menu.background)
+//        holder.icon.setImageResource(menu.desc_image)
+//        holder.task.setText(menu.task)
+//
+//        holder.backgroundd.setOnClickListener {
+//onItemClick?.invoke(menu)
+//        }
+//    }
+//
+//    override fun getItemCount(): Int {
+//        return menuItems.size
+//    }
+//
+//}
 
 //class CustomAdapterGreen(private ) : RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>() {
 //

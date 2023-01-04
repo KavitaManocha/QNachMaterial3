@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -50,35 +51,64 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             intentIntegrator.initiateScan()
         }
 
-          menuu= ArrayList()
-        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_generate_pdf_green,getString(R.string.generate_pdf),R.drawable.ic_qnach_rightarrow_green))
-        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_scannach_mandate,getString(R.string.scan_nach_mandate),R.drawable.ic_qnach_rightarrow_green))
-//        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_green))
-//        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_scannach_mandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_green))
-            binding.rvGreenMenu.apply {
-                layoutManager = GridLayoutManager(activity,2)
-                var adaptter = CustomAdapterGreen(menuu)
-                adapter = adaptter
-                adaptter.onItemClick = {
-                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
-                        startActivity(intent)
-                        requireActivity().finishAffinity()
-                }
+        menuu= ArrayList()
+        menuu.add(RecyclerviewItem(Color.parseColor("#EBFFB6"),R.drawable.ic_qnach_generate_pdf_green,getString(R.string.generate_pdf)))
+        menuu.add(RecyclerviewItem(Color.parseColor("#C6F2F6"),R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate)))
+        menuu.add(RecyclerviewItem(Color.parseColor("#C6F2F6"),R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate)))
+        menuu.add(RecyclerviewItem(Color.parseColor("#EBFFB6"),R.drawable.ic_qnach_scannach_mandate,getString(R.string.scan_nach_mandate)))
+        binding.rvGreen.apply {
+            layoutManager = GridLayoutManager(activity,2)
+            var adaptter = CustomAdapterGreen(menuu)
+            adapter = adaptter
+            adaptter.onItemClick = {
+//                Toast.makeText(requireActivity(),"Green Menu", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+                startActivity(intent)
+                requireActivity().finishAffinity()
             }
+        }
 
         menuBlue= ArrayList()
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate),R.drawable.ic_qnach_rightarrow_3))
-        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate),R.drawable.ic_qnach_rightarrow_3))
-        binding.rvBlueMenu.apply {
-            layoutManager = GridLayoutManager(activity,2)
-            var blueAdapter = CustomAdapterBlue(menuBlue)
-            adapter = blueAdapter
-blueAdapter.onItemClick = {
-    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
-    startActivity(intent)
-    requireActivity().finishAffinity()
-}
-        }
+//        menuBlue.add(MenuItems(R.color.light_blue,R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate)))
+//        menuBlue.add(MenuItems(R.color.light_blue,R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate)))
+//        binding.rvBlue.apply {
+//            layoutManager = GridLayoutManager(activity,2)
+//            var blueAdapter = AdapterBlueMenu(menuBlue)
+//            adapter = blueAdapter
+//            blueAdapter.onItemClick = {
+//                Toast.makeText(requireActivity(),"Blue Menu", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+
+//          menuu= ArrayList()
+//        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_generate_pdf_green,getString(R.string.generate_pdf),R.drawable.ic_qnach_rightarrow_green))
+//        menuu.add(RecyclerviewItem(R.color.light_green,R.drawable.ic_qnach_scannach_mandate,getString(R.string.scan_nach_mandate),R.drawable.ic_qnach_rightarrow_green))
+////        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,"Generate Link For eMandate",R.drawable.ic_qnach_rightarrow_green))
+////        menuu.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_scannach_mandate,"Register eMandate",R.drawable.ic_qnach_rightarrow_green))
+//            binding.rvGreenMenu.apply {
+//                layoutManager = GridLayoutManager(activity,2)
+//                var adaptter = CustomAdapterGreen(menuu)
+//                adapter = adaptter
+//                adaptter.onItemClick = {
+//                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+//                        startActivity(intent)
+//                        requireActivity().finishAffinity()
+//                }
+//            }
+//
+//        menuBlue= ArrayList()
+//        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate),R.drawable.ic_qnach_rightarrow_3))
+//        menuBlue.add(RecyclerviewItem(R.color.light_blue,R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate),R.drawable.ic_qnach_rightarrow_3))
+//        binding.rvBlueMenu.apply {
+//            layoutManager = GridLayoutManager(activity,2)
+//            var blueAdapter = CustomAdapterBlue(menuBlue)
+//            adapter = blueAdapter
+//blueAdapter.onItemClick = {
+//    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+//    startActivity(intent)
+//    requireActivity().finishAffinity()
+//}
+//        }
 
     }
 
