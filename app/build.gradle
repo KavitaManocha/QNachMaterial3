@@ -137,6 +137,7 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation project(':wizard_forms')
     implementation project(':loading-button-android')
+    implementation project(':stepview')
 
     implementation"androidx.activity:activity-compose:1.6.0"
 
@@ -145,6 +146,9 @@ dependencies {
     implementation 'androidx.camera:camera-view:1.2.0-beta02'
 
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
+
+    // balloon tooltip dependency
+    implementation 'com.github.skydoves:balloon:1.4.8'
 
 }
 

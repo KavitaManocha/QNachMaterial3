@@ -21,6 +21,9 @@ import com.example.qnachlocal.databinding.FragmentAccountDetailsBinding
 import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.createBalloon
+import com.skydoves.balloon.showAlignBottom
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
@@ -73,26 +76,152 @@ class AccountDetailsFragment : Fragment() {
             val cust_email = getArguments()?.getString(CUSTOMER_EMAIL)
 
             if (binding.edtIfscCode.text?.trim().toString() ==""){
-                binding.edtIfscCode.error=getString(R.string.error_ifsc_code)
+//                binding.edtIfscCode.error=getString(R.string.error_ifsc_code)
+                binding.edtIfscCode.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_ifsc_code))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtIfscCode.text?.trim().toString().length >11|| binding.edtIfscCode.text?.trim().toString().length <11
                 || !IFSC_CODE_PATTERN.matcher(binding.edtIfscCode.text?.trim().toString()).matches()){
-                binding.edtIfscCode.error=getString(R.string.error_ifsc_code_validation)
+//                binding.edtIfscCode.error=getString(R.string.error_ifsc_code_validation)
+                binding.edtIfscCode.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_ifsc_code_validation))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustBank.text?.trim().toString() == ""){
-                binding.edtCustBank.error=getString(R.string.error_customer_bank)
+//                binding.edtCustBank.error=getString(R.string.error_customer_bank)
+                binding.edtCustBank.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_customer_bank))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtBankAddress.text?.trim().toString() == ""){
-                binding.edtBankAddress.error=getString(R.string.error_bank_address)
+//                binding.edtBankAddress.error=getString(R.string.error_bank_address)
+                binding.edtBankAddress.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_bank_address))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustAccNo.text?.trim().toString() == ""){
-                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number)
+//                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number)
+                binding.edtCustAccNo.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_customer_account_number))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustAccNo.text?.trim().toString().length>18 || binding.edtCustAccNo.text?.trim().toString().length<9){
-                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number_validation)
+//                binding.edtCustAccNo.error=getString(R.string.error_customer_account_number_validation)
+                binding.edtCustAccNo.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_customer_account_number_validation))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.spnAccType.text?.trim().toString() == ""){
-                binding.spnAccType.error=getString(R.string.error_account_type)
+//                binding.spnAccType.error=getString(R.string.error_account_type)
+                binding.spnAccType.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_account_type))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.spnCategory.text?.trim().toString() == ""){
                 binding.spnCategory.error=getString(R.string.error_category)

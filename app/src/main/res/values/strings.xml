@@ -213,4 +213,7 @@
     <string name="phy_nach_scanned">Physical NACH \n Scanned</string>
     <string name="emandates_pending">eMandates \n Pending</string>
     <string name="emandates_completed">eMandates \n Completed</string>
+    <string name="error_first_coll_date">Select First Collection Date</string>
+    <string name="error_final_coll_date">Select Final Collection Date</string>
+    <string name="error_acc_holder">Enter Account Holder Name</string>
 </resources>

@@ -14,6 +14,8 @@ import com.example.qnachlocal.data.data.dto.RecyclerviewItem
 
 class CustomAdapterGreen(private var menuItems: ArrayList<RecyclerviewItem>): RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>(){
 
+
+
     var onItemClick:((RecyclerviewItem) -> Unit)?= null
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -34,8 +36,10 @@ class CustomAdapterGreen(private var menuItems: ArrayList<RecyclerviewItem>): Re
         holder.icon.setImageResource(menu.desc_image)
         holder.task.setText(menu.task)
 
+
         holder.backgroundd.setOnClickListener {
             onItemClick?.invoke(menu)
+
         }
     }
 

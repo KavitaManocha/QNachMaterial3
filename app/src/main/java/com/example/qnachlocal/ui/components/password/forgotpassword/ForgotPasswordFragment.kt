@@ -16,9 +16,20 @@ import com.example.qnachlocal.databinding.FragmentForgotPasswordBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, ForgotPasswordViewModel>() {
+
+    val EMAIL_ADDRESS_PATTERN = Pattern.compile(
+        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+"
+    )
 
     override fun getViewModelClass() = ForgotPasswordViewModel::class.java
     override fun getViewBinding() = FragmentForgotPasswordBinding.inflate(layoutInflater)
@@ -36,29 +47,28 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
     private fun inIt() {
 
         binding.edtResetPassword.setOnClickListener {
-            val userId = binding.edtMail.text?.trim().toString()
-            val mobileNo = binding.edtPhoneNo.text?.trim().toString()
-            if(userId == ""){
-                Toast.makeText(requireContext(),"Please input UserId", Toast.LENGTH_LONG).show()
+
+            if (binding.edtMail.text.toString() == "") {
+                Toast.makeText(requireContext(), "Please Enter Email id", Toast.LENGTH_LONG).show()
+            } else if (binding.edtPhoneNo.text.toString() == "") {
+                Toast.makeText(requireContext(), "Please Enter Mobile Number", Toast.LENGTH_LONG).show()
+            }else if (binding.edtPhoneNo.text.length<10 || binding.edtPhoneNo.text.length>10){
+                Toast.makeText(requireContext(), "Please Enter a Valid Mobile Number of 10 digits", Toast.LENGTH_LONG).show()
+            } else if (!EMAIL_ADDRESS_PATTERN.matcher(binding.edtMail.text?.trim().toString()).matches()){
+                Toast.makeText(requireContext(), "Please Enter a Valid Email Id", Toast.LENGTH_LONG).show()
             }
-            else if(mobileNo==""){
-                Toast.makeText(requireContext(),"Please enter Mobile Number", Toast.LENGTH_LONG).show()
-            }
-            else if (mobileNo.length<10 || mobileNo.length>10){
-                Toast.makeText(requireContext(),"Enter a valid phone number", Toast.LENGTH_LONG).show()
-            }
-            else{
-                val loginRequest= ForgotPasswordRequest(userId,mobileNo)
+            else {
+                val loginRequest = ForgotPasswordRequest(
+                    binding.edtMail.text.toString(),
+                    binding.edtPhoneNo.text.toString()
+                )
                 viewModel.forgotPassword(loginRequest)
-//                val loginRequest=LoginRequest(userId,password)
-//                viewModel.loginUser(loginRequest)
-                /*   val bundle = Bundle()
-                   bundle.putString(CONTACT_NO, userId)
-                   bundle.putString(AUTH_FLAG, "signIn")
-                   findNavController().navigate(R.id.action_logIn_to_otp, bundle)*/
-//                findNavController().navigate(R.id.action_loginFragment_to_homeFragment2)
+
+
 
             }
+
+            // checkPhoneValidation()
         }
 
 
@@ -108,7 +118,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding, Forgo
             showAlertMessage(it.StatusDesc)
             val bundle = Bundle()
             bundle.putString("email_id", binding.edtMail.text.toString())
-            bundle.putString("mobile_no",binding.edtPhoneNo.text.toString() )
+            bundle.putString("phone_no", binding.edtPhoneNo.text.toString())
            findNavController().navigate(
                R.id.action_forgotPasswordFragment_to_verifyOtpFragment)
         }else{

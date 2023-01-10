@@ -19,13 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/qnach"
+            app:titleTextColor="@color/black"
             android:background="@color/colorAccent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/iv_scan_qr"
-                android:src="@drawable/ic_baseline_qr_code_scanner_24"
+                android:src="@drawable/ic_baseline_qr_code_scanner_black_24"
                 android:layout_gravity="end"
                 android:paddingRight="15dp"/>
 
@@ -38,17 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/dp_10"
-        android:paddingVertical="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_6sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:layout_marginTop="@dimen/_1sdp">
+        android:layout_marginTop="@dimen/_2dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/cardview_bg_blue"
             android:orientation="vertical"
+            android:background="@drawable/cardview_bg_blue"
             android:paddingHorizontal="@dimen/_16sdp"
             android:paddingVertical="@dimen/_21sdp">
 

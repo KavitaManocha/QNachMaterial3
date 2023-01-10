@@ -17,7 +17,6 @@ class CustomAdapterBlue (private var menuItems: ArrayList<RecyclerviewItem>): Re
         var backgroundd: CardView= itemView.findViewById(R.id.cv_blue)
         var icon: ImageView = itemView.findViewById(R.id.iv_icon)
         var task: TextView = itemView.findViewById(R.id.tv_task)
-        var proceed: ImageView = itemView.findViewById(R.id.iv_forward)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +30,6 @@ class CustomAdapterBlue (private var menuItems: ArrayList<RecyclerviewItem>): Re
         holder.backgroundd.setCardBackgroundColor(menu.background)
         holder.icon.setImageResource(menu.desc_image)
         holder.task.setText(menu.task)
-        holder.proceed.setImageResource(menu.forward_image)
 
         holder.backgroundd.setOnClickListener {
             onItemClick?.invoke(menu)

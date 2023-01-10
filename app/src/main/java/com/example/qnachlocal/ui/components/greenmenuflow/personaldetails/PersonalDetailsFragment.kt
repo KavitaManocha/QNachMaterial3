@@ -17,6 +17,9 @@ import com.example.qnachlocal.data.data.dto.UserReq
 import com.example.qnachlocal.databinding.FragmentPersonalDetailsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.createBalloon
+import com.skydoves.balloon.showAlignBottom
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
@@ -52,22 +55,130 @@ class PersonalDetailsFragment : Fragment() {
 
         binding.buttonNext.setOnClickListener {
             if (binding.edtCustId.text?.trim().toString() ==""){
-                binding.edtCustId.error= getString(R.string.error_loan_id)
+//                binding.edtCustId.error= getString(R.string.error_loan_id)
+                binding.edtCustId.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_loan_id))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtBenefName.text?.trim().toString() == ""){
-                binding.edtBenefName.error=getString(R.string.error_beneficiary_name)
+//                binding.edtBenefName.error=getString(R.string.error_beneficiary_name)
+                binding.edtBenefName.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_beneficiary_name))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustMob.text?.trim().toString() == ""){
-                binding.edtCustMob.error= getString(R.string.error_mobile_no)
+//                binding.edtCustMob.error= getString(R.string.error_mobile_no)
+                binding.edtCustMob.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_mobile_no))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustMob.text?.trim().toString().length<10 || binding.edtCustMob.text?.trim().toString().length>10){
-                binding.edtCustMob.error= getString(R.string.error_mobile_validation)
+//                binding.edtCustMob.error= getString(R.string.error_mobile_validation)
+                binding.edtCustMob.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_mobile_validation))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustEmail.text?.trim().toString() == ""){
-                binding.edtCustEmail.error= getString(R.string.error_mail_id)
+//                binding.edtCustEmail.error= getString(R.string.error_mail_id)
+                binding.edtCustEmail.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_mail_id))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (!EMAIL_ADDRESS_PATTERN.matcher(binding.edtCustEmail.text?.trim().toString()).matches()){
-                binding.edtCustEmail.error= getString(R.string.error_mail_validation)
+//                binding.edtCustEmail.error= getString(R.string.error_mail_validation)
+                binding.edtCustEmail.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_mail_validation))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else{
                 val bundle = Bundle()

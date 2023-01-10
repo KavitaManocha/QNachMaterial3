@@ -14,6 +14,9 @@ import com.example.qnachlocal.data.data.dto.PDFResponse
 import com.example.qnachlocal.databinding.FragmentBankDetailsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.createBalloon
+import com.skydoves.balloon.showAlignBottom
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -65,7 +68,25 @@ class BankDetailsFragment : BaseFragment<FragmentBankDetailsBinding, SharedViewM
             val date_n = SimpleDateFormat("dd MM, yyyy", Locale.getDefault()).format(Date())
 
             if (binding.edtAccHolderName.text?.trim().toString() ==""){
-                binding.edtAccHolderName.error="Enter Account Holder Name"
+//                binding.edtAccHolderName.error="Enter Account Holder Name"
+                binding.edtAccHolderName.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_acc_holder))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtCustAccNo.text?.trim().toString() == ""){
                 binding.edtCustAccNo.error="Enter Account Number"

@@ -61,6 +61,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             var adaptter = CustomAdapterGreen(menuu)
             adapter = adaptter
             adaptter.onItemClick = {
+//                if (menuu.get(0).task.equals("Generate PDF")){
+//                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+//                    startActivity(intent)
+//                    requireActivity().finishAffinity()
+//                }
+//                else {
+//                    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+//                    startActivity(intent)
+//                    requireActivity().finishAffinity()
+//                }
 //                Toast.makeText(requireActivity(),"Green Menu", Toast.LENGTH_SHORT).show()
                 val intent = Intent(requireContext(), GreenMenuActivity::class.java)
                 startActivity(intent)

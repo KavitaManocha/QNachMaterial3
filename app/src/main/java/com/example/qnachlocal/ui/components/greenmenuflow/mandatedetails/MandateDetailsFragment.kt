@@ -15,6 +15,9 @@ import com.example.qnachlocal.data.data.dto.User
 import com.example.qnachlocal.databinding.FragmentMandateDetailsBinding
 import com.example.qnachlocal.ui.base.BaseFragment
 import com.example.qnachlocal.utils.observe
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.createBalloon
+import com.skydoves.balloon.showAlignBottom
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -162,20 +165,110 @@ class MandateDetailsFragment : BaseFragment<FragmentMandateDetailsBinding, Share
             val freq = getArguments()?.getString(FREQUENCY)
 
             if (binding.edtAchAmount.text?.trim().toString() == "") {
-                binding.edtAchAmount.error = getString(R.string.error_ach_amount)
+//                binding.edtAchAmount.error = getString(R.string.error_ach_amount)
+                binding.edtAchAmount.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_ach_amount))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtMandateDate.text?.trim().toString() == "") {
-                binding.edtMandateDate.error = getString(R.string.error_mandate_date)
+//                binding.edtMandateDate.error = getString(R.string.error_mandate_date)
+                binding.edtMandateDate.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_mandate_date))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtStartDate.text?.trim().toString() == "") {
-                binding.edtStartDate.error = getString(R.string.error_start_date)
+//                binding.edtStartDate.error = getString(R.string.error_start_date)
+                binding.edtStartDate.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_start_date))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
             else if (binding.edtEndDate.text?.trim().toString() == "") {
-                binding.edtEndDate.error = getString(R.string.error_end_date)
+//                binding.edtEndDate.error = getString(R.string.error_end_date)
+                binding.edtEndDate.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_end_date))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
             }
 
             else if (binding.edtReferenceNo.text?.trim().toString() == "") {
-                binding.edtReferenceNo.error = getString(R.string.error_ref_no)
+//                binding.edtReferenceNo.error = getString(R.string.error_ref_no)
+                binding.edtReferenceNo.showAlignBottom(
+                    createBalloon(requireContext()) {
+                        setArrowSize(7)
+                        setWidthRatio(0.9f)
+                        setHeight(45)
+                        setArrowPosition(0.03f)
+                        setCornerRadius(4f)
+                        setAlpha(0.9f)
+                        setText(getString(R.string.error_ref_no))
+                        setTextColorResource(R.color.white)
+                        setBackgroundColorResource(R.color.red)
+                        setTextSize(16f)
+                        onBalloonClickListener?.let { setOnBalloonClickListener(it) }
+                        setBalloonAnimation(BalloonAnimation.FADE)
+                        setLifecycleOwner(lifecycleOwner)
+                        dismissWhenClicked = true
+                    }
+                )
 
             }else{
                 val loginRequest= Usser(
