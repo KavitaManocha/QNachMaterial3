@@ -216,4 +216,12 @@
     <string name="error_first_coll_date">Select First Collection Date</string>
     <string name="error_final_coll_date">Select Final Collection Date</string>
     <string name="error_acc_holder">Enter Account Holder Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="tabs">
+        <item>Personal Details</item>
+        <item>Account Details</item>
+        <item>Mandate Details</item>
+    </array>
 </resources>

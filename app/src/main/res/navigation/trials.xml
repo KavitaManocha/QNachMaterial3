@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/trials"
-    app:startDestination="@id/personalDetailsFragment">
+    app:startDestination="@id/greenFragment">
 
 
     <fragment
@@ -32,4 +33,9 @@
             android:id="@+id/action_mandateDetailsFragment_to_accountDetailsFragment"
             app:destination="@id/accountDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/greenFragment"
+        android:name="com.example.qnachlocal.ui.components.greenmenuflow.GreenFragment"
+        android:label="fragment_green"
+        tools:layout="@layout/fragment_green" />
 </navigation>

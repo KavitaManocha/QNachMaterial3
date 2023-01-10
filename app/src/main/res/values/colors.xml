@@ -53,4 +53,11 @@
     <color name="cyan">#2ED3CE</color>
     <color name="turquoise">#19CEEB</color>
 
+    <color name="primaryColor">#038103</color>
+    <color name="primaryLightColor">#E0FDDD</color>
+    <color name="primaryLightLittleColor">#CDECCA</color>
+    <color name="primaryDarkColor">#026C02</color>
+    <color name="colorLightGrayMore">#FDFDFD</color>
+    <color name="colorGray">#8F8F8F</color>
+
 </resources>
