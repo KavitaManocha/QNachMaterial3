@@ -22,7 +22,7 @@ import com.google.zxing.integration.android.IntentIntegrator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),CustomAdapterr.ItemListener {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapterrr: RecyclerView.Adapter<CustomAdapterGreen.ViewHolder>? = null
@@ -40,45 +40,70 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     @SuppressLint("SuspiciousIndentation")
     private fun inIt() {
-        if((activity as AppCompatActivity).supportActionBar != null){
+        if ((activity as AppCompatActivity).supportActionBar != null) {
             (activity as AppCompatActivity?)?.getSupportActionBar()?.setTitle("qNach")
             (activity as AppCompatActivity).supportActionBar!!.hide()
         }
 
         binding.ivScanQr.setOnClickListener {
-            val intentIntegrator = IntentIntegrator.forSupportFragment(this@HomeFragment)//IntentIntegrator(requireActivity())
+            val intentIntegrator =
+                IntentIntegrator.forSupportFragment(this@HomeFragment)//IntentIntegrator(requireActivity())
             intentIntegrator.setDesiredBarcodeFormats(listOf(IntentIntegrator.QR_CODE))
             intentIntegrator.initiateScan()
         }
 
-        menuu= ArrayList()
-        menuu.add(RecyclerviewItem(Color.parseColor("#EBFFB6"),R.drawable.ic_qnach_generate_pdf_green,getString(R.string.generate_pdf)))
-        menuu.add(RecyclerviewItem(Color.parseColor("#C6F2F6"),R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate)))
-        menuu.add(RecyclerviewItem(Color.parseColor("#C6F2F6"),R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate)))
-        menuu.add(RecyclerviewItem(Color.parseColor("#EBFFB6"),R.drawable.ic_qnach_scannach_mandate,getString(R.string.scan_nach_mandate)))
+        menuu = ArrayList()
+        menuu.add(
+            RecyclerviewItem(
+                Color.parseColor("#EBFFB6"),
+                R.drawable.ic_qnach_generate_pdf_green,
+                getString(R.string.generate_pdf)
+            )
+        )
+        menuu.add(
+            RecyclerviewItem(
+                Color.parseColor("#C6F2F6"),
+                R.drawable.ic_qnach_register_emandate,
+                getString(R.string.reg_emandate)
+            )
+        )
+        menuu.add(
+            RecyclerviewItem(
+                Color.parseColor("#C6F2F6"),
+                R.drawable.ic_qnach_generate_link,
+                getString(R.string.gen_link_for_emandate)
+            )
+        )
+        menuu.add(
+            RecyclerviewItem(
+                Color.parseColor("#EBFFB6"),
+                R.drawable.ic_qnach_scannach_mandate,
+                getString(R.string.scan_nach_mandate)
+            )
+        )
         binding.rvGreen.apply {
-            layoutManager = GridLayoutManager(activity,2)
-            var adaptter = CustomAdapterGreen(menuu)
+            layoutManager = GridLayoutManager(activity, 2)
+            var adaptter = CustomAdapterr(requireContext(), menuu, this@HomeFragment)
             adapter = adaptter
-            adaptter.onItemClick = {
-//                if (menuu.get(0).task.equals("Generate PDF")){
-//                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
-//                    startActivity(intent)
-//                    requireActivity().finishAffinity()
-//                }
-//                else {
-//                    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
-//                    startActivity(intent)
-//                    requireActivity().finishAffinity()
-//                }
-//                Toast.makeText(requireActivity(),"Green Menu", Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireContext(), GreenMenuActivity::class.java)
-                startActivity(intent)
-                requireActivity().finishAffinity()
-            }
+//            adaptter.onItemClick = {
+////                if (menuu.get(0).task.equals("Generate PDF")){
+////                    val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+////                    startActivity(intent)
+////                    requireActivity().finishAffinity()
+////                }
+////                else {
+////                    val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+////                    startActivity(intent)
+////                    requireActivity().finishAffinity()
+////                }
+////                Toast.makeText(requireActivity(),"Green Menu", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+//                startActivity(intent)
+//                requireActivity().finishAffinity()
+//            }
         }
 
-        menuBlue= ArrayList()
+        menuBlue = ArrayList()
 //        menuBlue.add(MenuItems(R.color.light_blue,R.drawable.ic_qnach_generate_link,getString(R.string.gen_link_for_emandate)))
 //        menuBlue.add(MenuItems(R.color.light_blue,R.drawable.ic_qnach_register_emandate,getString(R.string.reg_emandate)))
 //        binding.rvBlue.apply {
@@ -155,13 +180,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 .setMessage("Would you like to go to ${result.contents}?")
                 .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                     val intent = Intent(Intent.ACTION_WEB_SEARCH)
-                    intent.putExtra(SearchManager.QUERY,result.contents)
+                    intent.putExtra(SearchManager.QUERY, result.contents)
                     startActivity(intent)
                 })
-                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->  })
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i -> })
                 .create()
                 .show()
 
+        }
+    }
+
+    override fun onItemClick(position: Int) {
+        when (position) {
+            0 -> {
+                val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+                startActivity(intent)
+            }
+            1 -> {
+                val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+                startActivity(intent)
+            }
+            2 -> {
+                val intent = Intent(requireContext(), BlueMenuActivity::class.java)
+                startActivity(intent)
+            }
+            3 -> {
+                val intent = Intent(requireContext(), GreenMenuActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
